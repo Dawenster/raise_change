@@ -17,7 +17,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Devise setting
-  config.action_mailer.default_url_options = { :host => 'localhost:3000', port: 3000 }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Mail catcher settings
   config.action_mailer.delivery_method = :smtp
