@@ -17,10 +17,16 @@ nav.navbar.navbar-default
             | About us
 
       ul.nav.navbar-nav.navbar-right
-        li
-          div
-            a.btn.navbar-btn.btn-success.sign-up-button href="#{new_user_registration_path}"
-              | Sign Up Free
-        li
-          a href="#{new_user_session_path}"
-            | Login
+        - if user_signed_in?
+          li
+            = link_to destroy_user_session_path, :method => :delete do
+              | Logout
+
+        - else
+          li
+            div
+              a.btn.navbar-btn.btn-success.sign-up-button href="#{new_user_registration_path}"
+                | Sign Up Free
+          li
+            a href="#{new_user_session_path}"
+              | Login
