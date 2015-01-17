@@ -19,6 +19,9 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li
+            a href="#"
+              = current_user.first_name
+          li
             = link_to destroy_user_session_path, :method => :delete do
               | Logout
 
