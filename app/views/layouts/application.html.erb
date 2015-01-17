@@ -8,10 +8,8 @@
 </head>
 <body>
   <%= render "layouts/top_nav" %>
-  <% if notice || alert %>
-    <p class="notice alert alert-success"><%= notice %></p>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
+  <%= render "layouts/alerts" %>
+  
   <div class="main-content">
     <%= yield %>
   </div>
