@@ -13,6 +13,11 @@ nav.navbar.navbar-default role="navigation"
       
   #navbar-collapse-1.collapse.navbar-collapse
     ul.nav.navbar-nav
+      - if user_signed_in?
+        li
+          div
+            a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_campaign_path}"
+              | Create campaign
       li
         a href="#{about_path}" 
           | About
@@ -29,7 +34,7 @@ nav.navbar.navbar-default role="navigation"
       - else
         li
           div
-            a.btn.navbar-btn.btn-success.sign-up-button href="#{new_user_registration_path}"
+            a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_user_registration_path}"
               | Sign Up Free
         li
           a href="#{new_user_session_path}"

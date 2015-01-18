@@ -1,0 +1,11 @@
+= simple_form_for @campaign, defaults: { input_html: { class: 'form-control' }} do |f|
+  = f.input :title, :placeholder => "E.g. Save the puppies!", :required => false
+  br
+  = f.input :description, :placeholder => "Why people should support your campaign", :required => false, input_html: { style: "height: 100px;" }
+  br
+
+  = f.button :submit, :class => "btn btn-success"
+
+  - if @campaign.id
+    div style="margin-top: 10px;"
+      = link_to "Delete", { :id => @campaign.id, :action => :destroy }, :method => :delete, data: { confirm: "Are you sure?  You're about to delete this campaign..." }
