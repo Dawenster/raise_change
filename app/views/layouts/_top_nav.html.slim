@@ -1,35 +1,36 @@
-nav.navbar.navbar-default
-  .container-fluid
-    .navbar-header
-      button.navbar-toggle.collapsed data-target="#navbar-collapse-1" data-toggle="collapse" type="button" 
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href="#{root_path}"
-        | Raise Change
+nav.navbar.navbar-default role="navigation"
+  .navbar-header
+    button.navbar-toggle.collapsed data-target="#navbar-collapse-1" data-toggle="collapse" type="button" 
+      span.sr-only
+        | Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
 
-    /! Collect the nav links, forms, and other content for toggling
-    #navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav
+  .navbar-brand.navbar-center
+    a.navbar-brand href="#{root_path}"
+      | Raise Change
+      
+  #navbar-collapse-1.collapse.navbar-collapse
+    ul.nav.navbar-nav
+      li
+        a href="#{about_path}" 
+          | About
+
+    ul.nav.navbar-nav.navbar-right
+      - if user_signed_in?
         li
-          a href="#{about_path}" 
-            | About
+          a href="#"
+            = current_user.first_name
+        li
+          = link_to destroy_user_session_path, :method => :delete do
+            | Logout
 
-      ul.nav.navbar-nav.navbar-right
-        - if user_signed_in?
-          li
-            a href="#"
-              = current_user.first_name
-          li
-            = link_to destroy_user_session_path, :method => :delete do
-              | Logout
-
-        - else
-          li
-            div
-              a.btn.navbar-btn.btn-success.sign-up-button href="#{new_user_registration_path}"
-                | Sign Up Free
-          li
-            a href="#{new_user_session_path}"
-              | Login
+      - else
+        li
+          div
+            a.btn.navbar-btn.btn-success.sign-up-button href="#{new_user_registration_path}"
+              | Sign Up Free
+        li
+          a href="#{new_user_session_path}"
+            | Login
