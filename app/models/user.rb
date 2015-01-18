@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
       user.skip_confirmation!
     end
   end
+
+  def to_param
+    "#{id}-#{first_name.parameterize.downcase}-#{last_name.parameterize.downcase}"
+  end
 end

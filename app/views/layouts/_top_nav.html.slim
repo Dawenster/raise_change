@@ -35,8 +35,11 @@ nav.navbar.navbar-default role="navigation"
             span.caret
           ul.dropdown-menu
             li
-              a href="#"
+              a href="#{user_path(current_user)}"
                 | My campaigns
+            li
+              a href="#{edit_user_registration_path}"
+                | Account settings
             li.divider
             li
               = link_to destroy_user_session_path, :method => :delete do
