@@ -3,6 +3,7 @@
   br
   = f.input :description, :placeholder => "Why people should support your campaign", :required => false, input_html: { style: "height: 100px;" }
   br
+  = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
 
   = f.button :submit, :class => "btn btn-success"
 
