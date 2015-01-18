@@ -21,7 +21,7 @@ class CampaignsController < ApplicationController
   end
 
   def destroy
-    campaign = Campaign.find(params[:id])
+    campaign = Campaign.find(params[:id]).destroy
     flash[:notice] = "\"#{campaign.title}\" has been deleted."
     redirect_to root_path
   end
