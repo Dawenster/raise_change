@@ -1,0 +1,16 @@
+- organization = campaign.organization
+.campaign-main-grid
+  .organization-name
+    i.fa.fa-heart
+    = "  #{organization.name}"
+
+  .row
+    .col-xs-9
+      .campaign-main-title
+        h3
+          = link_to campaign.title, campaign_path(campaign)
+      .campaign-main-description
+        p
+          = link_to campaign.description, campaign_path(campaign)
+    .col-xs-3
+      = link_to image_tag(campaign.image.url(:display), :width => "100%"), campaign_path(campaign)
