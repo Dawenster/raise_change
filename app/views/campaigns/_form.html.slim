@@ -27,7 +27,8 @@
     = contact.input :name
     = contact.input :email
 
-  = org.button :submit, "Create campaign", :class => "btn btn-success"
+  - button_text = @organization.id ? "Edit campaign" : "Create campaign"
+  = org.button :submit, button_text, :class => "btn btn-success"
 
   - if @organization.id
     div style="margin-top: 10px;"
