@@ -3,7 +3,18 @@
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <%= devise_error_messages! %>
+      <div class="edit-user-avatar">
+        <% if current_user.uid %>
+          <span>
+            <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture" %>
+          </span>
+          <span class="facebook-avatar-explanation">
+            Using your Facebook profile image
+          </span>
+        <% else %>
+          
+        <% end %>
+      </div>
 
       <div class="row">
         <div class="col-sm-6">
