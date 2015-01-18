@@ -13,11 +13,6 @@ nav.navbar.navbar-default role="navigation"
       
   #navbar-collapse-1.collapse.navbar-collapse
     ul.nav.navbar-nav
-      - if user_signed_in?
-        li
-          div
-            a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_campaign_path}" style="margin-right: 10px;"
-              | Create campaign
       li
         a href="#{about_path}" 
           | About
@@ -27,15 +22,25 @@ nav.navbar.navbar-default role="navigation"
           | Browse
         div class="#{'active-underline' if params[:action] == 'index' && params[:controller] == 'campaigns'}"
 
-
     ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         li
-          a href="#"
+          div
+            a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_campaign_path}" style="margin-right: 10px;"
+              | Create campaign
+
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
             = current_user.first_name
-        li
-          = link_to destroy_user_session_path, :method => :delete do
-            | Logout
+            span.caret
+          ul.dropdown-menu
+            li
+              a href="#"
+                | My campaigns
+            li.divider
+            li
+              = link_to destroy_user_session_path, :method => :delete do
+                | Logout
 
       - else
         li
