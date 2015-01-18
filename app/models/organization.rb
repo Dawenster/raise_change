@@ -14,9 +14,9 @@ class Organization < ActiveRecord::Base
     return true if website.blank?
     uri = URI.parse(website)
     unless uri.kind_of?(URI::HTTP)
-      errors.add(:website, "must be blank or a valid url")
+      errors.add(:website, "must be blank or a valid url (with the http)")
     end
   rescue URI::InvalidURIError
-    errors.add(:website, "must be blank or a valid url")
+    errors.add(:website, "must be blank or a valid url (with the http)")
   end
 end
