@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   has_many :campaigns
-  has_and_belongs_to_many :organizations
+  has_many :organizations, :through => :campaigns
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
