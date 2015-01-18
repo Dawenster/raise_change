@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk', '~> 1.5.7'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'nested_form'
 gem 'omniauth-facebook'
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'pg'
 gem 'rails', '4.1.8'
 gem 'sass-rails', '~> 4.0.3'

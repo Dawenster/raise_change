@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: c46b40b973a66eb8ac454c1d22e5df15da66d7c3
+  specs:
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.5)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,6 +38,11 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    aws-sdk (1.5.8)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -35,6 +50,10 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.5)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -60,6 +79,9 @@ GEM
       tilt
     hashie (3.2.0)
     hike (1.2.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.7.0)
     jbuilder (2.2.6)
@@ -85,10 +107,14 @@ GEM
       thin
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_portile (0.6.2)
     minitest (5.5.0)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     multipart-post (1.2.0)
     nested_form (0.3.2)
+    nokogiri (1.6.5)
+      mini_portile (~> 0.6.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -186,6 +212,7 @@ GEM
     uglifier (2.6.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.5)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -193,6 +220,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk (~> 1.5.7)
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
@@ -202,6 +230,7 @@ DEPENDENCIES
   mailcatcher
   nested_form
   omniauth-facebook
+  paperclip!
   pg
   pry
   rails (= 4.1.8)
