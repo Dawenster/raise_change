@@ -1,12 +1,34 @@
-= simple_form_for @campaign, defaults: { input_html: { class: 'form-control' }} do |f|
-  = f.input :title, :placeholder => "E.g. Save the puppies!", :required => false
-  br
-  = f.input :description, :placeholder => "Why people should support your campaign", :required => false, input_html: { style: "height: 100px;" }
-  br
-  = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+= simple_nested_form_for @organization, defaults: { input_html: { class: 'form-control' }} do |org|
+  = org.simple_fields_for :campaigns do |campaign|
+    = campaign.input :title, :placeholder => "E.g. Save the puppies!"
+    
+    br
+    h4
+      | Which organization are you supporting?
+    br
 
-  = f.button :submit, :class => "btn btn-success"
+    = org.input :name, :label => "Name of organization", :required => true
+    br
+    = org.input :website, :required => false, :label => "Organization website"
+    br
+    = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
+    br
+    = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
 
-  - if @campaign.id
+  h4
+    | Who can validate your participation?
+  div
+    h4
+      small
+        | This information is not public, and will only be used by Raise Change for validation purposes
+  br
+
+  = org.simple_fields_for :contacts do |contact|
+    = contact.input :name
+    = contact.input :email
+
+  = org.button :submit, "Create campaign", :class => "btn btn-success"
+
+  - if @organization.id
     div style="margin-top: 10px;"
       = link_to "Delete", { :id => @campaign.id, :action => :destroy }, :method => :delete, data: { confirm: "Are you sure?  You're about to delete this campaign..." }

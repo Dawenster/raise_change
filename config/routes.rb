@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   
   get "about" => "pages#about", as: :about
 
-  resources :campaigns
+  resources :organizations, :only => [:create, :update]
+
+  get "create-campaign" => "campaigns#new", as: :new_campaign
+  get "edit-campaign/:id" => "campaigns#edit", as: :edit_campaign
+  resources :campaigns, :only => [:index, :show, :destroy]
+
   resources :users, :only => [:show]
 end
