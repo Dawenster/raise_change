@@ -16,11 +16,17 @@ nav.navbar.navbar-default role="navigation"
       - if user_signed_in?
         li
           div
-            a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_campaign_path}"
+            a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_campaign_path}" style="margin-right: 10px;"
               | Create campaign
       li
         a href="#{about_path}" 
           | About
+        div class="#{'active-underline' if params[:action] == 'about' && params[:controller] == 'pages'}"
+      li
+        a href="#{campaigns_path}" 
+          | Browse
+        div class="#{'active-underline' if params[:action] == 'index' && params[:controller] == 'campaigns'}"
+
 
     ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
