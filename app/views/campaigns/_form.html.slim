@@ -1,6 +1,9 @@
 = simple_nested_form_for @organization, defaults: { input_html: { class: 'form-control' }} do |org|
   = org.simple_fields_for :campaigns do |campaign|
     = campaign.input :title, :placeholder => "E.g. Save the puppies!"
+
+    = image_tag @campaign.image.url(:display), :width => "100%" if @organization.id && @campaign.image
+    = campaign.input :image, label: "Awesome picture for your campaign", :required => false, input_html: { style: "border: none; box-shadow: none; margin: 10px 0px -20px -15px;" }
     
     br
     h4

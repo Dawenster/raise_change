@@ -38,6 +38,7 @@ class OrganizationsController < ApplicationController
         :description,
         :user_id,
         :organization_id,
+        :image,
         :_destroy
       ],
       contacts_attributes: [
