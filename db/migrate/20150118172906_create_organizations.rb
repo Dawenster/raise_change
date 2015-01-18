@@ -3,8 +3,6 @@ class CreateOrganizations < ActiveRecord::Migration
     create_table :organizations do |t|
       t.string :name
       t.string :website
-      t.string :contact_name
-      t.string :contact_email
 
       t.timestamps
     end
