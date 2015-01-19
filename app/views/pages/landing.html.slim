@@ -1,14 +1,15 @@
 = image_tag "https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg", :width => "100%"
 
-.landing-title
-  h1
-    | Change the world, one hour at a time
+.landing-container
+  .landing-title
+    h1
+      | Change the world, one hour at a time
 
-.main-campaign-grid-holder
-  - @campaigns.each do |campaign|
-    .row
-      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-        = render "campaigns/main_grid", :campaign => campaign
+  .main-campaign-grid-holder
+    - @campaigns.each do |campaign|
+      .row
+        .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+          = render "campaigns/main_grid", :campaign => campaign
 
-.landing-browse-all-campaigns
-  = link_to "Browse all campaigns", campaigns_path, :class => "btn btn-info btn-lg"
+  .landing-browse-all-campaigns
+    = link_to "Browse all campaigns", campaigns_path, :class => "btn btn-info btn-lg"
