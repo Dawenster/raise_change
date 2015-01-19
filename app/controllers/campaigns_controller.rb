@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @user = @campaign.user
+    @organization = @campaign.organization
   end
 
   def new
