@@ -1,2 +1,5 @@
-- @campaigns.each do |campaign|
-  = campaign.title
+.main-campaign-grid-holder
+  - @campaigns.each do |campaign|
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+        = render "campaigns/main_grid", :campaign => campaign
