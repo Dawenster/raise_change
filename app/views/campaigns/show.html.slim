@@ -14,4 +14,28 @@
                 = @user.first_name
               p
                 = @user.last_name
+
         .col-xs-12.col-sm-9
+          .campaign-show-details-holder
+            h2
+              = @campaign.title
+          .campaign-show-statistics.bg-warning
+            .row
+              .col-xs-4
+                .campaign-show-detailed-stats
+                  h1
+                    | $900
+                  p
+                    | raised per hour
+
+              .col-xs-4
+                .campaign-show-detailed-stats
+                  h1
+                    | 236
+                  p
+                    | sponsors
+
+              .col-xs-4
+                .campaign-show-sponsor-button-holder
+                  .btn.btn-info.btn-lg
+                    | Sponsor
