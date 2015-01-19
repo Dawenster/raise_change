@@ -1,0 +1,35 @@
+.show-campaign-holder {
+  padding-top: 50px;
+
+  .organizer-title {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 5px;
+    margin: 7px 0 25px;
+    line-height: 15px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .campaign-show-user-name {
+    margin-top: 20px;
+    text-align: center;
+
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    h3 {
+      color: black;
+    }
+
+    p {
+      color: grey;
+      font-size: 18px;
+      margin-top: -10px;
+    }
+  }
+}
