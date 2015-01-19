@@ -39,3 +39,8 @@
                 .campaign-show-sponsor-button-holder
                   .btn.btn-info.btn-lg
                     | Sponsor
+
+          = image_tag @campaign.image.url(:display), :width => "100%"
+
+          p
+            = simple_format(@campaign.description)
