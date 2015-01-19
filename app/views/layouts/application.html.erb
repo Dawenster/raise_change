@@ -12,7 +12,7 @@
   <%= render "layouts/top_nav" %>
   <%= render "layouts/alerts" %>
   
-  <div class="main-content">
+  <div class="<%= 'main-content' unless params[:action] == 'landing' && params[:controller] == 'pages' %>">
     <%= yield %>
   </div>
 </body>
