@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def avatar(user)
     if user.uid
-      image_tag "http://graph.facebook.com/#{current_user.uid}/picture", :class => "user-avatar"
+      image_tag "http://graph.facebook.com/#{user.uid}/picture", :class => "user-avatar"
     else
       image_tag user.avatar.url(:small), :class => "user-avatar"
     end

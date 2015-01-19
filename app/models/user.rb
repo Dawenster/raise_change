@@ -37,4 +37,8 @@ class User < ActiveRecord::Base
   def to_param
     "#{id}-#{first_name.parameterize.downcase}-#{last_name.parameterize.downcase}"
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
