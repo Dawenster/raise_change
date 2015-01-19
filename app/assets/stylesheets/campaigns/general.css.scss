@@ -1,0 +1,10 @@
+small.edit-campaign {
+  margin-left: 10px;
+  a {
+    color: grey !important;
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}

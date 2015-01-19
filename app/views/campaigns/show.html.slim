@@ -19,6 +19,8 @@
           .campaign-show-details-holder
             h2
               = @campaign.title
+              = render "campaigns/edit_campaign_text", :campaign => @campaign
+              
           .campaign-show-statistics.bg-warning
             .row
               .col-xs-4
@@ -43,4 +45,4 @@
           = image_tag @campaign.image.url(:display), :width => "100%"
 
           p
-            = simple_format(@campaign.description)
+            = Rinku.auto_link(simple_format(@campaign.description))

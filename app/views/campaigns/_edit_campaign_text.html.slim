@@ -1,0 +1,5 @@
+- if user_signed_in? && campaign.user == current_user
+  small.edit-campaign
+    a href="#{edit_campaign_path(campaign)}"
+      i.fa.fa-pencil-square-o
+      | Edit

@@ -10,11 +10,7 @@
       .campaign-main-title
         h3
           = link_to campaign.title, campaign_path(campaign)
-          - if user_signed_in? && campaign.user == current_user
-            small
-              a href="#{edit_campaign_path(campaign)}"
-                i.fa.fa-pencil-square-o
-                | Edit
+          = render "campaigns/edit_campaign_text", :campaign => campaign
       .campaign-main-description
         p
           = link_to truncate(campaign.description, :length => 140), campaign_path(campaign)
