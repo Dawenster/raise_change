@@ -1,5 +1,18 @@
-.main-campaign-grid-holder
-  - @user_campaigns.each do |campaign|
-    .row
-      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-        = render "campaigns/main_grid", :campaign => campaign
+- if @user_campaigns.any?
+  .main-campaign-grid-holder
+    - @user_campaigns.each do |campaign|
+      .row
+        .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+          = render "campaigns/main_grid", :campaign => campaign
+
+- else
+  .row
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+      .jumbotron.no-campaigns-yet-jumbotron
+        h2
+          | Welcome :)
+        p
+          | Your page is looking a bit empty - let's start a campaign!
+
+        a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
+          | Start a campaign
