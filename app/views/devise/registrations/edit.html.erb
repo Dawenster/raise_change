@@ -4,35 +4,10 @@
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <div class="edit-user-avatar">
-        <% if current_user.uid %>
-          <span>
-            <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture" %>
-          </span>
-          <span class="facebook-avatar-explanation">
-            Using your Facebook profile image
-          </span>
-        <% else %>
-          
-        <% end %>
+        <%= render "edit_avatar", :f => f %>
       </div>
 
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-group">
-            <div><%= f.label :first_name %>
-            <%= f.text_field :first_name, :autofocus => true, :class => "form-control" %></div>
-            <%= errors_for resource, :first_name %>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="form-group">
-            <div><%= f.label :last_name %>
-            <%= f.text_field :last_name, :class => "form-control" %></div>
-            <%= errors_for resource, :last_name %>
-          </div>
-        </div>
-      </div>
+      <%= render "name_fields", :f => f %>
 
       <div class="form-group">
         <div><%= f.label :email %>

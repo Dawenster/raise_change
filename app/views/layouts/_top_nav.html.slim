@@ -29,8 +29,11 @@ nav.navbar.navbar-default role="navigation"
             a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_campaign_path}" style="margin-right: 10px;"
               | Create campaign
 
+        li.navbar-avatar
+          = avatar(current_user)
+
         li.dropdown
-          a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+          a.dropdown-toggle.user-account-dropdown href="#" data-toggle="dropdown" role="button" aria-expanded="false"
             = current_user.first_name
             span.caret
           ul.dropdown-menu

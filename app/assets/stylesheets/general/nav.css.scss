@@ -5,7 +5,7 @@
 
 .navbar-default {
   background-color: white;
-  padding: 3px 0px;
+  padding: 5px 0px 3px 0px;
 }
 
 .navbar-brand {
@@ -27,6 +27,12 @@
 
 .navbar-right {
   margin-right: 0px;
+}
+
+.navbar-avatar {
+  margin-top: 5px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .navbar-toggle {
