@@ -29,6 +29,7 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
     var pageType = $(".campaign-form").attr("data-page-type")
     if (pageType == "hasSite") {
       $scope.websiteField = true;
+      $scope.websiteFieldText = "Remove website";
     } else {
       $scope.websiteField = false;
       $scope.websiteFieldText = "Add website (optional)";
@@ -39,6 +40,7 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
     var pageType = $(".organization-validation-form-section").attr("data-page-type")
     if (pageType == "hasContact") {
       $scope.validationSection = true;
+      $scope.validationSectionText = "Remove validator";
     } else {
       $scope.validationSection = false;
       $scope.validationSectionText = "Add validator (optional)";
