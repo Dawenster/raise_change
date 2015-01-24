@@ -15,6 +15,7 @@ gem 'rinku'
 gem 'sass-rails', '~> 4.0.3'
 gem 'simple_form'
 gem 'slim'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 
