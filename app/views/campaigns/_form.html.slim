@@ -22,23 +22,28 @@
         | {{websiteFieldText}}
 
       br
-      br
       = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
-      br
       = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
 
-    h4
-      | Who can validate your participation?
-    div
-      h4
-        small
-          | This information is not public, and will only be used by Raise Change for validation purposes
+      .open-validation-form-section-link ng-click="validationSectionToggle()" data-page-type="#{@organization.id && @organization.website ? 'hasSite' : 'noSite'}"
+        i.fa.fa-plus-circle ng-show="!validationSection"
+        i.fa.fa-minus-circle ng-show="validationSection"
+        | {{validationSectionText}}
+
+      .organization-validation-form-section ng-show="validationSection" data-page-type="#{@organization.id && @organization.contacts.any? ? 'hasContact' : 'noContact'}"
+        h4
+          | Who can validate your participation?
+        div
+          h4
+            small
+              | This information is not public, and will only be used by Raise Change for validation purposes
+        br
+
+        = org.simple_fields_for :contacts do |contact|
+          = contact.input :name
+          = contact.input :email
+
     br
-
-    = org.simple_fields_for :contacts do |contact|
-      = contact.input :name
-      = contact.input :email
-
     - button_text = @organization.id ? "Edit campaign" : "Create campaign"
     = org.button :submit, button_text, :class => "btn btn-success"
 
