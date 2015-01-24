@@ -48,7 +48,10 @@
             = Rinku.auto_link(simple_format(@campaign.description))
 
           h4
-            = "All proceeds go towards: #{link_to @organization.name, @organization.website, :target => '_blank'}".html_safe
+            - if @organization.website.blank?
+              = "All proceeds go towards: #{@organization.name}".html_safe
+            - else
+              = "All proceeds go towards: #{link_to @organization.name, @organization.website, :target => '_blank'}".html_safe
 
           a href="#{campaigns_path}"
             i.fa.fa-chevron-circle-left
