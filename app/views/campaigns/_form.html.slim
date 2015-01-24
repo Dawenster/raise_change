@@ -24,6 +24,7 @@
       br
       = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
       = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+      = campaign.input :donation_period, :as => :hidden, :input_html => { :value => donation_period }
 
       .open-validation-form-section-link ng-click="validationSectionToggle()" data-page-type="#{@organization.id && @organization.website ? 'hasSite' : 'noSite'}"
         i.fa.fa-plus-circle ng-show="!validationSection"
