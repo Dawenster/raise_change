@@ -1,5 +1,16 @@
-.donation-amount-description {
+.donation-field-description {
   font-style: italic;
   color: grey;
-  margin-top: 20px;
+}
+
+@media(max-width:767px) {
+  .donation-field-description {
+    margin-bottom: 20px;
+  }
+}
+
+@media(min-width:768px) {
+  .donation-field-description {
+    margin-top: 20px;
+  }
 }

@@ -1,3 +1,5 @@
+script type="text/javascript" src="https://js.stripe.com/v2/"
+
 .row
   .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
     h4.page-super-title
@@ -11,20 +13,59 @@
 
     = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
       .row
-        .col-xs-6
+        .col-xs-12.col-sm-6
           = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
-        .col-xs-6
-          .donation-amount-description
+        .col-xs-12.col-sm-6
+          .donation-field-description
             = "Amount to be donated per hour volunteered by #{@campaign.user.full_name}, donated #{@campaign.donation_period}"
             
       .row
-        .col-xs-6
+        .col-xs-12.col-sm-6
           = donation.input :max
-        .col-xs-6
-          .donation-amount-description
+        .col-xs-12.col-sm-6
+          .donation-field-description
             = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
-      br
-      = donation.input :message, :label => "Message to the volunteer (optional)"
+
+      .row
+        .col-xs-12.col-sm-6
+          #payment-form
+            span.payment-errors
+            .row
+              .col-xs-12
+                .form-group
+                  label
+                    | Card Number
+                  input.form-control data-stripe="number" size="20" type="text"
+
+            .row
+              .col-xs-12
+                .form-group
+                  label
+                    | Expiration (MM/YYYY)
+                  .row
+                    .col-xs-5
+                      input.form-control data-stripe="exp-month" size="2" type="text" placeholder="MM"
+                    .col-xs-7
+                      input.form-control data-stripe="exp-year" size="4" type="text" placeholder="YYYY"
+
+            .row
+              .col-xs-12
+                .form-group
+                  label
+                    | CVC
+                  input.form-control data-stripe="cvc" size="4" type="text" style="width: 50px;"
+
+        .col-xs-12.col-sm-6
+          .donation-field-description
+            = "Your credit card will not be charged until the end of the donation period, and you will receive an email when it is charged"
+
+      .row
+        .col-xs-12.col-sm-6
+          = donation.input :message, :label => "Message to #{@campaign.user.first_name} (optional)"
+        .col-xs-12.col-sm-6
+          .donation-field-description
+            = "Message will show up on the campaign page for the public to see."
+
       = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
     
