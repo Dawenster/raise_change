@@ -19,18 +19,11 @@
             
       .row
         .col-xs-6
-          form.form-inline
-            .form-group
-              label
-                | Max (optional)
-              .input-group
-                .input-group-addon
-                  | $
-                = donation.input :max, :label => false
+          = donation.input :max
         .col-xs-6
           .donation-amount-description
-            = "Maximum amount you wish to donate on a #{@campaign.donation_period} basis"
-
+            = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
+      br
       = donation.input :message, :label => "Message to the volunteer (optional)"
       = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
