@@ -1,0 +1,12 @@
+.open-website-form-link {
+  color: #428bca;
+  cursor: pointer;
+
+  &:hover {
+    color: #2a6496;
+  }
+
+  i {
+    margin-right: 5px;
+  }
+}
