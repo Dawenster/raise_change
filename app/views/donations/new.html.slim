@@ -1,0 +1,32 @@
+.row
+  .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
+    h4.page-super-title
+      | Donate to:
+    h2.page-title
+      = @campaign.title
+
+    .row
+      .col-xs-4.col-xs-offset-4
+        = image_tag @campaign.image.url(:display), :width => "100%"
+
+    = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
+      .row
+        .col-xs-6
+          = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
+            
+      .row
+        .col-xs-6
+          form.form-inline
+            .form-group
+              label
+                | Max (optional)
+              .input-group
+                .input-group-addon
+                  | $
+                = donation.input :max, :label => false
+                
+      = donation.input :message, :label => "Message to the volunteer (optional)"
+      = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+      = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
+    
+      = donation.button :submit, "Make donation", :class => "btn btn-success"

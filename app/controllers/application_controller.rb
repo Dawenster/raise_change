@@ -5,8 +5,14 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
+  helper_method :amounts_to_donate
+
   def after_sign_in_path_for(resource)
     user_path(resource) || root_path
+  end
+
+  def amounts_to_donate
+    return ["$0.25", "$0.50", "$1.00"]
   end
 
   protected

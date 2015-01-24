@@ -1,7 +1,8 @@
-class OrganizationsController < ApplicationController
+class DonationsController < ApplicationController
   before_filter :authenticate_user!
 
   def new
+    @campaign = Campaign.find(params[:campaign_id])
     @donation = Donation.new
   end
 

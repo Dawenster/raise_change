@@ -39,8 +39,7 @@
 
               .col-xs-4
                 .campaign-show-sponsor-button-holder
-                  .btn.btn-info.btn-lg
-                    | Sponsor
+                  = link_to "Sponsor", new_donation_path(@campaign), :class => "btn btn-info btn-lg"
 
           = image_tag @campaign.image.url(:display), :width => "100%"
 
