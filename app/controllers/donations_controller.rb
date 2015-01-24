@@ -8,10 +8,10 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.new(donation_params)
+    @campaign = Campaign.find(params[:donation][:campaign_id])
     if @donation.save
-      campaign = @donation.campaign
-      flash[:notice] = "You are now sponsoring \"#{campaign.title}\"."
-      redirect_to campaign_path(campaign)
+      flash[:notice] = "You are now sponsoring \"#{@campaign.title}\"."
+      redirect_to campaign_path(@campaign)
     else
       flash.now[:alert] = @donation.errors.full_messages.join(". ") + "."
       render "new"
@@ -27,7 +27,7 @@ class DonationsController < ApplicationController
   private 
 
   def donation_params
-    params.require(:donation).permit(
+    cleanup(params).require(:donation).permit(
       :amount,
       :max,
       :message,
@@ -35,5 +35,11 @@ class DonationsController < ApplicationController
       :campaign_id,
       :_destroy
     )
+  end
+
+  def cleanup(params)
+    params[:donation][:amount] = (params[:donation][:amount].gsub("$", "").to_f * 100).to_i
+    params[:donation][:max] = (params[:donation][:max].to_f * 100).to_i unless params[:donation][:max].blank?
+    return params
   end
 end
