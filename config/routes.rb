@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   get "edit-campaign/:id" => "campaigns#edit", as: :edit_campaign
   resources :campaigns, :only => [:index, :show, :destroy]
 
+  resources :donations, :only => [:new, :create, :destroy]
+
   resources :users, :only => [:show]
 end
