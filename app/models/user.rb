@@ -49,5 +49,7 @@ class User < ActiveRecord::Base
       :description => self.email,
       :card => token
     )
+
+    self.update_attributes(:stripe_id => response.id)
   end
 end
