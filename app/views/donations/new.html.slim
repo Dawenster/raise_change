@@ -27,12 +27,6 @@
           .donation-field-description
             = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
 
-      - if has_credit_card?
-        = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
-
-      - else
-        = render "users/credit_card_form", :show_card_description => true
-
       .row
         .col-xs-12.col-sm-6
           = donation.input :message, :label => "Message to #{@campaign.user.first_name} (optional)"
@@ -40,6 +34,11 @@
           .donation-field-description
             = "Message will show up on the campaign page for the public to see."
 
+      - if has_credit_card?
+        = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
+
+      - else
+        = render "users/credit_card_form", :show_card_description => true
     
       .btn.btn-success.make-donation-button ng-click="makeDonation()"
         | Make donation
