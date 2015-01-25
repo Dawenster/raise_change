@@ -26,14 +26,14 @@
               .col-xs-4
                 .campaign-show-detailed-stats
                   h1
-                    | $900
+                    = number_to_currency(@campaign.donations_per_hour)
                   p
                     | raised per hour
 
               .col-xs-4
                 .campaign-show-detailed-stats
                   h1
-                    | 236
+                    = @campaign.num_sponsors
                   p
                     | sponsors
 

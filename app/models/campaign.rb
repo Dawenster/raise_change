@@ -3,6 +3,7 @@ class Campaign < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :organization
+  has_many :donations
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -20,5 +21,17 @@ class Campaign < ActiveRecord::Base
 
   def to_param
     "#{id}-#{title.parameterize}"
+  end
+
+  def donations_per_hour_in_cents
+    self.donations.sum(:amount)
+  end
+
+  def donations_per_hour
+    donations_per_hour_in_cents.to_f / 100
+  end
+
+  def num_sponsors
+    self.donations.select(:user_id).uniq.count
   end
 end
