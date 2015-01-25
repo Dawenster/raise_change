@@ -6,15 +6,22 @@ app.controller('DonationCtrl', ['$scope', function($scope) {
   $("input.stripe-cvc").payment('formatCardCVC');
 
   $scope.makeDonation = function() {
-    var $form = $("#payment-form");
+    var hasCard = $(".donations-controller").attr("data-has-card");
 
-    // Disable the submit button to prevent repeated clicks
-    $(".make-donation-button").attr("disabled", "disabled");
+    if (hasCard) {
+      var $form = $('#new_donation');
+      $form.get(0).submit();
+    } else {
+      var $form = $("#payment-form");
 
-    Stripe.card.createToken($form, stripeResponseHandler);
+      // Disable the submit button to prevent repeated clicks
+      $(".make-donation-button").attr("disabled", "disabled");
 
-    // Prevent the form from submitting with the default action
-    return false;
+      Stripe.card.createToken($form, stripeResponseHandler);
+
+      // Prevent the form from submitting with the default action
+      return false;
+    }
   }
 
   function stripeResponseHandler(status, response) {
