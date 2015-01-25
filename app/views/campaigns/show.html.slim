@@ -53,7 +53,7 @@
               = "All proceeds go towards: #{link_to @organization.name, @organization.website, :target => '_blank'}".html_safe
 
           .campaign-donations-holder
-            - @campaign.donations.each do |donation|
+            - @campaign.donations.order('created_at DESC').each do |donation|
               = render "donations/donation_grid", :donation => donation
 
           a href="#{campaigns_path}"
