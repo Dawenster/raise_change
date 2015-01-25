@@ -70,11 +70,15 @@
       = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
     
-      / = donation.button :submit, "Make donation", :class => "btn btn-success make-donation-button"
       .btn.btn-success.make-donation-button ng-click="makeDonation()"
         | Make donation
 
-
+      .row
+        .col-xs-12.back-to-campaign
+          a href="#{campaign_path(@campaign)}"
+            i.fa.fa-chevron-circle-left
+            span
+              | Back to campaign
 
 
 
