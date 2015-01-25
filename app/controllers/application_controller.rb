@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def has_credit_card?
-    user_signed_in? && current_user.stripe_id
+    user_signed_in? && current_user.has_credit_cards?
   end
 
   protected

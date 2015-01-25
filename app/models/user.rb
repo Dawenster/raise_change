@@ -42,25 +42,47 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def create_stripe_customer(token)
+  def create_or_update_stripe_customer(token)
     stripe_setup
 
-    response = Stripe::Customer.create(
-      :description => self.email,
-      :card => token
-    )
+    if self.stripe_id
+      customer = retrieve_customer
+      customer.card = token
+      customer.save
+    else
+      response = Stripe::Customer.create(
+        :description => self.email,
+        :card => token
+      )
+      self.update_attributes(:stripe_id => response.id)
+    end
+  end
 
-    self.update_attributes(:stripe_id => response.id)
+  def has_credit_cards?
+    self.credit_cards.any?
   end
 
   def credit_cards
     stripe_setup
-    return Stripe::Customer.retrieve(self.stripe_id).cards.all()
+    return retrieve_customer.cards.all()
+  end
+
+  def delete_credit_card
+    stripe_setup
+    customer = retrieve_customer
+    card_id = customer.cards.data[0].id
+    last4 = customer.cards.data[0].last4
+    customer.cards.retrieve(card_id).delete
+    return last4
   end
 
   private
 
   def stripe_setup
     Stripe.api_key = Rails.env.production? ? ENV["STRIPE_LIVE_SECRET_KEY"] : ENV["STRIPE_TEST_SECRET_KEY"]
+  end
+
+  def retrieve_customer
+    Stripe::Customer.retrieve(self.stripe_id)
   end
 end

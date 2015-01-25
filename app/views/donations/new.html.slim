@@ -27,7 +27,7 @@
             = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
 
       - if has_credit_card?
-        = render "existing_credit_cards", :cards => @cards
+        = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
 
       - else
         = render "credit_card_form"

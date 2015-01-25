@@ -1,14 +1,10 @@
 var app = angular.module('raisechange');
 
 app.controller('DonationCtrl', ['$scope', function($scope) {
-  $("input.stripe-card-number").payment('formatCardNumber')
-  $("input.stripe-expiry").payment('formatCardExpiry');
-  $("input.stripe-cvc").payment('formatCardCVC');
-
   $scope.makeDonation = function() {
     var hasCard = $(".donations-controller").attr("data-has-card");
 
-    if (hasCard) {
+    if (hasCard == "true") {
       var $form = $('#new_donation');
       $form.get(0).submit();
     } else {

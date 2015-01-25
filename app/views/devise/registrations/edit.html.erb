@@ -21,6 +21,11 @@
         <% end %>
       </div>
 
+      <% if has_credit_card? %>
+        <%= render "users/existing_credit_cards", :cards => current_user.credit_cards, :show_card_description => false %>
+        <%= link_to "Delete card", delete_credit_card_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger" %>
+      <% end %>
+
       <p class="change-password-text" ng-click="showPassword=!showPassword">
         Change password
       </p>

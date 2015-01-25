@@ -3,4 +3,8 @@ $(document).ready(function() {
     $(".user-account-dropdown").dropdown("toggle")
     return false;
   });
+
+  $("input.stripe-card-number").payment('formatCardNumber')
+  $("input.stripe-expiry").payment('formatCardExpiry');
+  $("input.stripe-cvc").payment('formatCardCVC');
 });

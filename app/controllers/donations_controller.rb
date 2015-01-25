@@ -4,12 +4,12 @@ class DonationsController < ApplicationController
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @donation = Donation.new
-    @cards = current_user.credit_cards if has_credit_card?
+    @cards = has_credit_card? ? current_user.credit_cards : []
   end
 
   def create
     @campaign = Campaign.find(params[:donation][:campaign_id])
-    current_user.create_stripe_customer(params[:stripeToken]) unless has_credit_card?
+    current_user.create_or_update_stripe_customer(params[:stripeToken]) unless has_credit_card?
     @donation = Donation.new(donation_params)
 
     if @donation.save
