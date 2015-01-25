@@ -59,6 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def has_credit_cards?
+    return false unless self.stripe_id
     self.credit_cards.any?
   end
 

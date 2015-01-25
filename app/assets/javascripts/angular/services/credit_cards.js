@@ -4,10 +4,8 @@ app.factory("CreditCards", function() {
   var CreditCards = {};
 
   CreditCards.makeDonation = function() {
-    var hasCard = $(".donations-controller").attr("data-has-card");
-
-    if (hasCard == "true") {
-      var $form = $('#new_donation');
+    if (hasCard() == "true") {
+      var $form = getCorrectForm()
       $form.get(0).submit();
     } else {
       var $form = $("#payment-form");
@@ -33,7 +31,7 @@ app.factory("CreditCards", function() {
   }
 
   function stripeResponseHandler(status, response) {
-    var $form = $('#new_donation');
+    var $form = getCorrectForm();
 
     if (response.error) {
       // Show the errors on the form
@@ -49,6 +47,18 @@ app.factory("CreditCards", function() {
       $form.get(0).submit();
     }
   };
+
+  function getCorrectForm() {
+    if ($('#new_donation').length > 0) {
+      return $('#new_donation')
+    } else if ($('#payment-form').length > 0) {
+      return $('#payment-form')
+    }
+  }
+
+  function hasCard() {
+    return getCorrectForm().find(".has-card-details").attr("data-has-card")
+  }
 
   function removeStripeErrors() {
     var errorFields = $(".stripe-card-error")

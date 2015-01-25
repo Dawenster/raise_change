@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => :create_or_update_credit_card
+
   def show
     @user = User.find(params[:id])
     @user_campaigns = @user.campaigns
+  end
+
+  def create_or_update_credit_card
+    current_user.create_or_update_stripe_customer(params[:stripeToken])
+    flash[:notice] = "Your have successfully added a credit card."
+    redirect_to(:back)
   end
 
   def delete_credit_card

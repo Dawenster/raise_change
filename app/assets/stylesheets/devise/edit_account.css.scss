@@ -12,7 +12,11 @@
   }
 }
 
-.change-password-text, .cancel-account-text {
+.toggle-section-text-holder {
+  margin: 10px 0px;
+}
+
+.toggle-section-text {
   color: #428bca;
   cursor: pointer;
   &:hover {

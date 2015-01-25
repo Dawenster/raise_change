@@ -3,6 +3,8 @@
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <div class="has-card-details" data-has-card="<%= has_credit_card? %>"></div>
+
       <div class="edit-user-avatar">
         <%= render "edit_avatar", :f => f %>
       </div>
@@ -21,14 +23,11 @@
         <% end %>
       </div>
 
-      <% if has_credit_card? %>
-        <%= render "users/existing_credit_cards", :cards => current_user.credit_cards, :show_card_description => false %>
-        <%= link_to "Delete card", delete_credit_card_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger btn-xs delete-credit-card-button" %>
-      <% end %>
-
-      <p class="change-password-text" ng-click="showPassword=!showPassword">
-        Change password
-      </p>
+      <div class="toggle-section-text-holder">
+        <span class="toggle-section-text" ng-click="showPassword=!showPassword">
+          Change password
+        </span>
+      </div>
 
       <div ng-show="showPassword">
         <div class="form-group">
@@ -44,15 +43,40 @@
         </div>
       </div>
 
-      <p class="cancel-account-text" ng-click="showCancelAccount=!showCancelAccount">
-        Cancel account
-      </p>
+      <div><%= f.submit "Update", :class => "btn btn-success" %></div>
+      
+
+    <% end %>
+    
+    <div class="toggle-section-text-holder">
+      <span class="toggle-section-text" ng-click="showCreditCard=!showCreditCard">
+        Credit card
+      </span>
+    </div>
+
+    <div ng-show="showCreditCard">
+      <% if has_credit_card? %>
+        <br>
+        <%= render "users/existing_credit_cards", :cards => current_user.credit_cards, :show_card_description => false %>
+        <%= link_to "Delete card", delete_credit_card_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger btn-xs delete-credit-card-button" %>
+      <% else %>
+        <%= render "users/credit_card_form", :show_card_description => true %>
+        <div class="btn btn-success btn-xs" ng-click="makeDonation()">
+          Add card
+        </div>
+      <% end %>
+    </div>
+
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <div class="toggle-section-text-holder">
+        <span class="toggle-section-text" ng-click="showCancelAccount=!showCancelAccount">
+          Cancel account
+        </span>
+      </div>
 
       <div ng-show="showCancelAccount">
         <p>Unhappy? :( <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger" %></p>
       </div>
-
-      <div><%= f.submit "Update", :class => "btn btn-success" %></div>
     <% end %>
   </div>
 </div>

@@ -1,6 +1,6 @@
 .row
   .col-xs-12.col-sm-6
-    #payment-form
+    form#payment-form action="#{create_or_update_credit_card_path}" method="POST"
       .row
         .col-xs-12
           .form-group
@@ -31,4 +31,4 @@
   - if show_card_description
     .col-xs-12.col-sm-6
       .donation-field-description
-        = "Your credit card will not be charged until the end of the donation period, and you will receive an email when it is charged"
+        = "Your credit card will not be charged until the end of a campaign's donation period, and you will receive an email when it is charged"

@@ -1,6 +1,4 @@
-= render "layouts/stripe_javascript"
-
-.row.donations-controller ng-controller="DonationCtrl" data-has-card="#{@cards.any?}"
+.row.donations-controller ng-controller="DonationCtrl"
   .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
     h4.page-super-title
       | Donate to:
@@ -12,6 +10,7 @@
         = image_tag @campaign.image.url(:thumb), :width => "100%"
 
     = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
+      .has-card-details data-has-card="#{@cards.any?}"
       .row
         .col-xs-12.col-sm-6
           = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
