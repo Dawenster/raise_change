@@ -9,7 +9,7 @@
 
     .row
       .col-xs-4.col-xs-offset-4
-        = image_tag @campaign.image.url(:display), :width => "100%"
+        = image_tag @campaign.image.url(:thumb), :width => "100%"
 
     = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
       .row
