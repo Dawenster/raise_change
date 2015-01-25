@@ -41,4 +41,13 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def create_stripe_customer(token)
+    Stripe.api_key = Rails.env.production? ? ENV["STRIPE_LIVE_SECRET_KEY"] : ENV["STRIPE_TEST_SECRET_KEY"]
+
+    response = Stripe::Customer.create(
+      :description => self.email,
+      :card => token
+    )
+  end
 end

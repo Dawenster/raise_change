@@ -7,8 +7,10 @@ class DonationsController < ApplicationController
   end
 
   def create
-    @donation = Donation.new(donation_params)
     @campaign = Campaign.find(params[:donation][:campaign_id])
+    current_user.create_stripe_customer(params[:stripeToken]) unless current_user.stripe_id
+    @donation = Donation.new(donation_params)
+
     if @donation.save
       flash[:notice] = "You are now sponsoring \"#{@campaign.title}\"."
       redirect_to campaign_path(@campaign)
