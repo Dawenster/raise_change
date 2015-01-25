@@ -23,7 +23,7 @@
 
       <% if has_credit_card? %>
         <%= render "users/existing_credit_cards", :cards => current_user.credit_cards, :show_card_description => false %>
-        <%= link_to "Delete card", delete_credit_card_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger" %>
+        <%= link_to "Delete card", delete_credit_card_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger btn-xs delete-credit-card-button" %>
       <% end %>
 
       <p class="change-password-text" ng-click="showPassword=!showPassword">
@@ -44,13 +44,15 @@
         </div>
       </div>
 
+      <p class="cancel-account-text" ng-click="showCancelAccount=!showCancelAccount">
+        Cancel account
+      </p>
+
+      <div ng-show="showCancelAccount">
+        <p>Unhappy? :( <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger" %></p>
+      </div>
+
       <div><%= f.submit "Update", :class => "btn btn-success" %></div>
     <% end %>
-
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger" %></p>
-
-    <%= link_to "Back", :back %>
   </div>
 </div>

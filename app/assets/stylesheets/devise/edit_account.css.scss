@@ -12,10 +12,14 @@
   }
 }
 
-.change-password-text {
+.change-password-text, .cancel-account-text {
   color: #428bca;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
+}
+
+.delete-credit-card-button {
+  margin-bottom: 20px;
 }
