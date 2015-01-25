@@ -39,6 +39,7 @@ class OrganizationsController < ApplicationController
         :user_id,
         :organization_id,
         :image,
+        :donation_period,
         :_destroy
       ],
       contacts_attributes: [
