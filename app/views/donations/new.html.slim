@@ -30,7 +30,7 @@
         = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
 
       - else
-        = render "credit_card_form"
+        = render "users/credit_card_form", :show_card_description => true
 
       .row
         .col-xs-12.col-sm-6

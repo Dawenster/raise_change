@@ -1,1 +1,1 @@
-angular.module('raisechange', ['raisechange.controllers'])
+angular.module('raisechange', ['raisechange.controllers', 'raisechange.services'])

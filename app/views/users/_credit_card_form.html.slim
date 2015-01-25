@@ -28,6 +28,7 @@
             input.form-control.stripe-cvc data-stripe="cvc" size="4" type="tel" style="width: 60px;" autocomplete="off" placeholder="•••"
             span.payment-errors-cvc.stripe-card-error
 
-  .col-xs-12.col-sm-6
-    .donation-field-description
-      = "Your credit card will not be charged until the end of the donation period, and you will receive an email when it is charged"
+  - if show_card_description
+    .col-xs-12.col-sm-6
+      .donation-field-description
+        = "Your credit card will not be charged until the end of the donation period, and you will receive an email when it is charged"
