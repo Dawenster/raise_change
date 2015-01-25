@@ -1,0 +1,33 @@
+.row
+  .col-xs-12.col-sm-6
+    #payment-form
+      .row
+        .col-xs-12
+          .form-group
+            label
+              | Card Number
+            input.form-control.stripe-card-number data-stripe="number" size="20" type="tel" autocomplete="cc-number" placeholder="•••• •••• •••• ••••"
+            span.payment-errors-number.stripe-card-error
+
+      .row
+        .col-xs-7
+          .form-group
+            label
+              | Expiration
+            input.form-control.stripe-expiry type="tel" placeholder="MM / YYYY" ng-model="expiryDate" ng-keyup="splitDate()"
+            input.form-control.stripe-exp-month.hidden data-stripe="exp-month" type="tel" placeholder="MM" value="{{month}}"
+            input.form-control.stripe-exp-year.hidden data-stripe="exp-year" type="tel" placeholder="YYYY" value="{{year}}"
+            span.payment-errors-exp_month.stripe-card-error
+            span.payment-errors-exp_year.stripe-card-error
+
+        .col-xs-4
+          .form-group
+            label
+              | CVC
+
+            input.form-control.stripe-cvc data-stripe="cvc" size="4" type="tel" style="width: 60px;" autocomplete="off" placeholder="•••"
+            span.payment-errors-cvc.stripe-card-error
+
+  .col-xs-12.col-sm-6
+    .donation-field-description
+      = "Your credit card will not be charged until the end of the donation period, and you will receive an email when it is charged"
