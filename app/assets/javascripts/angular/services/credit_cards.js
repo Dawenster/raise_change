@@ -8,7 +8,7 @@ app.factory("CreditCards", function() {
       var $form = getCorrectForm()
       $form.get(0).submit();
     } else {
-      var $form = $("#payment-form");
+      var $form = $(".payment-form");
 
       // Disable the submit button to prevent repeated clicks
       $(".make-donation-button").attr("disabled", "disabled");

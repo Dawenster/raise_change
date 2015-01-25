@@ -10,6 +10,8 @@
         = image_tag @campaign.image.url(:thumb), :width => "100%"
 
     = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
+      = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+      = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
       .has-card-details data-has-card="#{@cards.any?}"
       .row
         .col-xs-12.col-sm-6
@@ -38,8 +40,6 @@
           .donation-field-description
             = "Message will show up on the campaign page for the public to see."
 
-      = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
-      = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
     
       .btn.btn-success.make-donation-button ng-click="makeDonation()"
         | Make donation
