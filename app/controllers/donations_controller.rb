@@ -4,6 +4,7 @@ class DonationsController < ApplicationController
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @donation = Donation.new
+    @cards = current_user.credit_cards if has_credit_card?
   end
 
   def create

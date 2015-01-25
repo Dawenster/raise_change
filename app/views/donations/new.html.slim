@@ -26,7 +26,11 @@
           .donation-field-description
             = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
 
-      = render "credit_card_form"
+      - if has_credit_card?
+        = render "existing_credit_cards", :cards => @cards
+
+      - else
+        = render "credit_card_form"
 
       .row
         .col-xs-12.col-sm-6

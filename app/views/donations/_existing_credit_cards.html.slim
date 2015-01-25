@@ -1,0 +1,14 @@
+.row
+  .col-xs-12.col-sm-6
+    label
+      | Using saved card
+    .list-existing-credit-cards
+      - cards.data.each do |card|
+        div
+          = "#{card.brand} card, ending in: #{card.last4}"
+        div
+          = "Expires: #{card.exp_month.to_s.rjust(2, '0')} / #{card.exp_year}"
+
+  .col-xs-12.col-sm-6
+    .donation-field-description
+      = "To update your credit card, please go to #{link_to 'Account settings', edit_user_registration_path}".html_safe

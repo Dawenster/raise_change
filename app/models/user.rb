@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def create_stripe_customer(token)
-    Stripe.api_key = Rails.env.production? ? ENV["STRIPE_LIVE_SECRET_KEY"] : ENV["STRIPE_TEST_SECRET_KEY"]
+    stripe_setup
 
     response = Stripe::Customer.create(
       :description => self.email,
@@ -51,5 +51,16 @@ class User < ActiveRecord::Base
     )
 
     self.update_attributes(:stripe_id => response.id)
+  end
+
+  def credit_cards
+    stripe_setup
+    return Stripe::Customer.retrieve(self.stripe_id).cards.all()
+  end
+
+  private
+
+  def stripe_setup
+    Stripe.api_key = Rails.env.production? ? ENV["STRIPE_LIVE_SECRET_KEY"] : ENV["STRIPE_TEST_SECRET_KEY"]
   end
 end

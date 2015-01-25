@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
-  helper_method :amounts_to_donate, :donation_period
+  helper_method :amounts_to_donate, :donation_period, :has_credit_card?
 
   def after_sign_in_path_for(resource)
     user_path(resource) || root_path
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   def donation_period
     "quarterly"
+  end
+
+  def has_credit_card?
+    user_signed_in? && current_user.stripe_id
   end
 
   protected
