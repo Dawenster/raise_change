@@ -43,8 +43,10 @@ app.controller('DonationCtrl', ['$scope', function($scope) {
   }
 
   $scope.splitDate = function() {
-    var expiry = $scope.expiryDate.split("/")
-    $scope.month = expiry[0].trim()
-    $scope.year = expiry[1].trim()
+    if ($scope.expiryDate && $scope.expiryDate.length > 6) {
+      var expiry = $scope.expiryDate.split("/")
+      $scope.month = expiry[0].trim()
+      $scope.year = expiry[1].trim()
+    }
   }
 }]);
