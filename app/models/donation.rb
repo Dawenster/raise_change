@@ -3,4 +3,8 @@ class Donation < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :campaign
+
+  def amount_in_dollars
+    amount.to_f / 100
+  end
 end

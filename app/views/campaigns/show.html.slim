@@ -52,6 +52,10 @@
             - else
               = "All proceeds go towards: #{link_to @organization.name, @organization.website, :target => '_blank'}".html_safe
 
+          .campaign-donations-holder
+            - @campaign.donations.each do |donation|
+              = render "donations/donation_grid", :donation => donation
+
           a href="#{campaigns_path}"
             i.fa.fa-chevron-circle-left
             span.back-to-all-campaigns
