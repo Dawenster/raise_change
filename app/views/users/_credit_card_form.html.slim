@@ -6,7 +6,7 @@
           .col-xs-12
             .form-group
               label
-                | Card Number
+                | * Card Number
               input.form-control.stripe-card-number data-stripe="number" size="20" type="tel" autocomplete="cc-number" placeholder="•••• •••• •••• ••••"
               span.payment-errors-number.stripe-card-error
 
@@ -14,7 +14,7 @@
           .col-xs-7
             .form-group
               label
-                | Expiration
+                | * Expiration
               input.form-control.stripe-expiry type="tel" placeholder="MM / YYYY" ng-model="expiryDate" ng-keyup="splitDate()"
               input.form-control.stripe-exp-month.hidden data-stripe="exp-month" type="tel" placeholder="MM" value="{{month}}"
               input.form-control.stripe-exp-year.hidden data-stripe="exp-year" type="tel" placeholder="YYYY" value="{{year}}"
@@ -24,7 +24,7 @@
           .col-xs-4
             .form-group
               label
-                | CVC
+                | * CVC
 
               input.form-control.stripe-cvc data-stripe="cvc" size="4" type="tel" style="width: 60px;" autocomplete="off" placeholder="•••"
               span.payment-errors-cvc.stripe-card-error
