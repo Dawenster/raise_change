@@ -5,7 +5,7 @@
     .list-existing-credit-cards
       - cards.data.each do |card|
         div
-          = "#{card.brand} card, ending in: #{card.last4}"
+          = "#{card.brand}, ending in: #{card.last4}"
         div
           = "Expires: #{card.exp_month.to_s.rjust(2, '0')} / #{card.exp_year}"
 
