@@ -9,7 +9,7 @@ class DonationsController < ApplicationController
 
   def create
     @campaign = Campaign.find(params[:donation][:campaign_id])
-    current_user.create_stripe_customer(params[:stripeToken]) unless current_user.stripe_id
+    current_user.create_stripe_customer(params[:stripeToken]) unless has_credit_card?
     @donation = Donation.new(donation_params)
 
     if @donation.save
