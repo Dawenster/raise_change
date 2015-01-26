@@ -17,5 +17,7 @@
   <div class="<%= 'main-content' unless params[:action] == 'landing' && params[:controller] == 'pages' %>">
     <%= yield %>
   </div>
+
+  <%= render "layouts/footer" %>
 </body>
 </html>
