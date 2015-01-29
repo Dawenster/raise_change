@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def avatar(user)
     if user.uid
-      image_tag "http://graph.facebook.com/#{user.uid}/picture", :class => "user-avatar"
+      image_tag "https://graph.facebook.com/#{user.uid}/picture", :class => "user-avatar"
     else
       image_tag user.avatar.url(:small), :class => "user-avatar"
     end
@@ -17,7 +17,7 @@ module ApplicationHelper
 
   def profile_picture(user)
     if user.uid
-      image_tag "http://graph.facebook.com/#{user.uid}/picture?width=200&height=200", :class => "user-profile-picture"
+      image_tag "https://graph.facebook.com/#{user.uid}/picture?width=200&height=200", :class => "user-profile-picture"
     else
       image_tag user.avatar.url(:large), :class => "user-profile-picture"
     end
