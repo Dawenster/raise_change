@@ -11,16 +11,15 @@ class User < ActiveRecord::Base
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
-    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-    :s3_permissions => :public_read,
-    :s3_protocol => :https
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   }
 
   has_attached_file :avatar, 
                     :styles => { :small => "40x40#", :large => "200x200#" },
                     :s3_credentials => s3_credentials_hash,
                     :bucket => ENV['AWS_BUCKET'],
-                    :default_url => "https://s3-us-west-2.amazonaws.com/raisechange/general/no-profile-image.png"
+                    :default_url => "https://s3-us-west-2.amazonaws.com/raisechange/general/no-profile-image.png",
+                    :s3_protocol => :https
 
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
