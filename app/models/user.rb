@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-    :s3_permissions => :public_read
+    :s3_permissions => :public_read,
+    :s3_protocol => :https
   }
 
   has_attached_file :avatar, 
