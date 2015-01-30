@@ -84,8 +84,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'timeauction.org',
-    user_name:            'team@timeauction.org',
+    domain:               'raisechange.com',
+    user_name:            'team@raisechange.com',
     password:             ENV['EMAIL_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true
