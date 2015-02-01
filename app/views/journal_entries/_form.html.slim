@@ -2,7 +2,7 @@ div ng-controller="JournalEntryFormCtrl"
   = simple_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
     = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first
 
-    .journal-entry-date-selector
+    .journal-entry-date-selector data-existing-dates="#{@journal_entry.dates}"
       label
         | * When did you volunteer?
       div
@@ -25,7 +25,6 @@ div ng-controller="JournalEntryFormCtrl"
     - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
     .btn.btn-success.submit-journal-entry ng-click="submitForm()"
       = button_text.html_safe
-    / = je.button :submit, button_text, :class => "btn btn-success"
 
     - if @journal_entry.id
       div style="margin-top: 10px;"
