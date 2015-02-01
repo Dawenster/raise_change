@@ -13,7 +13,7 @@ div ng-controller="JournalEntryFormCtrl"
         span.or-word
           = "or "
         span
-          a.enter-free-text ng-click="freeTextDates=!freeTextDates"
+          a.enter-free-text ng-click="enterFreeText()"
             | enter free text
         input.custom-date-picker-hidden-input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
       input.form-control.free-text-field placeholder="E.g. Last two weeks of #{last_month_in_words}" ng-show="freeTextDates"

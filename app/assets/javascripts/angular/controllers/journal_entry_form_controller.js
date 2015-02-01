@@ -18,6 +18,9 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
     $event.preventDefault();
     $event.stopPropagation();
 
+    $(".free-text-field").val("")
+    $scope.freeTextDates = false
+
     $scope.opened = true;
   };
 
@@ -26,6 +29,11 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
     startingDay: 1,
     showWeeks: false
   };
+
+  $scope.enterFreeText = function() {
+    $scope.dt = null;
+    $scope.freeTextDates = !$scope.freeTextDates;
+  }
 
   $scope.submitForm = function() {
     $(".submit-journal-entry").attr("disabled")
