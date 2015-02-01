@@ -2,7 +2,7 @@
   .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
     .show-campaign-holder
       .row
-        .col-xs-12.col-sm-3
+        .col-sm-3.hidden-xs
           .organizer-title
             | CAMPAIGN ORGANIZER
 
@@ -20,26 +20,35 @@
             h2
               = @campaign.title
               = render "campaigns/edit_campaign_text", :campaign => @campaign
-              
-          .campaign-show-statistics.bg-warning
+          
+            .visible-xs-block
+              span.pull-left
+                = link_to "Support", new_donation_path(@campaign), :class => "btn btn-info"
+              span.pull-left.xs-campaign-stats
+                div
+                  = "#{number_to_currency(@campaign.donations_per_hour)} raised per hour"
+                div
+                  = "#{@campaign.num_sponsors} supporters"
+
+          .campaign-show-statistics.bg-warning.hidden-xs
             .row
-              .col-xs-12.col-sm-4
+              .col-xs-4
                 .campaign-show-detailed-stats
                   h1
                     = number_to_currency(@campaign.donations_per_hour)
                   p
                     | raised per hour
 
-              .col-xs-12.col-sm-4
+              .col-xs-4
                 .campaign-show-detailed-stats
                   h1
                     = @campaign.num_sponsors
                   p
-                    | sponsors
+                    | supporters
 
-              .col-xs-12.col-sm-4
+              .col-xs-4
                 .campaign-show-sponsor-button-holder
-                  = link_to "Sponsor", new_donation_path(@campaign), :class => "btn btn-info btn-lg"
+                  = link_to "Support", new_donation_path(@campaign), :class => "btn btn-info btn-lg"
 
           = image_tag @campaign.image.url(:display), :width => "100%"
 

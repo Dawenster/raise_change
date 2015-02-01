@@ -1,6 +1,4 @@
 .show-campaign-holder {
-  padding-top: 50px;
-
   .organizer-title {
     display: block;
     width: 100%;
@@ -37,6 +35,10 @@
     h2 {
       margin-top: 0px;
     }
+
+    .xs-campaign-stats {
+      margin-left: 10px;
+    }
   }
 
   .campaign-show-statistics {
@@ -59,6 +61,7 @@
 
     .campaign-show-sponsor-button-holder {
       margin-top: 25px;
+      text-align: center;
     }
   }
 
@@ -75,5 +78,25 @@
   .nav-badge {
     margin-left: 5px;
     background-color: #31b0d5;
+  }
+}
+
+@media(max-width:767px) {
+  .show-campaign-holder {
+    padding-top: 10px;
+  }
+
+  .nav-justified {
+    li {
+      a {
+        text-align: left !important;
+      }
+    }
+  }
+}
+
+@media(min-width:768px) {
+  .show-campaign-holder {
+    padding-top: 50px;
   }
 }
