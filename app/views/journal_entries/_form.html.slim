@@ -1,4 +1,4 @@
-div ng-controller="JournalEntryFormCtrl"
+.journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}"
   = simple_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
     = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first
 

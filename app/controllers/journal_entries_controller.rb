@@ -37,6 +37,7 @@ class JournalEntriesController < ApplicationController
       flash[:notice] = "Journal entry updated successfully for \"#{campaign.title}\"."
       redirect_to campaign_path(@journal_entry.campaign)
     else
+      @campaigns = current_user.campaigns
       flash.now[:alert] = @journal_entry.errors.full_messages.join(". ") + "."
       render "edit"
     end

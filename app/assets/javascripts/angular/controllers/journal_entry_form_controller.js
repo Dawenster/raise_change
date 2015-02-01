@@ -41,11 +41,20 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
       $scope.dateError = true
     } else {
       $(".submit-journal-entry").attr("disabled")
-      var $form = $(".new_journal_entry");
+      $form = correctForm()
       $form.append($('<input type="hidden" name="journal_entry[dates]" />').val(datesToSend()));
       $form.get(0).submit();
     }
   };
+
+  function correctForm() {
+    var entryType = $(".journal-entry-form").attr("data-entry-type")
+    if (entryType == "create") {
+      return $(".new_journal_entry");
+    } else {
+      return $(".edit_journal_entry");
+    }
+  }
 
   function dateSetup() {
     var existingDates = $(".journal-entry-date-selector").attr("data-existing-dates")
