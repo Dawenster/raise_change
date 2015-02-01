@@ -20,15 +20,19 @@
             h2
               = @campaign.title
               = render "campaigns/edit_campaign_text", :campaign => @campaign
+            h4
+              small
+                .visible-xs-block
+                  = "By #{link_to @user.full_name, user_path(@user)}".html_safe
           
-            .visible-xs-block
+            .xs-campaign-stats-holder.visible-xs-block
               span.pull-left
                 = link_to "Support", new_donation_path(@campaign), :class => "btn btn-info"
               span.pull-left.xs-campaign-stats
                 div
-                  = "#{number_to_currency(@campaign.donations_per_hour)} raised per hour"
+                  = "<strong>#{number_to_currency(@campaign.donations_per_hour)}</strong> raised per hour".html_safe
                 div
-                  = "#{@campaign.num_sponsors} supporters"
+                  = "<strong>#{@campaign.num_sponsors}</strong> supporters".html_safe
 
           .campaign-show-statistics.bg-warning.hidden-xs
             .row
