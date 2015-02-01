@@ -23,38 +23,59 @@
               
           .campaign-show-statistics.bg-warning
             .row
-              .col-xs-4
+              .col-xs-12.col-sm-4
                 .campaign-show-detailed-stats
                   h1
                     = number_to_currency(@campaign.donations_per_hour)
                   p
                     | raised per hour
 
-              .col-xs-4
+              .col-xs-12.col-sm-4
                 .campaign-show-detailed-stats
                   h1
                     = @campaign.num_sponsors
                   p
                     | sponsors
 
-              .col-xs-4
+              .col-xs-12.col-sm-4
                 .campaign-show-sponsor-button-holder
                   = link_to "Sponsor", new_donation_path(@campaign), :class => "btn btn-info btn-lg"
 
           = image_tag @campaign.image.url(:display), :width => "100%"
 
-          p
-            = Rinku.auto_link(simple_format(@campaign.description))
+          .campaign-show-sub-nav-holder
+            div role="tabpanel"
+              ul class="nav nav-tabs nav-justified" role="tablist"
+                li.active role="presentation"
+                  a href="#activities" aria-controls="activities" role="tab" data-toggle="tab"
+                    | Activity
+                    span.badge.nav-badge
+                      = @campaign.journal_entries.count
+                li role="presentation"
+                  a href="#supporters" aria-controls="supporters" role="tab" data-toggle="tab"
+                    | Supporters
+                    span.badge.nav-badge
+                      = @campaign.donations.count
+                li role="presentation"
+                  a href="#description" aria-controls="description" role="tab" data-toggle="tab"
+                    | Description
+
+              .tab-content
+                div role="tabpanel" class="tab-pane active" id="activities"
+                div role="tabpanel" class="tab-pane" id="supporters"
+                  .campaign-donations-holder
+                    - @campaign.donations.order('created_at DESC').each do |donation|
+                      = render "donations/donation_grid", :donation => donation
+
+                div role="tabpanel" class="tab-pane" id="description"
+                  p
+                    = Rinku.auto_link(simple_format(@campaign.description))
 
           h4
             - if @organization.website.blank?
               = "All proceeds go towards: #{@organization.name}".html_safe
             - else
               = "All proceeds go towards: #{link_to @organization.name, @organization.website, :target => '_blank'}".html_safe
-
-          .campaign-donations-holder
-            - @campaign.donations.order('created_at DESC').each do |donation|
-              = render "donations/donation_grid", :donation => donation
 
           a href="#{campaigns_path}"
             i.fa.fa-chevron-circle-left
