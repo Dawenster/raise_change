@@ -17,6 +17,8 @@ div ng-controller="JournalEntryFormCtrl"
             | enter free text
         input.custom-date-picker-hidden-input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
       input.form-control.free-text-field placeholder="E.g. Last two weeks of #{last_month_in_words}" ng-show="freeTextDates"
+      .please-select-a-date ng-show="dateError"
+        | please enter a date
 
     = je.input :hours
     = je.input :description

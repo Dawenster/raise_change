@@ -1,6 +1,7 @@
 var app = angular.module('raisechange');
 
 app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
+  $scope.dateError = false
   $scope.freeTextDates = false
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
@@ -36,10 +37,14 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   }
 
   $scope.submitForm = function() {
-    $(".submit-journal-entry").attr("disabled")
-    var $form = $(".new_journal_entry");
-    $form.append($('<input type="hidden" name="journal_entry[dates]" />').val(datesToSend()));
-    $form.get(0).submit();
+    if (emptyDates()) {
+      $scope.dateError = true
+    } else {
+      $(".submit-journal-entry").attr("disabled")
+      var $form = $(".new_journal_entry");
+      $form.append($('<input type="hidden" name="journal_entry[dates]" />').val(datesToSend()));
+      $form.get(0).submit();
+    }
   };
 
   function dateSetup() {
@@ -65,5 +70,9 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
     } else {
       return textFieldValue
     }
+  }
+
+  function emptyDates() {
+    return !$scope.dt && $(".free-text-field").val() == ""
   }
 }]);

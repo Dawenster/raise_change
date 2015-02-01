@@ -18,6 +18,7 @@ class JournalEntriesController < ApplicationController
       flash[:notice] = "Journal entry created successfully for \"#{campaign.title}\"."
       redirect_to journal_entries_path
     else
+      @campaigns = current_user.campaigns
       flash.now[:alert] = @journal_entry.errors.full_messages.join(". ") + "."
       render "new"
     end
