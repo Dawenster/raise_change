@@ -16,7 +16,7 @@ class JournalEntriesController < ApplicationController
     if @journal_entry.save
       campaign = @journal_entry.campaign
       flash[:notice] = "Journal entry created successfully for \"#{campaign.title}\"."
-      redirect_to journal_entries_path
+      redirect_to campaign_path(@journal_entry.campaign)
     else
       @campaigns = current_user.campaigns
       flash.now[:alert] = @journal_entry.errors.full_messages.join(". ") + "."
@@ -35,7 +35,7 @@ class JournalEntriesController < ApplicationController
     if @journal_entry.save
       campaign = @journal_entry.campaign
       flash[:notice] = "Journal entry updated successfully for \"#{campaign.title}\"."
-      redirect_to journal_entries_path
+      redirect_to campaign_path(@journal_entry.campaign)
     else
       flash.now[:alert] = @journal_entry.errors.full_messages.join(". ") + "."
       render "edit"
