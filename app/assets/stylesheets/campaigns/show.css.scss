@@ -84,6 +84,18 @@
     margin-left: 5px;
     background-color: #31b0d5;
   }
+
+  .nav-justified {
+    li {
+      a {
+        border-radius: 0 !important;
+      }
+    }
+
+    li.active {
+      font-weight: bold;
+    }
+  }
 }
 
 @media(max-width:767px) {
