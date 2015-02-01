@@ -75,6 +75,9 @@
 
               .tab-content
                 div role="tabpanel" class="tab-pane active" id="activities"
+                  .journal-entries-holder
+                    - @campaign.journal_entries.order('created_at DESC').each do |je|
+                      = render "journal_entries/journal_entry_grid", :je => je
                 div role="tabpanel" class="tab-pane" id="supporters"
                   .campaign-donations-holder
                     - @campaign.donations.order('created_at DESC').each do |donation|

@@ -1,8 +1,16 @@
-div
-  = format_je_dates(je.dates)
-div
-  = je.hours
-div
-  = je.description
-div
-  = link_to "Edit", edit_journal_entry_path(je)
+- user = je.user
+.row
+  .col-xs-12
+    .je-grid-holder
+      span.pull-left
+        = link_to avatar(user), user_path(user)
+      span.pull-left.je-details-holder
+        div
+          = "#{link_to user.first_name, user_path(user)} volunteered <strong>#{je.hours}</strong> #{'hour'.pluralize(je.hours)}".html_safe
+          span
+            = " (#{link_to "edit", edit_journal_entry_path(je)})".html_safe if user == current_user
+        .volunteer-date
+          = "#{format_je_dates(je.dates)}"
+        - if je.description
+          div
+            = je.description
