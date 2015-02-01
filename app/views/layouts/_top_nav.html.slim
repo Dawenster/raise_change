@@ -41,17 +41,21 @@ nav.navbar.navbar-default role="navigation"
             = current_user.first_name
             span.caret
           ul.dropdown-menu
-            li class="#{'highlighted-dropdown' if params[:action] == 'show' && params[:controller] == 'users'}"
-              a href="#{user_path(current_user)}"
-                | My campaigns
             - if can_create_journal_entries?
               li class="#{'highlighted-dropdown' if params[:action] == 'new' && params[:controller] == 'campaigns'}"
                 a href="#{new_campaign_path}"
                   | Create campaign
+            li class="#{'highlighted-dropdown' if params[:action] == 'show' && params[:controller] == 'users'}"
+              a href="#{user_path(current_user)}"
+                | My campaigns
+            - if can_create_journal_entries?
+              li class="#{'highlighted-dropdown' if params[:action] == 'index' && params[:controller] == 'journal_entries'}"
+                a href="#{journal_entries_path}"
+                  | My journal entries
+            li.divider
             li class="#{'highlighted-dropdown' if params[:action] == 'edit' && params[:controller] == 'registrations'}"
               a href="#{edit_user_registration_path}"
                 | Account settings
-            li.divider
             li
               = link_to "Logout", destroy_user_session_path, :method => :delete
 
