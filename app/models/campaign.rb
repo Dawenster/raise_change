@@ -4,6 +4,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
   has_many :donations
+  has_many :journal_entries
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],

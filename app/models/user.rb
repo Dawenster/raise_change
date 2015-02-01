@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   has_many :campaigns
+  has_many :journal_entries
   has_many :organizations, :through => :campaigns
 
   s3_credentials_hash = {

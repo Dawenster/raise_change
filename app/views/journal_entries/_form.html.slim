@@ -1,0 +1,13 @@
+= simple_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
+  = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first
+  = je.input :dates
+  = je.input :hours
+  = je.input :description
+  
+  br
+  - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
+  = je.button :submit, button_text, :class => "btn btn-success"
+
+  - if @journal_entry.id
+    div style="margin-top: 10px;"
+      = link_to "Delete", { :id => @journal_entry.id, :action => :destroy }, :method => :delete, data: { confirm: "Are you sure?  You're about to delete this journal entry..." }

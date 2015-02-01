@@ -7,10 +7,12 @@ class JournalEntriesController < ApplicationController
 
   def new
     @journal_entry = JournalEntry.new
+    @campaigns = current_user.campaigns
   end
 
   def create
     @journal_entry = JournalEntry.new(journal_entry_params)
+    @journal_entry.user_id = current_user.id
     if @journal_entry.save
       campaign = @journal_entry.campaign
       flash[:notice] = "Journal entry created successfully for \"#{campaign.title}\"."
