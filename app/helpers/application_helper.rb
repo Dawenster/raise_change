@@ -22,4 +22,8 @@ module ApplicationHelper
       image_tag user.avatar.url(:large), :class => "user-profile-picture"
     end
   end
+
+  def last_month_in_words
+    (Time.now - 1.month).strftime('%B')
+  end
 end

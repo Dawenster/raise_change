@@ -1,0 +1,33 @@
+.journal-entry-date-selector {
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+  .fa-calendar {
+    margin-right: 5px;
+  }
+
+  .or-word {
+    margin-top: 4px;
+    margin-left: 10px;
+    font-style: italic;
+  }
+
+  .enter-free-text {
+    font-style: italic;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  .free-text-field {
+    margin-top: 10px;
+  }
+
+  .custom-date-picker-hidden-input {
+    visibility: hidden;
+    position: absolute;
+    margin-top: -30px;
+  }
+}

@@ -1,0 +1,5 @@
+.main-journal-entries-grid-holder
+  - @journal_entries.each do |je|
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+        = render "journal_entry_grid", :je => je

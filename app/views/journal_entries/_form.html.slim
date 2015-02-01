@@ -1,13 +1,32 @@
-= simple_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
-  = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first
-  = je.input :dates
-  = je.input :hours
-  = je.input :description
-  
-  br
-  - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
-  = je.button :submit, button_text, :class => "btn btn-success"
+div ng-controller="JournalEntryFormCtrl"
+  = simple_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
+    = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first
 
-  - if @journal_entry.id
-    div style="margin-top: 10px;"
-      = link_to "Delete", { :id => @journal_entry.id, :action => :destroy }, :method => :delete, data: { confirm: "Are you sure?  You're about to delete this journal entry..." }
+    .journal-entry-date-selector
+      label
+        | * When did you volunteer?
+      div
+
+        .btn.btn-sm.btn-primary ng-click="open($event)"
+          i.fa.fa-calendar
+          | Select {{dt | date : longDate}}
+        span.or-word
+          = "or "
+        span
+          a.enter-free-text ng-click="freeTextDates=!freeTextDates"
+            | enter free text
+        input.custom-date-picker-hidden-input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+      input.form-control.free-text-field placeholder="E.g. Last two weeks of #{last_month_in_words}" ng-show="freeTextDates"
+
+    = je.input :hours
+    = je.input :description
+    
+    br
+    - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
+    .btn.btn-success.submit-journal-entry ng-click="submitForm()"
+      = button_text.html_safe
+    / = je.button :submit, button_text, :class => "btn btn-success"
+
+    - if @journal_entry.id
+      div style="margin-top: 10px;"
+        = link_to "Delete", { :id => @journal_entry.id, :action => :destroy }, :method => :delete, data: { confirm: "Are you sure?  You're about to delete this journal entry..." }
