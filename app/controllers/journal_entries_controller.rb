@@ -25,6 +25,7 @@ class JournalEntriesController < ApplicationController
 
   def edit
     @journal_entry = JournalEntry.find(params[:id])
+    @campaigns = current_user.campaigns
   end
 
   def update
