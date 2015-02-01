@@ -38,8 +38,7 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.submitForm = function() {
     $(".submit-journal-entry").attr("disabled")
     var $form = $(".new_journal_entry");
-    $form.append($('<input type="hidden" name="journal_entry[dates]" />').val($scope.dt));
-    debugger
+    $form.append($('<input type="hidden" name="journal_entry[dates]" />').val(datesToSend()));
     $form.get(0).submit();
   };
 
@@ -49,12 +48,22 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
       if (isFromDatepicker(existingDates)) {
         $scope.dt = existingDates
       } else {
-
+        $scope.freeTextDates = true
+        $(".free-text-field").val(existingDates)
       }
     }
   }
 
   function isFromDatepicker(date) {
     return date.split("00:00:00 GMT").length > 1
+  }
+
+  function datesToSend() {
+    var textFieldValue = $(".free-text-field").val()
+    if (textFieldValue == "") {
+      return $scope.dt
+    } else {
+      return textFieldValue
+    }
   }
 }]);
