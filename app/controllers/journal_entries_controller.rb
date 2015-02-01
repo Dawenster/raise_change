@@ -43,9 +43,11 @@ class JournalEntriesController < ApplicationController
   end
 
   def destroy
-    journal_entry = JournalEntry.find(params[:id]).destroy
+    journal_entry = JournalEntry.find(params[:id])
+    path_to_go_to_after = campaign_path(journal_entry.campaign)
+    journal_entry.destroy
     flash[:notice] = "Journal entry successfully deleted."
-    redirect_to journal_entries_path
+    redirect_to path_to_go_to_after
   end
 
   private 
