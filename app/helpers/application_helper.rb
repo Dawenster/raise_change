@@ -26,4 +26,14 @@ module ApplicationHelper
   def last_month_in_words
     (Time.now - 1.month).strftime('%B')
   end
+
+  def format_je_dates(dates)
+    split_dates = dates.split(" 00:00:00 ")
+    if split_dates.size > 1
+      finely_split_dates = split_dates[0].split(" ")
+      return "#{finely_split_dates[1]} #{finely_split_dates[2]}, #{finely_split_dates[3]} (#{finely_split_dates[0]})"
+    else
+      return dates
+    end
+  end
 end
