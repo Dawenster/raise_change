@@ -40,6 +40,9 @@ nav.navbar.navbar-default role="navigation"
             li class="#{'highlighted-dropdown' if params[:action] == 'show' && params[:controller] == 'users'}"
               a href="#{user_path(current_user)}"
                 | My campaigns
+            li class="#{'highlighted-dropdown' if params[:action] == 'new' && params[:controller] == 'campaigns'}"
+              a href="#{new_campaign_path}"
+                | Create campaign
             li class="#{'highlighted-dropdown' if params[:action] == 'edit' && params[:controller] == 'registrations'}"
               a href="#{edit_user_registration_path}"
                 | Account settings
