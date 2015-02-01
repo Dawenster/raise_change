@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   resources :donations, :only => [:create, :destroy]
 
   get "journal-entries" => "journal_entries#index", as: :journal_entries
+  post "journal-entries" => "journal_entries#create", as: :journal_entry
   get "create-journal-entry" => "journal_entries#new", as: :new_journal_entry
   get "edit-journal-entry/:id" => "journal_entries#edit", as: :edit_journal_entry
-  resources :journal_entries, :only => [:create, :update, :destroy]
+  resources :journal_entries, :only => [:update, :destroy]
 
   post "create-or-update-credit-card" => "users#create_or_update_credit_card", as: :create_or_update_credit_card
   delete "delete-credit-card" => "users#delete_credit_card", as: :delete_credit_card
