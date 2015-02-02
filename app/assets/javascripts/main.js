@@ -7,4 +7,5 @@ $(document).ready(function() {
   $("input.stripe-card-number").payment('formatCardNumber')
   $("input.stripe-expiry").payment('formatCardExpiry');
   $("input.stripe-cvc").payment('formatCardCVC');
+  $("input.custom-hours-input").payment('restrictNumeric');
 });

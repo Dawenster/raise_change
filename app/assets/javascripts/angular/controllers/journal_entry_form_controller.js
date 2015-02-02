@@ -2,9 +2,11 @@ var app = angular.module('raisechange');
 
 app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.dateError = false
+  $scope.hoursError = false
   $scope.freeTextDates = false
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
+  $scope.hours = 5;
   dateSetup()
 
   $scope.today = function() {
@@ -83,5 +85,15 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
 
   function emptyDates() {
     return !$scope.dt && $(".free-text-field").val() == ""
+  }
+
+  $scope.addHour = function() {
+    $scope.hours += 1;
+  }
+
+  $scope.subtractHour = function() {
+    if ($scope.hours > 1) {
+      $scope.hours -= 1;
+    }
   }
 }]);

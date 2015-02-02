@@ -17,10 +17,24 @@
             | enter free text
         input.custom-date-picker-hidden-input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
       input.form-control.free-text-field placeholder="E.g. Last two weeks of #{last_month_in_words}" ng-show="freeTextDates"
-      .please-select-a-date ng-show="dateError"
+      .error-text ng-show="dateError"
         | please enter a date
 
-    = je.input :hours
+    .form-inline.custom-hours-holder
+      .form-group
+        label for="customHours"
+          | * Hours
+        div
+          .input-group
+            .input-group-addon ng-click="subtractHour()"
+              i.fa.fa-minus
+            input.custom-hours-input class="form-control" id="customHours" ng-model="hours" type="tel" name="journal_entry[hours]"
+            .input-group-addon ng-click="addHour()"
+              i.fa.fa-plus
+        .error-text ng-show="hoursError"
+          | please enter a whole number
+
+    br
     = je.input :description
     
     br

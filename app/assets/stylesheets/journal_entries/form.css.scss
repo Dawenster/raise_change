@@ -1,3 +1,10 @@
+.journal-entry-form {
+  .error-text {
+    margin-top: 5px;
+    color: #a94442;
+  }
+}
+
 .journal-entry-date-selector {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -30,9 +37,19 @@
     position: absolute;
     margin-top: -30px;
   }
+}
 
-  .please-select-a-date {
-    margin-top: 5px;
-    color: #a94442;
+
+.custom-hours-holder {
+  .input-group-addon {
+    cursor: pointer;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+  }
+
+  .custom-hours-input {
+    width: 50px !important;
   }
 }
