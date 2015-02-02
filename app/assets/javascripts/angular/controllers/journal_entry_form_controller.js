@@ -4,6 +4,8 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.dateError = false
   $scope.hoursError = false
   $scope.freeTextDates = false
+  $scope.showDescription = false
+  
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
   $scope.hours = 5;

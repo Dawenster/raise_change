@@ -1,6 +1,6 @@
 .journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}"
   = simple_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
-    = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first
+    = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first, :label => "* Select campaign"
 
     .journal-entry-date-selector data-existing-dates="#{@journal_entry.dates}"
       label
@@ -35,7 +35,20 @@
           | please enter a whole number
 
     br
-    = je.input :description
+    label
+      | Optional
+
+    div
+      .btn.btn-default.btn-sm ng-click="showDescription = !showDescription"
+        | Add description
+
+      .btn.btn-default.btn-sm.add-pictures-button
+        | Add pictures
+
+
+    div ng-show="showDescription"
+      br
+      = je.input :description
     
     br
     - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
