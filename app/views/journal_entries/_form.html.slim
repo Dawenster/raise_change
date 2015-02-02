@@ -1,4 +1,4 @@
-.journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}" data-has-media="#{@journal_entry.media_files.any?}" data-has-description="#{!@journal_entry.description.nil?}"
+.journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}" data-has-media="#{@journal_entry.media_files.first.id}" data-has-description="#{!@journal_entry.description.nil?}"
   = simple_nested_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
     = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first, :label => "* Select campaign"
 
@@ -43,7 +43,7 @@
       .btn.btn-default.btn-sm ng-click="toggleDescription()"
         | {{descriptionButtonText}}
 
-      .btn.btn-default.btn-sm.add-pictures-button ng-click="togglePictures()" class="#{'hide' if @journal_entry.media_files.any?}"
+      .btn.btn-default.btn-sm.add-pictures-button ng-click="togglePictures()" class="#{'hide' if @journal_entry.media_files.first.id}"
         | {{pictureButtonText}}
     br
 
