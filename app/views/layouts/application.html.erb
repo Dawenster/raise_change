@@ -15,11 +15,19 @@
   <%= render "layouts/facebook" %>
   <%= render "layouts/top_nav" %>
   <%= render "layouts/alerts" %>
-  
-  <div class="<%= 'main-content' unless params[:action] == 'landing' && params[:controller] == 'pages' %>">
+  <% unless params[:action] == 'landing' && params[:controller] == 'pages' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="main-content">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
     <%= yield %>
-  </div>
-
+  <% end %>
   <%= render "layouts/footer" %>
 </body>
 </html>
