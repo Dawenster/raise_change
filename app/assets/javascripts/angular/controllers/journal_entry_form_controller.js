@@ -10,7 +10,7 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.pictureButtonText = "Add pictures"
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
-  $scope.hours = 5;
+  $scope.hours = parseInt($(".journal-entry-form").attr("data-hours")) || 5;
   dateSetup()
   pictureSetup()
   descriptionSetup()
@@ -42,11 +42,13 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.enterFreeText = function() {
     $scope.dt = null;
     $scope.freeTextDates = !$scope.freeTextDates;
+    $(".free-text-field").val("")
   }
 
   $scope.submitForm = function() {
     if (emptyDates()) {
       $scope.dateError = true
+      $('html,body').scrollTop(0);
     } else {
       $(".submit-journal-entry").attr("disabled")
       $form = correctForm()
@@ -138,6 +140,9 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
       $scope.showPictures = true
     } else {
       $scope.showPictures = false
+      if ($(".fields:visible").length == 0) {
+        $(".add_nested_fields").click()
+      }
     }
   }
 
