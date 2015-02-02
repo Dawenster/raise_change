@@ -1,5 +1,5 @@
 .journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}"
-  = simple_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
+  = simple_nested_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
     = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first, :label => "* Select campaign"
 
     .journal-entry-date-selector data-existing-dates="#{@journal_entry.dates}"
@@ -37,18 +37,23 @@
     br
     label
       | Optional
+    br
 
     div
       .btn.btn-default.btn-sm ng-click="toggleDescription()"
         | {{descriptionButtonText}}
 
-      .btn.btn-default.btn-sm.add-pictures-button
-        | Add pictures
-
+      .btn.btn-default.btn-sm.add-pictures-button ng-click="togglePictures()"
+        | {{pictureButtonText}}
+    br
 
     div ng-show="showDescription"
-      br
       = je.input :description, :placeholder => "Describe how your volunteering went."
+
+    div ng-show="showPictures"
+      = je.simple_fields_for :media_files do |media|
+        = media.input :attachment
+        = media.input :caption
     
     br
     - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"

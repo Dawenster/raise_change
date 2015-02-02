@@ -3,6 +3,7 @@ class JournalEntriesController < ApplicationController
 
   def new
     @journal_entry = JournalEntry.new
+    @journal_entry.media_files.build
     @campaigns = current_user.campaigns
   end
 

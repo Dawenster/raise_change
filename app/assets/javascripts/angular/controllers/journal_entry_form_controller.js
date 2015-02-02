@@ -5,8 +5,10 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.hoursError = false
   $scope.freeTextDates = false
   $scope.showDescription = false
+  $scope.showPictures = false
 
   $scope.descriptionButtonText = "Add description"
+  $scope.pictureButtonText = "Add pictures"
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
   $scope.hours = 5;
@@ -107,6 +109,15 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
     } else {
       $scope.descriptionButtonText = "Add description"
       $("#journal_entry_description").val("")
+    }
+  }
+
+  $scope.togglePictures = function() {
+    $scope.showPictures = !$scope.showPictures
+    if ($scope.showPictures) {
+      $scope.pictureButtonText = "Remove pictures"
+    } else {
+      $scope.pictureButtonText = "Add pictures"
     }
   }
 }]);
