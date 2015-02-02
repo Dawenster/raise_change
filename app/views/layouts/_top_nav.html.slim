@@ -47,12 +47,10 @@ nav.navbar.navbar-default role="navigation"
                   | Create campaign
             li class="#{'highlighted-dropdown' if params[:action] == 'show' && params[:controller] == 'users'}"
               a href="#{user_path(current_user)}"
-                | My campaigns
-            - if can_create_journal_entries?
-              li class="#{'highlighted-dropdown' if params[:action] == 'index' && params[:controller] == 'journal_entries'}"
-                a href="#{journal_entries_path}"
-                  | My journal entries
+                | Profile page
+
             li.divider
+
             li class="#{'highlighted-dropdown' if params[:action] == 'edit' && params[:controller] == 'registrations'}"
               a href="#{edit_user_registration_path}"
                 | Account settings

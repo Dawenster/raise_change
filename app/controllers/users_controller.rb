@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_campaigns = @user.campaigns
+    @journal_entries = @user.journal_entries
   end
 
   def create_or_update_credit_card

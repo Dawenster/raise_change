@@ -1,9 +1,21 @@
 - if @user_campaigns.any?
-  .main-campaign-grid-holder
-    - @user_campaigns.each do |campaign|
-      .row
-        .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-          = render "campaigns/main_grid", :campaign => campaign
+  .row
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+      h2
+        | Campaigns
+  - @user_campaigns.each do |campaign|
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+        = render "campaigns/main_grid", :campaign => campaign
+
+  .row
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+      h2
+        | Activities
+  - @journal_entries.each do |je|
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
+        = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => true
 
 - else
   .row

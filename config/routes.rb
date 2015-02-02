@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get ":campaign_id/donate" => "donations#new", as: :new_donation
   resources :donations, :only => [:create, :destroy]
 
-  resources :journal_entries, :except => [:show]
+  resources :journal_entries, :except => [:index, :show]
 
   post "create-or-update-credit-card" => "users#create_or_update_credit_card", as: :create_or_update_credit_card
   delete "delete-credit-card" => "users#delete_credit_card", as: :delete_credit_card

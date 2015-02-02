@@ -6,7 +6,7 @@
         = link_to avatar(user), user_path(user)
       span.pull-left.je-details-holder
         div
-          = "#{link_to user.first_name, user_path(user)} volunteered <strong>#{je.hours}</strong> #{'hour'.pluralize(je.hours)}".html_safe
+          = "#{link_to user.first_name, user_path(user)} volunteered <strong>#{je.hours}</strong> #{'hour'.pluralize(je.hours)}#{' - ' + link_to(je.campaign.title, campaign_path(je.campaign)) if show_campaign_title}".html_safe
           span
             = " (#{link_to "edit", edit_journal_entry_path(je)})".html_safe if user == current_user
         .volunteer-date
