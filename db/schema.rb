@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150202014827) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "caption"
+    t.integer  "journal_entry_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

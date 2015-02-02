@@ -3,6 +3,7 @@ class CreateMediaFiles < ActiveRecord::Migration
     create_table :media_files do |t|
       t.attachment :image
       t.string :caption
+      t.integer :journal_entry_id
 
       t.timestamps
     end
