@@ -1,4 +1,4 @@
-.journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}"
+.journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}" data-has-media="#{@journal_entry.media_files.any?}" data-has-description="#{!@journal_entry.description.nil?}"
   = simple_nested_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
     = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first, :label => "* Select campaign"
 
@@ -43,7 +43,7 @@
       .btn.btn-default.btn-sm ng-click="toggleDescription()"
         | {{descriptionButtonText}}
 
-      .btn.btn-default.btn-sm.add-pictures-button ng-click="togglePictures()"
+      .btn.btn-default.btn-sm.add-pictures-button ng-click="togglePictures()" class="#{'hide' if @journal_entry.media_files.any?}"
         | {{pictureButtonText}}
     br
 
@@ -51,9 +51,18 @@
       = je.input :description, :placeholder => "Describe how your volunteering went."
 
     div ng-show="showPictures"
-      = je.simple_fields_for :media_files do |media|
-        = media.input :attachment
-        = media.input :caption
+      .media-files-list
+        = je.simple_fields_for :media_files do |media|
+          = image_tag media.object.image.url(:thumb) if media.object.id
+          div
+            label
+              = "Image "
+            span
+              = media.link_to_remove "Remove", :class => "link_to_remove"
+          = media.input :image, label: false, input_html: { style: "border: none; box-shadow: none; margin: 0px 0px -10px -15px;" }
+          = media.input :caption
+
+        = je.link_to_add "Add another picture", :media_files
     
     br
     - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"

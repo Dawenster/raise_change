@@ -5,7 +5,6 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.hoursError = false
   $scope.freeTextDates = false
   $scope.showDescription = false
-  $scope.showPictures = false
 
   $scope.descriptionButtonText = "Add description"
   $scope.pictureButtonText = "Add pictures"
@@ -13,6 +12,8 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.format = $scope.formats[0];
   $scope.hours = 5;
   dateSetup()
+  pictureSetup()
+  descriptionSetup()
 
   $scope.today = function() {
     $scope.dt = new Date();
@@ -55,12 +56,16 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   };
 
   function correctForm() {
-    var entryType = $(".journal-entry-form").attr("data-entry-type")
-    if (entryType == "create") {
+    if (isCreatePage()) {
       return $(".new_journal_entry");
     } else {
       return $(".edit_journal_entry");
     }
+  }
+
+  function isCreatePage() {
+    var entryType = $(".journal-entry-form").attr("data-entry-type")
+    return entryType == "create"
   }
 
   function dateSetup() {
@@ -103,6 +108,10 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   }
 
   $scope.toggleDescription = function() {
+    toggleDescription()
+  }
+
+  function toggleDescription() {
     $scope.showDescription = !$scope.showDescription
     if ($scope.showDescription) {
       $scope.descriptionButtonText = "Remove description"
@@ -118,6 +127,24 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
       $scope.pictureButtonText = "Remove pictures"
     } else {
       $scope.pictureButtonText = "Add pictures"
+      $(".fields").remove()
+      $(".add_nested_fields").click()
+    }
+  }
+
+  function pictureSetup() {
+    var hasPictures = $(".journal-entry-form").attr("data-has-media")
+    if (hasPictures == "true") {
+      $scope.showPictures = true
+    } else {
+      $scope.showPictures = false
+    }
+  }
+
+  function descriptionSetup() {
+    var hasDescription = $(".journal-entry-form").attr("data-has-description")
+    if (hasDescription == "true") {
+      toggleDescription();
     }
   }
 }]);

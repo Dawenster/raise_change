@@ -57,7 +57,13 @@ class JournalEntriesController < ApplicationController
       :description,
       :user_id,
       :campaign_id,
-      :_destroy
+      :_destroy,
+      media_files_attributes: [
+        :id,
+        :image,
+        :caption,
+        :_destroy
+      ]
     )
   end
 end
