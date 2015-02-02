@@ -51,6 +51,10 @@
 
 
 .custom-hours-holder {
+  .input-group {
+    width: 120px;
+  }
+
   .input-group-addon {
     cursor: pointer;
     -webkit-user-select: none; /* webkit (safari, chrome) browsers */
