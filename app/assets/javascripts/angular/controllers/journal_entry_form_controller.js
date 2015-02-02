@@ -5,7 +5,8 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.hoursError = false
   $scope.freeTextDates = false
   $scope.showDescription = false
-  
+
+  $scope.descriptionButtonText = "Add description"
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
   $scope.hours = 5;
@@ -96,6 +97,16 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   $scope.subtractHour = function() {
     if ($scope.hours > 1) {
       $scope.hours -= 1;
+    }
+  }
+
+  $scope.toggleDescription = function() {
+    $scope.showDescription = !$scope.showDescription
+    if ($scope.showDescription) {
+      $scope.descriptionButtonText = "Remove description"
+    } else {
+      $scope.descriptionButtonText = "Add description"
+      $("#journal_entry_description").val("")
     }
   }
 }]);

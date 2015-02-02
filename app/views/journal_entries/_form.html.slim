@@ -39,8 +39,8 @@
       | Optional
 
     div
-      .btn.btn-default.btn-sm ng-click="showDescription = !showDescription"
-        | Add description
+      .btn.btn-default.btn-sm ng-click="toggleDescription()"
+        | {{descriptionButtonText}}
 
       .btn.btn-default.btn-sm.add-pictures-button
         | Add pictures
@@ -48,7 +48,7 @@
 
     div ng-show="showDescription"
       br
-      = je.input :description
+      = je.input :description, :placeholder => "Describe how your volunteering went."
     
     br
     - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
