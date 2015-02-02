@@ -3,4 +3,5 @@ class JournalEntry < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :campaign
+  has_many :media_files
 end
