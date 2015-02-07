@@ -14,13 +14,17 @@ nav.navbar.navbar-default role="navigation"
   #navbar-collapse-1.collapse.navbar-collapse
     ul.nav.navbar-nav
       li
-        a href="#{about_path}" 
-          | About
-        div class="#{'active-underline' if params[:action] == 'about' && params[:controller] == 'pages'}"
+        a href="#{campaigns_path}" 
+          | How it works
+        div class="#{'active-underline' if params[:action] == 'how_it_works' && params[:controller] == 'pages'}"
       li
         a href="#{campaigns_path}" 
           | Browse
         div class="#{'active-underline' if params[:action] == 'index' && params[:controller] == 'campaigns'}"
+      li
+        a href="#{about_path}" 
+          | About
+        div class="#{'active-underline' if params[:action] == 'about' && params[:controller] == 'pages'}"
 
     ul.nav.navbar-nav.navbar-right
       - if user_signed_in?

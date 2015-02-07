@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root "pages#landing"
   
+  get "how-it-works" => "pages#how_it_works", as: :how_it_works
   get "about" => "pages#about", as: :about
 
   resources :organizations, :only => [:create, :update]
