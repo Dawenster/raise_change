@@ -4,4 +4,7 @@
       | Raise donations each hour you volunteer
 
   .landing-browse-all-campaigns
-    = link_to "Start a campaign", new_campaign_path, :class => "btn btn-info btn-lg"
+    - if user_signed_in?
+      = link_to "Start a campaign", new_campaign_path, :class => "btn btn-info btn-lg"
+    - else
+      = link_to "Start a campaign", new_user_registration_path, :class => "btn btn-info btn-lg"
