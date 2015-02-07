@@ -13,7 +13,7 @@ Devise.setup do |config|
   config.mailer_sender = '"Raise Change Team" <team@raisechange.com>'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'RegistrationMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
