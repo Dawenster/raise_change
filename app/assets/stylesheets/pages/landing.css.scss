@@ -1,5 +1,13 @@
-.landing-container {
-  padding: 10px;
+@media(max-width:767px) {
+  .landing-container {
+    padding: 10px;
+  }
+}
+
+@media(min-width:768px) {
+  .landing-container {
+    padding: 10%;
+  }
 }
 
 .landing-title {
