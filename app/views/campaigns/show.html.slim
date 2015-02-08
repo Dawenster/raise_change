@@ -9,77 +9,11 @@
           = render "users/big_user_picture_and_name", :user => @user
 
         .col-xs-12.col-sm-9
-          .campaign-show-details-holder
-            h2
-              = @campaign.title
-              = render "campaigns/edit_campaign_text", :campaign => @campaign
-            h4
-              small
-                .visible-xs-block
-                  = "By #{link_to @user.full_name, user_path(@user)}".html_safe
-          
-            .xs-campaign-stats-holder.visible-xs-block
-              span.pull-left
-                = link_to "Support", new_donation_path(@campaign), :class => "btn btn-info"
-              span.pull-left.xs-campaign-stats
-                div
-                  = "<strong>#{number_to_currency(@campaign.donations_per_hour)}</strong> raised per hour".html_safe
-                div
-                  = "<strong>#{@campaign.num_sponsors}</strong> supporters".html_safe
-
-          .campaign-show-statistics.bg-warning.hidden-xs
-            .row
-              .col-xs-4
-                .campaign-show-detailed-stats
-                  h1
-                    = number_to_currency(@campaign.donations_per_hour)
-                  p
-                    | raised per hour
-
-              .col-xs-4
-                .campaign-show-detailed-stats
-                  h1
-                    = @campaign.num_sponsors
-                  p
-                    | supporters
-
-              .col-xs-4
-                .campaign-show-sponsor-button-holder
-                  = link_to "Support", new_donation_path(@campaign), :class => "btn btn-info btn-lg"
+          = render "campaign_details", :campaign => @campaign, :user => @user
 
           = image_tag @campaign.image.url(:display), :width => "100%"
 
-          .campaign-show-sub-nav-holder
-            div role="tabpanel"
-              ul class="nav nav-tabs nav-justified" role="tablist"
-                li.active role="presentation"
-                  a href="#activities" aria-controls="activities" role="tab" data-toggle="tab"
-                    | Activity
-                    span.badge.nav-badge
-                      = @campaign.journal_entries.count
-                li role="presentation"
-                  a href="#supporters" aria-controls="supporters" role="tab" data-toggle="tab"
-                    | Supporters
-                    span.badge.nav-badge
-                      = @campaign.donations.count
-                li role="presentation"
-                  a href="#description" aria-controls="description" role="tab" data-toggle="tab"
-                    | Description
-
-              .tab-content
-                div role="tabpanel" class="tab-pane active" id="activities"
-                  .journal-entries-holder
-                    - @campaign.journal_entries.order('created_at DESC').each do |je|
-                      = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => false
-                      
-                div role="tabpanel" class="tab-pane" id="supporters"
-                  .campaign-donations-holder
-                    - @campaign.donations.order('created_at DESC').each do |donation|
-                      = render "donations/donation_grid", :donation => donation
-
-                div role="tabpanel" class="tab-pane" id="description"
-                  p
-                    = Rinku.auto_link(simple_format(@campaign.description))
+          = render "sub_nav_holder", :campaign => @campaign, :user => @user
 
           h4
             - if @organization.website.blank?

@@ -1,0 +1,34 @@
+.campaign-show-sub-nav-holder
+  div role="tabpanel"
+    ul class="nav nav-tabs nav-justified" role="tablist"
+      li.active role="presentation"
+        a href="#activities" aria-controls="activities" role="tab" data-toggle="tab"
+          | Activity
+          span.badge.nav-badge
+            = campaign.journal_entries.count
+      li role="presentation"
+        a href="#supporters" aria-controls="supporters" role="tab" data-toggle="tab"
+          | Supporters
+          span.badge.nav-badge
+            = campaign.donations.count
+      li role="presentation"
+        a href="#description" aria-controls="description" role="tab" data-toggle="tab"
+          | Description
+
+    .tab-content
+      .journal-entries-holder role="tabpanel" class="tab-pane active" id="activities"
+        - if campaign.journal_entries.any?
+          - campaign.journal_entries.order('created_at DESC').each do |je|
+            = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => false
+        - else
+          = "#{user.first_name} has not logged any activities yet - stay tuned!".html_safe
+            
+      .campaign-donations-holder role="tabpanel" class="tab-pane" id="supporters"
+        - if campaign.donations.any?
+          - campaign.donations.order('created_at DESC').each do |donation|
+            = render "donations/donation_grid", :donation => donation
+        - else
+          = "This campaign has no supporters yet - #{link_to 'be the first', new_donation_path(campaign)}!".html_safe
+
+      .description-holder role="tabpanel" class="tab-pane" id="description"
+        = Rinku.auto_link(simple_format(campaign.description))

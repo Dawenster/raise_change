@@ -1,0 +1,37 @@
+.campaign-show-details-holder
+  h2
+    = campaign.title
+    = render "campaigns/edit_campaign_text", :campaign => campaign
+  h4
+    small
+      .visible-xs-block
+        = "By #{link_to user.full_name, user_path(user)}".html_safe
+
+  .xs-campaign-stats-holder.visible-xs-block
+    span.pull-left
+      = link_to "Support", new_donation_path(campaign), :class => "btn btn-info"
+    span.pull-left.xs-campaign-stats
+      div
+        = "<strong>#{number_to_currency(campaign.donations_per_hour)}</strong> raised per hour".html_safe
+      div
+        = "<strong>#{campaign.num_sponsors}</strong> supporters".html_safe
+
+.campaign-show-statistics.bg-warning.hidden-xs
+  .row
+    .col-xs-4
+      .campaign-show-detailed-stats
+        h1
+          = number_to_currency(campaign.donations_per_hour)
+        p
+          | raised per hour
+
+    .col-xs-4
+      .campaign-show-detailed-stats
+        h1
+          = campaign.num_sponsors
+        p
+          | supporters
+
+    .col-xs-4
+      .campaign-show-sponsor-button-holder
+        = link_to "Support", new_donation_path(campaign), :class => "btn btn-info btn-lg"
