@@ -1,7 +1,56 @@
-.row
-  .col-xs-12.col-sm-6.col-sm-offset-3
-    h2.page-title
-      | How it works
+.how-it-works-page
+  .row
+    .col-xs-12
+      h2.page-title
+        | How it works
 
-    p
-      | On 18 December 2014, the Swiss central bank introduced a negative interest rate on bank deposits to support its CHF ceiling.[24] However, with the euro declining in value over the following weeks, the Swiss National Bank abandoned the ceiling on 15 January 2015, and the franc promptly increased in value compared with the euro by 30%, although this only lasted for a few minutes before part of the increase was reversed.[25] The move was not announced in advance, and resulted in "turmoil" in stock and currency markets.[26] By the close of trading that day, the franc was up just over 15% against the euro.[25] The key interest rate was also lowered from minus 0.25% to minus 0.75%, meaning investors would be paying an increased fee to keep their funds in a Swiss account. This devaluation of the euro against the franc is expected to hurt Switzerland's large export industry; The Swatch Group, for example, saw its shares drop 15% (in Swiss franc terms) with the announcements[25] so that the share price was approximately unchanged on that day in euro terms.
+  br
+
+  .row
+    .col-xs-12.col-sm-4
+      .panel.panel-success
+        .panel-heading
+          i.fa.fa-usd
+          | Raising funds
+        .panel-body
+          p
+            | Raise Change is a platform that allows you to crowdsource micro donations for each volunteer hour that you do.
+          p
+            = "First, you will need to #{link_to 'create a campaign', new_campaign_path} that showcases the volunteer work that you're doing, and which organization the micro donations will go towards. Then, you simply share the page with your friends!".html_safe
+          p
+            | Raise Change does not collect any fees until $100 has been raised, per campaign. Raise Change takes a 10% processing fee on all subsequent donations.
+
+          = link_to "Start a campaign", new_campaign_path, :class => "btn btn-success"
+
+    .col-xs-12.col-sm-4
+      .panel.panel-info
+        .panel-heading
+          i.fa.fa-thumbs-o-up
+          | Supporting friends
+        .panel-body
+          p
+            | If you see a campaign that you would love to support, simply click on the "Support" button. 
+
+          p
+            = "As our name suggests, all donations are in tiny increments of one dollar or less, for each hour that the campaign creator volunteers. Donations are calculated and made #{donation_period}".html_safe
+          p
+            | You can cancel your donation at any time before the payment date and not be liable for any donations.
+
+          = link_to "Browse campaigns", campaigns_path, :class => "btn btn-info"
+
+    .col-xs-12.col-sm-4
+      .panel.panel-warning
+        .panel-heading
+          i.fa.fa-pencil
+          | Recording impact
+        .panel-body
+          p
+            | Whether you're creating a campaign or supporting someone else's campaign... or both, you are making a positive impact.
+          p
+            | Raise Change helps to record your impact and your journey towards discovering the beauty that is helping others.
+          p
+            | On RaiseChange.com, you can upload pictures of your volunteering, share your experiences with others, and keep a journal of all your volunteering activities.
+          p
+            | Thank you for supporting volunteerism!
+
+          = link_to "Create an account", new_user_registration_path, :class => "btn btn-warning"
