@@ -24,7 +24,7 @@ class DonationsController < ApplicationController
   def destroy
     donation = Donation.find(params[:id]).destroy
     flash[:notice] = "Your donation has been deleted."
-    redirect_to root_path
+    redirect_to request.referrer || root_path
   end
 
   private 
