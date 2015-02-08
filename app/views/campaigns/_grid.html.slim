@@ -1,13 +1,11 @@
 - organization = campaign.organization
 - user = campaign.user
 .campaign-main-grid
-  / .organization-name
-  /   i.fa.fa-heart
-  /   = "  #{organization.name}"
   .row
     .col-xs-12
       h4
         = link_to campaign.title, campaign_path(campaign)
+        = render "campaigns/edit_campaign_text", :campaign => campaign
     .col-xs-12
       .grid-section
         = link_to image_tag(campaign.image.url(:thumb), :width => "100%"), campaign_path(campaign)
