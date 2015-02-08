@@ -1,4 +1,16 @@
-.no-campaigns-yet-jumbotron {
-  text-align: center;
-  border-radius: 5px;
+.user-dashboard {
+  margin-top: 20px;
+
+  h2 {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .prompt-content-holder {
+    text-align: center;
+  }
+
+  .jumbotron {
+    padding: 15px;
+  }
 }

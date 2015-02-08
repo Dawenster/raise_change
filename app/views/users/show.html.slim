@@ -1,30 +1,60 @@
-- if @user_campaigns.any?
+.user-dashboard
   .row
-    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-      h2
-        | Campaigns
-  - @user_campaigns.each do |campaign|
-    .row
-      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-        = render "campaigns/main_grid", :campaign => campaign
-
-  .row
-    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-      h2
-        | Activities
-  - @journal_entries.each do |je|
-    .row
-      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-        = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => true
-
-- else
-  .row
-    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3
-      .jumbotron.no-campaigns-yet-jumbotron
+    .col-xs-12.col-sm-4
+      .jumbotron
         h2
-          | Welcome :)
-        p
-          | Your page is looking a bit empty - let's start a campaign!
+          | Campaigns
 
-        a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
-          | Start a campaign
+        - if @user_campaigns.any?
+            - @user_campaigns.each do |campaign|
+              = render "campaigns/main_grid", :campaign => campaign
+
+        - else
+          .prompt-content-holder
+            p
+              | Your page is looking a bit empty - let's start a campaign!
+
+            a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
+              | Create campaign
+
+    .col-xs-12.col-sm-4
+      .jumbotron
+        h2
+          | Activities
+
+        - if @journal_entries.any?
+          - @journal_entries.each do |je|
+            = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => true
+
+        - else
+          .prompt-content-holder
+            - if @user_campaigns.any?
+              p
+                | Start logging them volunteer hours :)
+
+              a class="btn btn-success btn-lg" href="#{new_journal_entry_path}" role="button"
+                | Log hours
+
+            - else
+              p
+                | Can't start logging hours until you start a campaign!
+
+              a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
+                | Create campaign
+
+    .col-xs-12.col-sm-4
+      .jumbotron
+        h2
+          | Supporting
+
+        - if @donations.any?
+            - @donations.each do |donation|
+              = render "donations/donated_to_grid", :donation => donation
+
+        - else
+          .prompt-content-holder
+            p
+              | Want to support other people doing great work?
+
+            a class="btn btn-success btn-lg" href="#{campaigns_path}" role="button"
+              | Browse campaigns
