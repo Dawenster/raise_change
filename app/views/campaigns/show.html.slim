@@ -6,14 +6,7 @@
           .organizer-title
             | CAMPAIGN ORGANIZER
 
-          = link_to profile_picture(@user), user_path(@user)
-          
-          .campaign-show-user-name
-            a href="#{user_path(@user)}"
-              h3
-                = @user.first_name
-              p
-                = @user.last_name
+          = render "users/big_user_picture_and_name", :user => @user
 
         .col-xs-12.col-sm-9
           .campaign-show-details-holder

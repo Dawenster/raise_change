@@ -1,5 +1,8 @@
 .user-dashboard
   .row
+    .col-xs-6.col-xs-offset-3.col-sm-2.col-sm-offset-5
+      = render "users/big_user_picture_and_name", :user => @user
+  .row
     .col-xs-12.col-sm-4
       .jumbotron
         h2
