@@ -16,13 +16,16 @@
   }
 }
 
-.donated-to-grid-holder {
+.donated-to-grid {
   .grid-section {
     width: 100%;
   }
 
   .support-detail {
     margin: 10px 0px;
+    a {
+      cursor: pointer;
+    }
   }
 
   .delete-donation-icon {

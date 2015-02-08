@@ -48,6 +48,7 @@
           | Supporting
 
         - if @donations.any?
+          .donated-to-holder ng-controller="DonatedToGridCtrl"
             - @donations.each do |donation|
               = render "donations/donated_to_grid", :donation => donation
 

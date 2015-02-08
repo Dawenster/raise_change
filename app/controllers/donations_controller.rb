@@ -13,7 +13,7 @@ class DonationsController < ApplicationController
     @donation = Donation.new(donation_params)
 
     if @donation.save
-      flash[:notice] = "You are now sponsoring \"#{@campaign.title}\"."
+      flash[:notice] = "You are now supporting \"#{@campaign.title}\"."
       redirect_to campaign_path(@campaign)
     else
       flash.now[:alert] = @donation.errors.full_messages.join(". ") + "."
@@ -22,9 +22,17 @@ class DonationsController < ApplicationController
   end
 
   def destroy
-    donation = Donation.find(params[:id]).destroy
-    flash[:notice] = "Your donation has been deleted."
-    redirect_to request.referrer || root_path
+    respond_to do |format|
+      donation = Donation.find(params[:id]).destroy
+      flash[:notice] = "Your support has been deleted."
+
+      url = request.referrer || root_path
+
+      format.json { render :json => { :url => url } }
+      format.html do
+        redirect_to url
+      end
+    end
   end
 
   private 
