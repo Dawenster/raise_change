@@ -1,7 +1,9 @@
-- campaign = donation.campaign
+- organization = campaign.organization
 - user = campaign.user
-
-.donated-to-grid-holder
+.campaign-main-grid
+  / .organization-name
+  /   i.fa.fa-heart
+  /   = "  #{organization.name}"
   .row
     .col-xs-12
       h4
@@ -10,4 +12,4 @@
       .grid-section
         = link_to image_tag(campaign.image.url(:thumb), :width => "100%"), campaign_path(campaign)
       .grid-section.support-detail
-        = "You supported #{link_to user.full_name, user_path(user)} #{number_to_currency(donation.amount_in_dollars)} (#{time_ago_in_words(donation.created_at)} ago)".html_safe
+        = "#{campaign.num_sponsors} #{'person'.pluralize(campaign.num_sponsors)} supporting #{organization.name}".html_safe
