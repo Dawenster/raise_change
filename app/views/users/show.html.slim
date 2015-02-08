@@ -37,7 +37,7 @@
 
         - else
           .prompt-content-holder
-            - if @user_campaigns.any?
+            - if @user_campaigns.any? && @own_page
               p
                 | Start logging them volunteer hours :)
 
