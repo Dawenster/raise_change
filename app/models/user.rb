@@ -47,16 +47,21 @@ class User < ActiveRecord::Base
   def create_or_update_stripe_customer(token)
     stripe_setup
 
-    if self.stripe_id
-      customer = retrieve_customer
-      customer.card = token
-      customer.save
-    else
-      response = Stripe::Customer.create(
-        :description => self.email,
-        :card => token
-      )
-      self.update_attributes(:stripe_id => response.id)
+    begin
+      if self.stripe_id
+        customer = retrieve_customer
+        customer.card = token
+        customer.save
+      else
+        response = Stripe::Customer.create(
+          :description => self.email,
+          :card => token
+        )
+        self.update_attributes(:stripe_id => response.id)
+      end
+      return {:success => true}
+    rescue => e
+      handle_stripe_error(e)
     end
   end
 
@@ -87,5 +92,11 @@ class User < ActiveRecord::Base
 
   def retrieve_customer
     Stripe::Customer.retrieve(self.stripe_id)
+  end
+
+  def handle_stripe_error(e)
+    body = e.json_body
+    err  = body[:error]
+    return {:success => false, :message => err[:message]}
   end
 end

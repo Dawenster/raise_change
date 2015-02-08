@@ -10,8 +10,12 @@ class UsersController < ApplicationController
   end
 
   def create_or_update_credit_card
-    current_user.create_or_update_stripe_customer(params[:stripeToken])
-    flash[:notice] = "Your have successfully added a credit card."
+    status = current_user.create_or_update_stripe_customer(params[:stripeToken])
+    if status[:success]
+      flash[:notice] = "Your have successfully added a credit card."
+    else
+      flash[:alert] = status[:message]
+    end
     redirect_to(:back)
   end
 
