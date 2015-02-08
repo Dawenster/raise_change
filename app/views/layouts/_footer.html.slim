@@ -1,2 +1,2 @@
 footer.footer
-  = "Raise Change © #{Time.now.year}".html_safe
+  = "Raise Change © #{Time.now.year} ⋅ #{mail_to 'team@raisechange.com', 'Contact us', :encode => 'hex'}".html_safe
