@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user_campaigns = @user.campaigns
     @journal_entries = @user.journal_entries
     @donations = @user.donations
+    @own_page = @user == current_user
   end
 
   def create_or_update_credit_card

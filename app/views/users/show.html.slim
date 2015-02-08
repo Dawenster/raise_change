@@ -12,13 +12,19 @@
             - @user_campaigns.each do |campaign|
               = render "campaigns/grid", :campaign => campaign
 
-        - else
+        - elsif @own_page
           .prompt-content-holder
             p
               | Your page is looking a bit empty - let's start a campaign!
 
             a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
               | Create campaign
+
+        - else
+          .prompt-content-holder
+            p
+              = "#{@user.first_name} has not created any campaigns yet.".html_safe
+
 
     .col-xs-12.col-sm-4
       .jumbotron
@@ -38,12 +44,16 @@
               a class="btn btn-success btn-lg" href="#{new_journal_entry_path}" role="button"
                 | Log hours
 
-            - else
+            - elsif @own_page
               p
                 | Can't start logging hours until you start a campaign!
 
               a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
                 | Create campaign
+
+            - else
+              p
+                = "#{@user.first_name} has not logged any activities yet.".html_safe
 
     .col-xs-12.col-sm-4
       .jumbotron
@@ -55,10 +65,15 @@
             - @donations.each do |donation|
               = render "donations/donated_to_grid", :donation => donation
 
-        - else
+        - elsif @own_page
           .prompt-content-holder
             p
               | Want to support other people doing great work?
 
             a class="btn btn-success btn-lg" href="#{campaigns_path}" role="button"
               | Browse campaigns
+
+        - else
+          .prompt-content-holder
+            p
+              = "#{@user.first_name} has not supported any campaigns yet.".html_safe
