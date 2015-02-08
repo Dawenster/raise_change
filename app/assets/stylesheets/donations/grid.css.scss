@@ -1,12 +1,14 @@
 .donation-grid-holder {
-  margin: 15px 0px;
-  margin-bottom: 30px;
+  margin: 10px 0px;
   display: block;
 
+  .left-side {
+    width: 50px;
+    float: left;
+  }
+
   .donor-details-holder {
-    text-align: left;
-    margin-left: 15px;
-    width: 70%;
+    margin-left: 50px;
   }
 
   .sponsored-amount {

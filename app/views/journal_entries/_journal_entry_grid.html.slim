@@ -2,9 +2,14 @@
 .row
   .col-xs-12
     .je-grid-holder
-      span.pull-left
+      .left-side
         = link_to avatar(user), user_path(user)
-      span.pull-left.je-details-holder
+      .right-side
+        - if je.media_files.any?
+          - je.media_files.each do |mf|
+            .je-image-holder
+              = image_tag mf.image.url(:display), :width => "100%"
+              = mf.caption unless mf.caption.blank?
         - pronoun = current_user == user ? "You" : user.first_name
         div
           = "#{link_to pronoun, user_path(user)} volunteered <strong>#{je.hours}</strong> #{'hour'.pluralize(je.hours)}#{' - ' + link_to(je.campaign.title, campaign_path(je.campaign)) if show_campaign_title}".html_safe

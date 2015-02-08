@@ -1,16 +1,23 @@
 .je-grid-holder {
-  margin: 15px 0px;
-  margin-bottom: 30px;
+  margin: 10px 0px;
   display: block;
 
-  .je-details-holder {
-    margin-left: 15px;
-    width: 70%;
+  .left-side {
+    width: 50px;
+    float: left;
+  }
+
+  .right-side {
+    margin-left: 50px;
   }
 
   .volunteer-date {
     color: grey;
     font-style: italic;
     font-size: 12px;
+  }
+
+  .je-image-holder {
+    margin-bottom: 10px;
   }
 }
