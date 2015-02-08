@@ -1,15 +1,82 @@
 .row
   .col-xs-12.col-sm-6.col-sm-offset-3
-    h2.page-title
-      | About
+    .about-page ng-controller="AboutCtrl"
+      h2.page-title
+        | About
 
-    blockquote
-      p
-        | We make a living by what we get.
-        br
-        | We make a life by what we give.
-      footer
-        | Winston S. Churchill
+      p.leading-text
+        | Raise Change is a tool to 
+        span.rollover-word.text-primary data-word="record" ng-mouseover="rollOverWord($event)" ng-mouseleave="hideWordTexts()"
+          | record 
+        span 
+          | your story as you 
+        span.rollover-word.text-primary data-word="influence" ng-mouseover="rollOverWord($event)" ng-mouseleave="hideWordTexts()"
+          | influence 
+        span 
+          | and 
+        span.rollover-word.text-primary data-word="communicate" ng-mouseover="rollOverWord($event)" ng-mouseleave="hideWordTexts()"
+          | communicate 
+        span
+          | change.
 
-    p
-      | On 18 December 2014, the Swiss central bank introduced a negative interest rate on bank deposits to support its CHF ceiling.[24] However, with the euro declining in value over the following weeks, the Swiss National Bank abandoned the ceiling on 15 January 2015, and the franc promptly increased in value compared with the euro by 30%, although this only lasted for a few minutes before part of the increase was reversed.[25] The move was not announced in advance, and resulted in "turmoil" in stock and currency markets.[26] By the close of trading that day, the franc was up just over 15% against the euro.[25] The key interest rate was also lowered from minus 0.25% to minus 0.75%, meaning investors would be paying an increased fee to keep their funds in a Swiss account. This devaluation of the euro against the franc is expected to hurt Switzerland's large export industry; The Swatch Group, for example, saw its shares drop 15% (in Swiss franc terms) with the announcements[25] so that the share price was approximately unchanged on that day in euro terms.
+      .record-holder ng-show="showRecord"
+        ul
+          li
+            | volunteer hours
+          li
+            | stories of experience – text, picture, video
+          li
+            | money raised/fundraising
+          li
+            | satisfaction scores working with organization
+          li
+            | sectors (health, housing, food supply, etc)
+          li
+            | journal/validation productivity
+
+
+      .influence-holder ng-show="showInfluence"
+        ul
+          li
+            | the causes you care about
+          li
+            | policy
+          li
+            | social awareness
+
+      .communicate-holder ng-show="showCommunicate"
+        ul
+          li
+            | with your network
+          li
+            | your activity journals
+          li
+            | your hours
+          li
+            | your unique style, profile, and organizations you’re involved with
+          li
+            | promotes experience sharing on the net
+          li
+            | promotes social networking
+          li
+            | raises awareness of causes and opportunities to contribute
+          li
+            | enhances online identity
+          li
+            | develops the social fabric of story telling
+          li
+            | as networks grow, so does the amplifier of crowd sourcing
+          li
+            | quality of communications and activites directly influence network to sponsor funding support
+          li
+            | inspires others to get involved
+          li
+            | with the organizations to give them good understanding of their volunteers
+          li
+            | with employers to facilitate Dollars for Doers
+
+      blockquote
+        p
+          | We make a living by what we get. We make a life by what we give.
+        footer
+          | Winston S. Churchill
