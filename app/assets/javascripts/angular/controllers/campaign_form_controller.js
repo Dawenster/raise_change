@@ -10,7 +10,7 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
       $scope.websiteFieldText = "Remove website";
     } else {
       $("#organization_website").val("");
-      initialWebsiteLinkText()
+      $scope.websiteFieldText = "Add website (optional)";
     }
   }
 
@@ -21,12 +21,12 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
     } else {
       $("#organization_contacts_attributes_0_name").val("");
       $("#organization_contacts_attributes_0_email").val("");
-      initialValidationSectionText()
+      $scope.validationSectionText = "Add validator (optional)";
     }
   }
 
   function initialWebsiteLinkText() {
-    var pageType = $(".campaign-form").attr("data-page-type")
+    var pageType = $(".open-website-form-link").attr("data-page-type")
     if (pageType == "hasSite") {
       $scope.websiteField = true;
       $scope.websiteFieldText = "Remove website";

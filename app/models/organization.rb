@@ -8,7 +8,7 @@ class Organization < ActiveRecord::Base
   has_many :campaigns
   has_many :users, :through => :campaigns
   accepts_nested_attributes_for :campaigns
-  accepts_nested_attributes_for :contacts, :reject_if => :all_blank
+  accepts_nested_attributes_for :contacts, :reject_if => proc { |contact| contact['name'].blank? && contact['email'].blank? }
 
   def valid_url
     return true if website.blank?

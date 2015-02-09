@@ -16,7 +16,7 @@
       .organization-website-form-field ng-show="websiteField"
         = org.input :website, :required => false, :label => "Organization website"
 
-      .open-website-form-link ng-click="websiteLinkToggle()" data-page-type="#{@organization.id && @organization.website ? 'hasSite' : 'noSite'}"
+      .open-website-form-link ng-click="websiteLinkToggle()" data-page-type="#{@organization.id && @organization.website.blank? ? 'noSite' : 'hasSite'}"
         i.fa.fa-plus-circle ng-show="!websiteField"
         i.fa.fa-minus-circle ng-show="websiteField"
         | {{websiteFieldText}}
@@ -25,11 +25,6 @@
       = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
       = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       = campaign.input :donation_period, :as => :hidden, :input_html => { :value => donation_period }
-
-      .open-validation-form-section-link ng-click="validationSectionToggle()" data-page-type="#{@organization.id && @organization.website ? 'hasSite' : 'noSite'}"
-        i.fa.fa-plus-circle ng-show="!validationSection"
-        i.fa.fa-minus-circle ng-show="validationSection"
-        | {{validationSectionText}}
 
       .organization-validation-form-section ng-show="validationSection" data-page-type="#{@organization.id && @organization.contacts.first.id.nil? ? 'noContact' : 'hasContact'}"
         h4
@@ -44,8 +39,13 @@
           = contact.input :name
           = contact.input :email
 
+      .open-validation-form-section-link ng-click="validationSectionToggle()"
+        i.fa.fa-plus-circle ng-show="!validationSection"
+        i.fa.fa-minus-circle ng-show="validationSection"
+        | {{validationSectionText}}
+
     br
-    - button_text = @organization.id ? "Edit campaign" : "Create campaign"
+    - button_text = @organization.id ? "Update campaign" : "Create campaign"
     = org.button :submit, button_text, :class => "btn btn-success"
 
     - if @organization.id
