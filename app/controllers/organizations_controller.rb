@@ -30,10 +30,12 @@ class OrganizationsController < ApplicationController
 
   def organization_params
     params.require(:organization).permit(
+      :id,
       :name,
       :website,
       :_destroy,
       campaigns_attributes: [
+        :id,
         :title,
         :description,
         :user_id,
@@ -43,6 +45,7 @@ class OrganizationsController < ApplicationController
         :_destroy
       ],
       contacts_attributes: [
+        :id,
         :name,
         :email,
         :organization_id,

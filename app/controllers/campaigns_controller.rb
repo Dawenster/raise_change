@@ -20,6 +20,7 @@ class CampaignsController < ApplicationController
   def edit
     @campaign = Campaign.find(params[:id])
     @organization = @campaign.organization
+    @organization.contacts.build unless @organization.contacts.any?
   end
 
   def destroy

@@ -31,7 +31,7 @@
         i.fa.fa-minus-circle ng-show="validationSection"
         | {{validationSectionText}}
 
-      .organization-validation-form-section ng-show="validationSection" data-page-type="#{@organization.id && @organization.contacts.any? ? 'hasContact' : 'noContact'}"
+      .organization-validation-form-section ng-show="validationSection" data-page-type="#{@organization.id && @organization.contacts.first.id.nil? ? 'noContact' : 'hasContact'}"
         h4
           | Who can validate your participation?
         div
