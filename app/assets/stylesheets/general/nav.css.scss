@@ -4,26 +4,40 @@
 }
 
 .navbar-default {
-  background-color: white;
   padding: 5px 0px 3px 0px;
+  background-color: #006633;
+  border: none;
+
+  .navbar-nav {
+    li {
+      a {
+        color: white;
+        text-transform: uppercase;
+
+        &:hover {
+          color: #ff9900;
+        }
+      }
+    }
+  }
 }
 
-.navbar-brand {
-  font-family: 'Pacifico', cursive;
-  float: none;
-  font-size: 24px;
+// START: Mobile menu toggle
+
+.navbar-default .navbar-toggle {
+  border-color: #ff9900;
 }
 
-.navbar-center {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-  text-align: center;
-  margin: auto;
-  height: 100%;
-  padding-top: 20px;
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ff9900;
 }
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ff9900;
+}
+
+// END: Mobile menu toggle
 
 .navbar-right {
   margin-right: 0px;

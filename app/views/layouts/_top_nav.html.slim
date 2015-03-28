@@ -7,12 +7,14 @@ nav.navbar.navbar-default role="navigation"
       span.icon-bar
       span.icon-bar
 
-  .navbar-brand.navbar-center
-    a.navbar-brand href="#{root_path}"
-      | Raise Change
+    a href="#{root_path}"
+      .visible-xs-block
+        = image_tag "https://s3-us-west-2.amazonaws.com/raisechange/general/raise_change_logo_large.png", :width => 100, :style => "margin-bottom: 5px;"
+      .hidden-xs
+        = image_tag "https://s3-us-west-2.amazonaws.com/raisechange/general/raise_change_logo_large.png", :width => 200
       
   #navbar-collapse-1.collapse.navbar-collapse
-    ul.nav.navbar-nav
+    ul.nav.navbar-nav.navbar-right
       li
         a href="#{how_it_works_path}" 
           | How it works
@@ -25,8 +27,6 @@ nav.navbar.navbar-default role="navigation"
         a href="#{about_path}" 
           | About
         div class="#{'active-underline' if params[:action] == 'about' && params[:controller] == 'pages'}"
-
-    ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
         li
           div
@@ -63,9 +63,8 @@ nav.navbar.navbar-default role="navigation"
 
       - else
         li
-          div
-            a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_user_registration_path}"
-              | Sign Up Free
+          a href="#{new_user_registration_path}"
+            | Sign up free
         li
           a href="#{new_user_session_path}"
             | Login
