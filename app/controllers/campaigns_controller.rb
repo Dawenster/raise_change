@@ -2,6 +2,8 @@ class CampaignsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :edit]
 
   def index
+    @title = "All <span class='highlight'>campaigns</span>"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
     @campaigns = Campaign.all
   end
 
