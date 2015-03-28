@@ -1,82 +1,35 @@
-.row
-  .col-xs-12.col-sm-6.col-sm-offset-3
-    .about-page ng-controller="AboutCtrl"
-      h2.page-title
-        | About
+.about-page
+  .row
+    .col-xs-12.col-sm-4
+      .text-only-holder
+        | We make a living by what we get. We make a life by what we give.
+        div
+          | - Winston S. Churchill
 
-      p.leading-text
-        | Raise Change is a tool to 
-        span.rollover-word.text-primary data-word="record" ng-mouseover="rollOverWord($event)" ng-mouseleave="hideWordTexts()"
-          | record 
-        span 
-          | your story as you 
-        span.rollover-word.text-primary data-word="influence" ng-mouseover="rollOverWord($event)" ng-mouseleave="hideWordTexts()"
-          | influence 
-        span 
-          | and 
-        span.rollover-word.text-primary data-word="communicate" ng-mouseover="rollOverWord($event)" ng-mouseleave="hideWordTexts()"
-          | communicate 
-        span
-          | change.
+      .vertical-divider
 
-      .record-holder ng-show="showRecord"
-        ul
-          li
-            | volunteer hours
-          li
-            | stories of experience – text, picture, video
-          li
-            | money raised/fundraising
-          li
-            | satisfaction scores working with organization
-          li
-            | sectors (health, housing, food supply, etc)
-          li
-            | journal/validation productivity
+      .image-only-holder
+        = image_tag "https://s3-us-west-2.amazonaws.com/raisechange/general/elephant1.jpg", :width => "100%"
 
+      .vertical-divider
+      
+    .col-xs-12.col-sm-4
+      .video-holder
+        iframe width="100%" height="275" src="https://www.youtube.com/embed/bfAzi6D5FpM" frameborder="0" allowfullscreen=""
 
-      .influence-holder ng-show="showInfluence"
-        ul
-          li
-            | the causes you care about
-          li
-            | policy
-          li
-            | social awareness
+        .with-text
+          | Dan Pallotta on charities
 
-      .communicate-holder ng-show="showCommunicate"
-        ul
-          li
-            | with your network
-          li
-            | your activity journals
-          li
-            | your hours
-          li
-            | your unique style, profile, and organizations you’re involved with
-          li
-            | promotes experience sharing on the net
-          li
-            | promotes social networking
-          li
-            | raises awareness of causes and opportunities to contribute
-          li
-            | enhances online identity
-          li
-            | develops the social fabric of story telling
-          li
-            | as networks grow, so does the amplifier of crowd sourcing
-          li
-            | quality of communications and activites directly influence network to sponsor funding support
-          li
-            | inspires others to get involved
-          li
-            | with the organizations to give them good understanding of their volunteers
-          li
-            | with employers to facilitate Dollars for Doers
+      .vertical-divider
 
-      blockquote
-        p
-          | We make a living by what we get. We make a life by what we give.
-        footer
-          | Winston S. Churchill
+      .image-only-holder
+        = image_tag "https://s3-us-west-2.amazonaws.com/raisechange/general/elephant2.jpg", :width => "100%"
+
+      .vertical-divider
+
+    .col-xs-12.col-sm-4
+      .image-only-holder
+        = image_tag "https://s3-us-west-2.amazonaws.com/raisechange/general/elephant3.jpg", :width => "100%"
+
+        .with-text
+          | When I heard stories from someone who had volunteered with the elephant sanctuary in Thailand, I wanted to get involved in any way I could. I did not have the time to dedicate right away, but after a year of thinking about I knew that I couldn’t put it off any longer.

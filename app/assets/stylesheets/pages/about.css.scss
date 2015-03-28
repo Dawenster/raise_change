@@ -1,13 +1,26 @@
 .about-page {
-  .leading-text {
+  margin-top: 30px;
+
+  .text-only-holder {
+    padding: 30px;
     font-size: 24px;
+    color: white;
+    background-color: #006633;
   }
 
-  .rollover-word {
-    cursor: pointer;
+  .vertical-divider {
+    height: 30px;
   }
 
-  blockquote {
-    margin-top: 50px;
+  .video-holder {
+    .with-text {
+      margin-top: -5px;
+    }
+  }
+
+  .with-text {
+    padding: 20px;
+    background-color: #333333;
+    color: white;
   }
 }
