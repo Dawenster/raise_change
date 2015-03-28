@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    @title = "<span class='highlight'>Account settings</span>"
+    @title = "Account <span class='highlight'>settings</span>"
     @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
     @center = true
 
