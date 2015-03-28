@@ -1,4 +1,21 @@
 .campaign-main-grid {
+  h4 {
+    text-transform: uppercase;
+
+    a {
+      color: #333333;
+
+      &:hover {
+        color: #006633;
+        text-decoration: none;
+      }
+    }
+  }
+
+  img {
+    border-radius: 10px;
+  }
+
   .grid-section {
     width: 100%;
   }
