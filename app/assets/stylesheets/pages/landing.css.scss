@@ -51,12 +51,12 @@
   span.highlight {
     color: #ff9900;
   }
-}
-
-.arrow-right {
-  width: 0; 
-  height: 0; 
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 20px solid #ff9900;
+  
+  .arrow-right {
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #ff9900;
+  }
 }

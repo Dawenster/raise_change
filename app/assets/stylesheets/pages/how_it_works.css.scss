@@ -1,9 +1,62 @@
 .how-it-works-page {
-  .panel-heading {
-    font-size: 18px;
+  margin: 30px 0px;
 
-    i {
-      margin-right: 5px;
+  .how-it-works-holder {
+    .how-it-works-holder-header {
+      padding: 10px 20px;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    .how-it-works-holder-content {
+      padding: 20px;
+    }
+
+    .call-to-action {
+      padding: 10px 30px 10px 10px;
+      color: white;
+      background-color: #333333;
+      font-size: 16px;
+      position: relative;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      .arrow-right {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 0; 
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid #ff9900;
+      }
+    }
+  }
+
+  .how-it-works-holder.green {
+    border-left: 2px solid #006633;
+
+    .how-it-works-holder-header {
+      background-color: #006633;
+    }
+  }
+
+  .how-it-works-holder.yellow {
+    border-left: 2px solid #ff9900;
+
+    .how-it-works-holder-header {
+      background-color: #ff9900;
+    }
+  }
+
+  .how-it-works-holder.grey {
+    border-left: 2px solid #333333;
+
+    .how-it-works-holder-header {
+      background-color: #333333;
     }
   }
 }

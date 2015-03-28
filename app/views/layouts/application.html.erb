@@ -15,6 +15,7 @@
   <%= render "layouts/top_nav" %>
   <%= render "layouts/alerts" %>
   <% unless params[:action] == 'landing' && params[:controller] == 'pages' %>
+    <%= render "layouts/banner_title" if @title && @image %>
     <div class="container">
       <div class="row">
         <div class="col-xs-12">

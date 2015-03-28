@@ -1,18 +1,10 @@
 .how-it-works-page
   .row
-    .col-xs-12
-      h2.page-title
-        | How it works
-
-  br
-
-  .row
     .col-xs-12.col-sm-4
-      .panel.panel-success
-        .panel-heading
-          i.fa.fa-usd
+      .how-it-works-holder.green
+        .how-it-works-holder-header
           | Raising funds
-        .panel-body
+        .how-it-works-holder-content
           p
             | Raise Change is a platform that allows you to crowdsource micro donations for each volunteer hour that you do.
           p
@@ -20,14 +12,16 @@
           p
             | Raise Change does not collect any fees until $100 has been raised, per campaign. Raise Change takes a 10% processing fee on all subsequent donations.
 
-          = link_to "Start a campaign", new_campaign_path, :class => "btn btn-success"
+          br
+          a.call-to-action href="#{new_campaign_path}"
+            | Start a campaign
+            .arrow-right
 
     .col-xs-12.col-sm-4
-      .panel.panel-info
-        .panel-heading
-          i.fa.fa-thumbs-o-up
+      .how-it-works-holder.yellow
+        .how-it-works-holder-header
           | Supporting friends
-        .panel-body
+        .how-it-works-holder-content
           p
             | If you see a campaign that you would love to support, simply click on the "Support" button. 
 
@@ -36,14 +30,16 @@
           p
             | You can cancel your donation at any time before the payment date and not be liable for any donations.
 
-          = link_to "Browse campaigns", campaigns_path, :class => "btn btn-info"
+          br
+          a.call-to-action href="#{campaigns_path}"
+            | Browse campaigns
+            .arrow-right
 
     .col-xs-12.col-sm-4
-      .panel.panel-warning
-        .panel-heading
-          i.fa.fa-pencil
+      .how-it-works-holder.grey
+        .how-it-works-holder-header
           | Recording impact
-        .panel-body
+        .how-it-works-holder-content
           p
             | Whether you're creating a campaign or supporting someone else's campaign... or both, you are making a positive impact.
           p
@@ -53,4 +49,7 @@
           p
             | Thank you for supporting volunteerism!
 
-          = link_to "Create an account", new_user_registration_path, :class => "btn btn-warning"
+          br
+          a.call-to-action href="#{new_user_registration_path}"
+            | Create an account
+            .arrow-right
