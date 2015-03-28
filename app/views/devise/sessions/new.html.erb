@@ -1,31 +1,50 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-    <h2>Welcome back</h2>
-
-    <div class="devise-facebook-link">
-      <i class="fa fa-facebook-square"></i>
-      <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook) %>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="banner-sub-title">
+      Welcome back!
     </div>
 
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <div><%= f.label :email %>
-        <%= f.email_field :email, :autofocus => true, :class => "form-control" %></div>
-      </div>
+    <br>
 
-      <div class="form-group">
-        <div><%= f.label :password %>
-        <%= f.password_field :password, :class => "form-control" %></div>
+    <div class="devise-facebook-link">
+      <div class="pull-left facebook-icon-holder">
+        <i class="fa fa-facebook"></i>
       </div>
+      <div class="pull-left facebook-link-holder">
+        <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook) %>
+      </div>
+    </div>
 
-      <% if devise_mapping.rememberable? -%>
-        <div class="remember-me-box">
-          <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    <br>
+    <br>
+
+    <div class="or-create-account">
+      Or login via email
+    </div>
+
+    <br>
+
+    <div class="devise-form-holder">
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <div><%= f.label :email %>
+          <%= f.email_field :email, :autofocus => true, :class => "form-control" %></div>
         </div>
-      <% end -%>
 
-      <div><%= f.submit "Login", :class => "btn btn-success" %></div>
-    <% end %>
+        <div class="form-group">
+          <div><%= f.label :password %>
+          <%= f.password_field :password, :class => "form-control" %></div>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="remember-me-box">
+            <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div><%= f.submit "Login", :class => "submit-button" %></div>
+      <% end %>
+    </div>
 
     <%= render "devise/shared/links" %>
   </div>
