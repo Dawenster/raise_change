@@ -17,18 +17,6 @@
   .landing-call-to-action {
     height: 100px;
     width: 400px;
-
-    .pull-left {
-      width: 320px;
-      height: 100%;
-    }
-
-    .pull-right {
-      width: 50px;
-      height: 100%;
-      padding-top: 20px;
-      padding-left: 15px;
-    }
   }
 
   .landing-call-to-action-top {
@@ -46,13 +34,16 @@
   font-size: 20px;
   color: white;
   text-transform: uppercase;
-  padding: 10px;
+  padding: 20px 50px 20px 20px;
 
   span.highlight {
     color: #ff9900;
   }
   
   .arrow-right {
+    position: absolute;
+    top: 30px;
+    right: 20px;
     width: 0; 
     height: 0; 
     border-top: 20px solid transparent;
