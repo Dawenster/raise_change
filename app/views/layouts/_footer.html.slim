@@ -1,8 +1,18 @@
 footer.footer
-  .pull-left
-    | Follow #Raise_Change
-  .pull-right
-    = link_to "<i class='fa fa-facebook'></i>".html_safe, '#', :class => "footer-icon-link"
-    = link_to "<i class='fa fa-twitter'></i>".html_safe, '#', :class => "footer-icon-link"
-    = link_to "<i class='fa fa-instagram'></i>".html_safe, '#', :class => "footer-icon-link"
-    = mail_to 'team@raisechange.com', "<i class='fa fa-envelope-o'></i>".html_safe, :encode => 'hex', :class => "footer-icon-link"
+  .hidden-xs
+    .pull-left
+      | Follow #Raise_Change
+    .pull-right
+      = link_to "<i class='fa fa-facebook'></i>".html_safe, '#', :class => "footer-icon-link"
+      = link_to "<i class='fa fa-twitter'></i>".html_safe, '#', :class => "footer-icon-link"
+      = link_to "<i class='fa fa-instagram'></i>".html_safe, '#', :class => "footer-icon-link"
+      = mail_to 'team@raisechange.com', "<i class='fa fa-envelope-o'></i>".html_safe, :encode => 'hex', :class => "footer-icon-link"
+
+  .visible-xs-block
+    div
+      | Follow #Raise_Change
+    .mobile-social-links
+      = link_to "<i class='fa fa-facebook'></i>".html_safe, '#', :class => "footer-icon-link"
+      = link_to "<i class='fa fa-twitter'></i>".html_safe, '#', :class => "footer-icon-link"
+      = link_to "<i class='fa fa-instagram'></i>".html_safe, '#', :class => "footer-icon-link"
+      = mail_to 'team@raisechange.com', "<i class='fa fa-envelope-o'></i>".html_safe, :encode => 'hex', :class => "footer-icon-link"
