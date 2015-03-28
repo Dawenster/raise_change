@@ -1,5 +1,56 @@
 .devise-facebook-link {
   margin-bottom: 20px;
+  position: relative;
+
+  .facebook-icon-holder {
+    background-color: #333333;
+    color: white;
+    width: 40px;
+    height: 40px;
+
+    .fa-facebook {
+      margin-top: 10px;
+      margin-left: 15px;
+      font-size: 24px;
+    }
+  }
+
+  .facebook-link-holder {
+    padding: 10px;
+    border: 1px solid #333333;
+    height: 40px;
+
+    a {
+      color: #333333;
+
+      &:hover {
+        color: #ff9900;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.or-create-account {
+  background-color: #333333;
+  color: white;
+  height: 40px;
+  width: 206px;
+  padding: 10px;
+}
+
+.devise-form-holder {
+  padding-left: 30px;
+  border-left: 2px solid #333333;
+
+  .submit-button {
+    padding: 10px;
+    color: white;
+    background-color: #333333;
+    font-size: 16px;
+    position: relative;
+    border: none;
+  }
 }
 
 .error_explanation {

@@ -1,4 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
+  prepend_before_filter :require_no_authentication, only: [:new, :create, :cancel]
+  prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy]
+
+  def new
+    @title = "<span class='highlight'>Sign up</span>"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @center = true
+    
+    super
+  end
+
   def update
     # For Rails 4
     account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
