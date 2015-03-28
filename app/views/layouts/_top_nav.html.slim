@@ -29,13 +29,12 @@ nav.navbar.navbar-default role="navigation"
 
       - if user_signed_in?
         li
-          div
-            - if can_create_journal_entries?
-              a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_journal_entry_path}" style="margin-right: 10px;"
-                | Log hours
-            - else
-              a.btn.navbar-btn.btn-success.navbar-action-button href="#{new_campaign_path}" style="margin-right: 10px;"
-                | Create campaign
+          - if can_create_journal_entries?
+            a href="#{new_journal_entry_path}" style="margin-right: 10px;"
+              | Log hours
+          - else
+            a href="#{new_campaign_path}" style="margin-right: 10px;"
+              | Create campaign
 
         li.navbar-avatar
           = avatar(current_user)
