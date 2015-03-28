@@ -1,17 +1,19 @@
-.landing-container
-  .landing-title
-    h1
-      .first-line
-        | Micro donations 
-      .for-word
-        | for
-      .last-line
-        | each hour you volunteer
+css:
+  @media(max-width:767px) {
+    html {
+      background-image: url(https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+  }
 
-  .landing-browse-all-campaigns
-    - if user_signed_in?
-      = link_to "Start a campaign", new_campaign_path, :class => "btn btn-info btn-lg"
-    - else
-      = link_to "Start a campaign", new_user_registration_path, :class => "btn btn-info btn-lg"
-    .how-it-works-link
-      = link_to "How it works", how_it_works_path
+  @media(min-width:768px) {
+    html {
+      background-image: url(https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+.landing-container
+  

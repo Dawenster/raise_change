@@ -1,40 +1,18 @@
 @media(max-width:767px) {
   .landing-container {
-    padding: 10px;
+    height: 300px;
+    background-image: url(https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg);
+    background-size: cover;
   }
 }
 
 @media(min-width:768px) {
   .landing-container {
-    padding: 10%;
+    background-image: url(https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg);
+    background-size: cover;
+    height: 100%;
   }
 }
 
-.landing-title {
-  text-align: center;
-  margin: 50px 0px;
-
-  .first-line {
-    font-size: 40px;
-  }
-
-  .for-word {
-    color: grey;
-    margin: 10px 0px;
-    font-family: 'Pacifico', cursive;
-  }
-
-  .last-line {
-    font-size: 30px;
-  }
+.landing-container {
 }
-
-.landing-browse-all-campaigns {
-  text-align: center;
-  margin: 50px 0px;
-
-  .how-it-works-link {
-    margin-top: 10px;
-  }
-}
-
