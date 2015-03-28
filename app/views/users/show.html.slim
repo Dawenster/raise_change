@@ -4,76 +4,83 @@
       = render "users/big_user_picture_and_name", :user => @user
   .row
     .col-xs-12.col-sm-4
-      .jumbotron
-        h2
+      .info-box-holder.green
+        .info-box-holder-header
           | Campaigns
+        .info-box-holder-content
+          - if @user_campaigns.any?
+              - @user_campaigns.each do |campaign|
+                = render "campaigns/grid", :campaign => campaign
 
-        - if @user_campaigns.any?
-            - @user_campaigns.each do |campaign|
-              = render "campaigns/grid", :campaign => campaign
-
-        - elsif @own_page
-          .prompt-content-holder
-            p
-              | Your page is looking a bit empty - let's start a campaign!
-
-            a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
-              | Create campaign
-
-        - else
-          .prompt-content-holder
-            p
-              = "#{@user.first_name} has not created any campaigns yet.".html_safe
-
-
-    .col-xs-12.col-sm-4
-      .jumbotron
-        h2
-          | Activities
-
-        - if @journal_entries.any?
-          - @journal_entries.each do |je|
-            = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => true
-
-        - else
-          .prompt-content-holder
-            - if @user_campaigns.any? && @own_page
+          - elsif @own_page
+            .prompt-content-holder
               p
-                | Start logging them volunteer hours :)
+                | Your page is looking a bit empty - let's start a campaign!
 
-              a class="btn btn-success btn-lg" href="#{new_journal_entry_path}" role="button"
-                | Log hours
-
-            - elsif @own_page
-              p
-                | Can't start logging hours until you start a campaign!
-
-              a class="btn btn-success btn-lg" href="#{new_campaign_path}" role="button"
+              br
+              a.call-to-action href="#{new_campaign_path}"
                 | Create campaign
+                .arrow-right
 
-            - else
+          - else
+            .prompt-content-holder
               p
-                = "#{@user.first_name} has not logged any activities yet.".html_safe
+                = "#{@user.first_name} has not created any campaigns yet.".html_safe
 
     .col-xs-12.col-sm-4
-      .jumbotron
-        h2
+      .info-box-holder.yellow
+        .info-box-holder-header
+          | Activities
+        .info-box-holder-content
+          - if @journal_entries.any?
+            - @journal_entries.each do |je|
+              = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => true
+
+          - else
+            .prompt-content-holder
+              - if @user_campaigns.any? && @own_page
+                p
+                  | Start logging them volunteer hours :)
+
+                br
+                a.call-to-action href="#{new_journal_entry_path}"
+                  | Log hours
+                  .arrow-right
+
+              - elsif @own_page
+                p
+                  | Can't start logging hours until you start a campaign!
+
+                br
+                a.call-to-action href="#{new_campaign_path}"
+                  | Create campaign
+                  .arrow-right
+
+              - else
+                p
+                  = "#{@user.first_name} has not logged any activities yet.".html_safe
+
+    .col-xs-12.col-sm-4
+      .info-box-holder.grey
+        .info-box-holder-header
           | Supporting
+        .info-box-holder-content
+          - if @donations.any?
+            .donated-to-holder ng-controller="DonatedToGridCtrl"
+              - @donations.each do |donation|
+                = render "donations/donated_to_grid", :donation => donation
 
-        - if @donations.any?
-          .donated-to-holder ng-controller="DonatedToGridCtrl"
-            - @donations.each do |donation|
-              = render "donations/donated_to_grid", :donation => donation
+          - elsif @own_page
+            .prompt-content-holder
+              p
+                | Want to support other people doing great work?
 
-        - elsif @own_page
-          .prompt-content-holder
-            p
-              | Want to support other people doing great work?
+              br
+              a.call-to-action href="#{campaigns_path}"
+                | Browse campaigns
+                .arrow-right
 
-            a class="btn btn-success btn-lg" href="#{campaigns_path}" role="button"
-              | Browse campaigns
-
-        - else
-          .prompt-content-holder
-            p
-              = "#{@user.first_name} has not supported any campaigns yet.".html_safe
+          - else
+            .prompt-content-holder
+              p
+                = "#{@user.first_name} has not supported any campaigns yet.".html_safe
