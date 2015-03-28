@@ -1,18 +1,62 @@
 @media(max-width:767px) {
-  .landing-container {
-    height: 300px;
-    background-image: url(https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg);
-    background-size: cover;
+  .landing-call-to-action {
+    height: 70px;
+    width: 300px;
+  }
+
+  .landing-call-to-action-top {
+    bottom: 300px;
+  }
+
+  .landing-call-to-action-bottom {
+    bottom: 200px;
   }
 }
 
 @media(min-width:768px) {
-  .landing-container {
-    background-image: url(https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg);
-    background-size: cover;
-    height: 100%;
+  .landing-call-to-action {
+    height: 100px;
+    width: 400px;
+
+    .pull-left {
+      width: 320px;
+      height: 100%;
+    }
+
+    .pull-right {
+      width: 50px;
+      height: 100%;
+      padding-top: 20px;
+      padding-left: 15px;
+    }
+  }
+
+  .landing-call-to-action-top {
+    bottom: 280px;
+  }
+
+  .landing-call-to-action-bottom {
+    bottom: 150px;
   }
 }
 
-.landing-container {
+.landing-call-to-action {
+  position: absolute;
+  background-color: #006633;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
+  padding: 10px;
+
+  span.highlight {
+    color: #ff9900;
+  }
+}
+
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #ff9900;
 }

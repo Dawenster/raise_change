@@ -15,5 +15,16 @@ css:
     }
   }
 
-.landing-container
-  
+a href="#{how_it_works_path}"
+  .landing-call-to-action.landing-call-to-action-top
+    .pull-left
+      = "Micro <span class='highlight'>donations</span> for each hour you <span class='highlight'>volunteer</span>".html_safe
+    .pull-right
+      .arrow-right
+
+a href="#{new_campaign_path}"
+  .landing-call-to-action.landing-call-to-action-bottom
+    .pull-left
+      = "Start a <span class='highlight'>campaign</span> now".html_safe
+    .pull-right
+      .arrow-right
