@@ -19,6 +19,31 @@
         }
       }
     }
+
+    .open {
+      a, a:focus, a:hover {
+        color: white !important;
+        background-color: #006633 !important;
+      }
+
+      .dropdown-menu {
+        li {
+          a {
+            color: #006633 !important;
+            background-color: white !important;
+
+            &:hover {
+              background-color: #f5f5f5 !important;
+            }
+
+          }
+          
+          a.highlighted-dropdown {
+            background-color: #f5f5f5 !important;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -51,11 +76,6 @@
 
 .navbar-toggle {
   z-index: 10;
-}
-
-.highlighted-dropdown {
-  color: #262626;
-  background-color: #f5f5f5;
 }
 
 .navbar-action-button {
