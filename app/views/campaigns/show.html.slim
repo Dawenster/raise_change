@@ -11,7 +11,7 @@
         .col-xs-12.col-sm-9
           = render "campaign_details", :campaign => @campaign, :user => @user
 
-          = image_tag @campaign.image.url(:display), :width => "100%" if @campaign.image
+          = image_tag @campaign.image.url(:display), :width => "100%" if @campaign.image.exists?
 
           = render "sub_nav_holder", :campaign => @campaign, :user => @user
 
