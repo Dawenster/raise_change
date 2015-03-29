@@ -2,14 +2,27 @@
   .landing-call-to-action {
     height: 70px;
     width: 300px;
+    font-size: 16px;
+    padding: 10px 30px 10px 10px;
+
+    .arrow-right {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 0; 
+      height: 0; 
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid #ff9900;
+    }
   }
 
   .landing-call-to-action-top {
-    bottom: 300px;
+    bottom: 250px;
   }
 
   .landing-call-to-action-bottom {
-    bottom: 200px;
+    bottom: 160px;
   }
 }
 
@@ -17,6 +30,19 @@
   .landing-call-to-action {
     height: 100px;
     width: 400px;
+    font-size: 20px;
+    padding: 20px 50px 20px 20px;
+
+    .arrow-right {
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      width: 0; 
+      height: 0; 
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 20px solid #ff9900;
+    }
   }
 
   .landing-call-to-action-top {
@@ -31,23 +57,10 @@
 .landing-call-to-action {
   position: absolute;
   background-color: #006633;
-  font-size: 20px;
   color: white;
   text-transform: uppercase;
-  padding: 20px 50px 20px 20px;
 
   span.highlight {
     color: #ff9900;
-  }
-  
-  .arrow-right {
-    position: absolute;
-    top: 30px;
-    right: 20px;
-    width: 0; 
-    height: 0; 
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid #ff9900;
   }
 }
