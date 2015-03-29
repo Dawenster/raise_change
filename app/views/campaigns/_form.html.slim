@@ -16,7 +16,7 @@
       .organization-website-form-field ng-show="websiteField"
         = org.input :website, :required => false, :label => "Organization website"
 
-      .open-website-form-link ng-click="websiteLinkToggle()" data-page-type="#{@organization.id && @organization.website.blank? ? 'noSite' : 'hasSite'}"
+      .open-website-form-link ng-click="websiteLinkToggle()" data-page-type="#{@organization.id ? @organization.has_site? : 'noSite'}"
         i.fa.fa-plus-circle ng-show="!websiteField"
         i.fa.fa-minus-circle ng-show="websiteField"
         | {{websiteFieldText}}
@@ -26,7 +26,7 @@
       = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       = campaign.input :donation_period, :as => :hidden, :input_html => { :value => donation_period }
 
-      .organization-validation-form-section ng-show="validationSection" data-page-type="#{@organization.id && @organization.contacts.first.id.nil? ? 'noContact' : 'hasContact'}"
+      .organization-validation-form-section ng-show="validationSection" data-page-type="#{@organization.id ? @organization.has_contact? : 'noContact'}"
         h4
           | Who can validate your participation?
         div

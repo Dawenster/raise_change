@@ -19,4 +19,12 @@ class Organization < ActiveRecord::Base
   rescue URI::InvalidURIError
     errors.add(:website, "must be blank or a valid url (with the http)")
   end
+
+  def has_site?
+    self.id && self.website.blank? ? 'noSite' : 'hasSite'
+  end
+
+  def has_contact?
+    self.id && self.contacts.first.id.nil? ? 'noContact' : 'hasContact'
+  end
 end
