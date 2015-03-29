@@ -1,30 +1,36 @@
 .div ng-controller="CampaignFormCtrl"
   = simple_nested_form_for @organization, defaults: { input_html: { class: 'form-control' }} do |org|
     = org.simple_fields_for :campaigns do |campaign|
-      = campaign.input :title, :placeholder => "E.g. Save the puppies!"
+      h4
+        | General
+      br
 
-      = image_tag @campaign.image.url(:display), :width => "100%" if @organization.id && @campaign.image
-      = campaign.input :image, label: "Awesome picture for your campaign", :required => false, input_html: { style: "border: none; box-shadow: none; margin: 10px 0px -20px -15px;" }
+      .general-form-holder
+        = campaign.input :title, :placeholder => "E.g. Save the puppies!"
+
+        = image_tag @campaign.image.url(:display), :width => "100%" if @organization.id && @campaign.image
+        = campaign.input :image, label: "Awesome picture for your campaign", :required => false, input_html: { style: "border: none; box-shadow: none; margin: 10px 0px -20px -15px;" }
       
       br
       h4
         | Which organization are you supporting?
       br
 
-      = org.input :name, :label => "Name of organization", :required => true
-      
-      .organization-website-form-field ng-show="websiteField"
-        = org.input :website, :required => false, :label => "Organization website"
+      .general-form-holder
+        = org.input :name, :label => "Name of organization", :required => true
+        
+        .organization-website-form-field ng-show="websiteField"
+          = org.input :website, :required => false, :label => "Organization website"
 
-      .open-website-form-link ng-click="websiteLinkToggle()" data-page-type="#{@organization.id ? @organization.has_site? : 'noSite'}"
-        i.fa.fa-plus-circle ng-show="!websiteField"
-        i.fa.fa-minus-circle ng-show="websiteField"
-        | {{websiteFieldText}}
+        .open-website-form-link ng-click="websiteLinkToggle()" data-page-type="#{@organization.id ? @organization.has_site? : 'noSite'}"
+          i.fa.fa-plus-circle ng-show="!websiteField"
+          i.fa.fa-minus-circle ng-show="websiteField"
+          | {{websiteFieldText}}
 
-      br
-      = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
-      = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
-      = campaign.input :donation_period, :as => :hidden, :input_html => { :value => donation_period }
+        br
+        = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
+        = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+        = campaign.input :donation_period, :as => :hidden, :input_html => { :value => donation_period }
 
       .organization-validation-form-section ng-show="validationSection" data-page-type="#{@organization.id ? @organization.has_contact? : 'noContact'}"
         h4
@@ -35,9 +41,10 @@
               | This information is not public, and will only be used by Raise Change for validation purposes
         br
 
-        = org.simple_fields_for :contacts do |contact|
-          = contact.input :name
-          = contact.input :email
+        .general-form-holder
+          = org.simple_fields_for :contacts do |contact|
+            = contact.input :name
+            = contact.input :email
 
       .open-validation-form-section-link ng-click="validationSectionToggle()"
         i.fa.fa-plus-circle ng-show="!validationSection"
@@ -46,7 +53,7 @@
 
     br
     - button_text = @organization.id ? "Update campaign" : "Create campaign"
-    = org.button :submit, button_text, :class => "btn btn-success"
+    = org.button :submit, button_text, :class => "submit-button"
 
     - if @organization.id
       div style="margin-top: 10px;"

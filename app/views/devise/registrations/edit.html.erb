@@ -7,7 +7,7 @@
         <%= render "edit_avatar", :f => f %>
       </div>
 
-      <div class="devise-form-holder">
+      <div class="general-form-holder">
         <%= render "name_fields", :f => f %>
 
         <div class="form-group">
@@ -56,7 +56,7 @@
     </div>
 
     <div ng-show="showCreditCard">
-      <div class="devise-form-holder">
+      <div class="general-form-holder">
         <% if has_credit_card? %>
           <br>
           <%= render "users/existing_credit_cards", :cards => current_user.credit_cards, :show_card_description => false %>

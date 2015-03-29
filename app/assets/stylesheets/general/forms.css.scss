@@ -1,0 +1,19 @@
+.general-form-holder {
+  padding-left: 30px;
+  border-left: 2px solid #333333;
+}
+
+.submit-button {
+  padding: 10px;
+  color: white;
+  background-color: #333333;
+  font-size: 16px;
+  position: relative;
+  border: none;
+  border-radius: 0px !important;
+
+  &:hover {
+    color: white !important;
+    background-color: #333333 !important;
+  }
+}

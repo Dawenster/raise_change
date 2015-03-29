@@ -17,12 +17,18 @@ class CampaignsController < ApplicationController
     @organization = Organization.new
     @organization.campaigns.build
     @organization.contacts.build
+    @title = "Create <span class='highlight'>campaign</span>"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @center = true
   end
 
   def edit
     @campaign = Campaign.find(params[:id])
     @organization = @campaign.organization
     @organization.contacts.build unless @organization.contacts.any?
+    @title = "Edit <span class='highlight'>campaign</span>"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @center = true
   end
 
   def destroy
