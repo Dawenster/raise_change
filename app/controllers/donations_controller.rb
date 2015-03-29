@@ -5,6 +5,9 @@ class DonationsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @donation = Donation.new
     @cards = has_credit_card? ? current_user.credit_cards : []
+    @title = "Donate to <span class='highlight'>#{@campaign.title}</span>"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @center = true
   end
 
   def create

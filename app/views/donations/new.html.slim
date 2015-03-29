@@ -1,46 +1,42 @@
 .row.donations-controller ng-controller="DonationCtrl"
-  .col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
-    h4.page-super-title
-      | Donate to:
-    h2.page-title
-      = @campaign.title
-
-    .row
-      .col-xs-4.col-xs-offset-4
-        = image_tag @campaign.image.url(:thumb), :width => "100%"
+  .col-xs-12.col-sm-6.col-sm-offset-3
+    = image_tag @campaign.image.url(:thumb), :width => "100%"
 
     = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
-      = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
-      = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
-      .has-card-details data-has-card="#{@cards.any?}"
-      .row
-        .col-xs-12.col-sm-6
-          = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
-        .col-xs-12.col-sm-6
-          .donation-field-description
-            = "Amount to be donated per hour volunteered by #{@campaign.user.full_name}, donated #{@campaign.donation_period}"
-            
-      .row
-        .col-xs-12.col-sm-6
-          = donation.input :max
-        .col-xs-12.col-sm-6
-          .donation-field-description
-            = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
+      .general-form-holder
+        = donation.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+        = donation.input :campaign_id, :as => :hidden, :input_html => { :value => @campaign.id }
+        .has-card-details data-has-card="#{@cards.any?}"
+        .row
+          .col-xs-12.col-sm-6
+            = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
+          .col-xs-12.col-sm-6
+            .donation-field-description
+              = "Amount to be donated per hour volunteered by #{@campaign.user.full_name}, donated #{@campaign.donation_period}"
+              
+        .row
+          .col-xs-12.col-sm-6
+            = donation.input :max
+          .col-xs-12.col-sm-6
+            .donation-field-description
+              = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
 
-      .row
-        .col-xs-12.col-sm-6
-          = donation.input :message, :label => "Message to #{@campaign.user.first_name} (optional)"
-        .col-xs-12.col-sm-6
-          .donation-field-description
-            = "Message will show up on the campaign page for the public to see."
+        .row
+          .col-xs-12.col-sm-6
+            = donation.input :message, :label => "Message to #{@campaign.user.first_name} (optional)"
+          .col-xs-12.col-sm-6
+            .donation-field-description
+              = "Message will show up on the campaign page for the public to see."
 
-      - if has_credit_card?
-        = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
+        - if has_credit_card?
+          = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
 
-      - else
-        = render "users/credit_card_form", :show_card_description => true
+        - else
+          = render "users/credit_card_form", :show_card_description => true
     
-      .btn.btn-success.make-donation-button ng-click="makeDonation()"
+      br
+        
+      .btn.btn-success.submit-button.make-donation-button ng-click="makeDonation()"
         | Make donation
 
       .row
