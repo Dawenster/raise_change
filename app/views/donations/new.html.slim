@@ -1,6 +1,6 @@
 .row.donations-controller ng-controller="DonationCtrl"
   .col-xs-12.col-sm-6.col-sm-offset-3
-    = image_tag @campaign.image.url(:thumb), :width => "100%"
+    = image_tag @campaign.image.url(:thumb), :width => "100%" if @campaign.image.exists?
 
     = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
       .general-form-holder

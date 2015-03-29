@@ -8,7 +8,7 @@
       .general-form-holder
         = campaign.input :title, :placeholder => "E.g. Save the puppies!"
 
-        = image_tag @campaign.image.url(:display), :width => "100%" if @organization.id && @campaign.image
+        = image_tag @campaign.image.url(:display), :width => "100%" if @organization.id && @campaign.image.exists?
         = campaign.input :image, label: "Awesome picture for your campaign", :required => false, input_html: { style: "border: none; box-shadow: none; margin: 10px 0px -20px -15px;" }
       
       br

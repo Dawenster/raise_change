@@ -8,6 +8,6 @@
         = render "campaigns/edit_campaign_text", :campaign => campaign
     .col-xs-12
       .grid-section
-        = link_to image_tag(campaign.image.url(:thumb), :width => "100%"), campaign_path(campaign)
+        = link_to image_tag(campaign.image.url(:thumb), :width => "100%"), campaign_path(campaign) if campaign.image.exists?
       .grid-section.support-detail
         = "#{campaign.num_sponsors} #{'person'.pluralize(campaign.num_sponsors)} supporting #{organization.name}".html_safe
