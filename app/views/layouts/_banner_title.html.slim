@@ -9,4 +9,14 @@
       - else
         .col-xs-12
           .title
-            = @title.html_safe
+            .hidden-xs
+              .pull-left.profile-picture
+                = profile_picture(@user) if @user_profile_image
+              .pull-left
+                = @title.html_safe
+
+            .visible-xs-block
+              div
+                = @title.html_safe
+              .profile-picture
+                = profile_picture(@user) if @user_profile_image

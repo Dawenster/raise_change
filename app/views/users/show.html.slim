@@ -1,7 +1,7 @@
 .user-dashboard
-  .row
-    .col-xs-6.col-xs-offset-3.col-sm-2.col-sm-offset-5
-      = render "users/big_user_picture_and_name", :user => @user
+  / .row
+  /   .col-xs-6.col-xs-offset-3.col-sm-2.col-sm-offset-5
+  /     = render "users/big_user_picture_and_name", :user => @user
   .row
     .col-xs-12.col-sm-4
       .info-box-holder.green
@@ -26,6 +26,8 @@
             .prompt-content-holder
               p
                 = "#{@user.first_name} has not created any campaigns yet.".html_safe
+
+      br
 
     .col-xs-12.col-sm-4
       .info-box-holder.yellow
@@ -59,6 +61,8 @@
               - else
                 p
                   = "#{@user.first_name} has not logged any activities yet.".html_safe
+
+      br
 
     .col-xs-12.col-sm-4
       .info-box-holder.grey
