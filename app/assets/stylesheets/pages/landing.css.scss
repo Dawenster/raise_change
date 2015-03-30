@@ -3,7 +3,7 @@
     height: 70px;
     width: 300px;
     font-size: 16px;
-    padding: 10px 30px 10px 10px;
+    padding: 10px 35px 10px 10px;
 
     .arrow-right {
       position: absolute;
@@ -18,10 +18,12 @@
   }
 
   .landing-call-to-action-top {
+    padding-top: 15px;
     bottom: 250px;
   }
 
   .landing-call-to-action-bottom {
+    padding-top: 25px;
     bottom: 160px;
   }
 }
@@ -46,10 +48,12 @@
   }
 
   .landing-call-to-action-top {
+    padding-top: 23px;
     bottom: 280px;
   }
 
   .landing-call-to-action-bottom {
+    padding-top: 35px;
     bottom: 150px;
   }
 }
@@ -59,6 +63,7 @@
   background-color: #006633;
   color: white;
   text-transform: uppercase;
+  font-family: 'Qotho-Dark';
 
   span.highlight {
     color: #ff9900;
