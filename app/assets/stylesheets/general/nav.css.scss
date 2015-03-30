@@ -4,17 +4,19 @@
 }
 
 .navbar-default {
-  padding: 5px 0px 3px 0px;
   background-color: #006633;
   border: none;
   z-index: 5;
 
   .navbar-nav {
     li {
+      margin-top: 30px;
+
       a {
         color: white;
         text-transform: uppercase;
         font-family: 'Qotho-Dark';
+        font-size: 18px;
 
         &:hover {
           color: #ff9900;
@@ -72,13 +74,14 @@
 }
 
 .navbar-avatar {
-  margin-top: 5px;
+  margin-top: 35px !important;
   margin-left: 10px;
   cursor: pointer;
 }
 
 .navbar-toggle {
   z-index: 10;
+  margin-top: 20px;
 }
 
 .navbar-action-button {
