@@ -68,7 +68,7 @@
       
     br
     - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
-    .btn.btn-success.submit-journal-entry ng-click="submitForm()"
+    .btn.btn-success.submit-button.submit-journal-entry ng-click="submitForm()"
       = button_text.html_safe
 
     - if @journal_entry.id
