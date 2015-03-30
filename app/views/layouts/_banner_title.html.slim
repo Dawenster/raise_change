@@ -12,11 +12,11 @@
             .hidden-xs
               .pull-left.profile-picture
                 = profile_picture(@user) if @user_profile_image
-              .pull-left
+              .pull-left.title-text
                 = @title.html_safe
 
             .visible-xs-block
-              div
+              div.title-text
                 = @title.html_safe
               .profile-picture
                 = profile_picture(@user) if @user_profile_image
