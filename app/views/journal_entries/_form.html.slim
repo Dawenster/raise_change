@@ -1,70 +1,71 @@
 - has_media_file = !!(@journal_entry.media_files.first && @journal_entry.media_files.first.id)
 .journal-entry-form ng-controller="JournalEntryFormCtrl" data-entry-type="#{@journal_entry.id ? 'edit' : 'create'}" data-has-media="#{has_media_file}" data-has-description="#{!@journal_entry.description.blank?}" data-hours="#{@journal_entry.hours}"
   = simple_nested_form_for @journal_entry, defaults: { input_html: { class: 'form-control' }} do |je|
-    = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first, :label => "* Select campaign"
+    .general-form-holder
+      = je.input :campaign_id, :collection => @campaigns, :selected => @campaigns.first, :label => "* Select campaign"
 
-    .journal-entry-date-selector data-existing-dates="#{@journal_entry.dates}"
-      label
-        | * When did you volunteer?
-      div
-
-        .btn.btn-sm.btn-primary ng-click="open($event)"
-          i.fa.fa-calendar
-          | Select {{dt | date : longDate}}
-        span.or-word
-          = "or "
-        span
-          a.enter-free-text ng-click="enterFreeText()"
-            | enter free text
-        input.custom-date-picker-hidden-input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
-      input.form-control.free-text-field placeholder="E.g. Last two weeks of #{last_month_in_words}" ng-show="freeTextDates"
-      .error-text ng-show="dateError"
-        | please enter a date
-
-    .form-inline.custom-hours-holder
-      .form-group
-        label for="customHours"
-          | * Hours
+      .journal-entry-date-selector data-existing-dates="#{@journal_entry.dates}"
+        label
+          | * When did you volunteer?
         div
-          .input-group
-            .input-group-addon ng-click="subtractHour()"
-              i.fa.fa-minus
-            input.custom-hours-input class="form-control" id="customHours" ng-model="hours" type="tel" name="journal_entry[hours]"
-            .input-group-addon ng-click="addHour()"
-              i.fa.fa-plus
-        .error-text ng-show="hoursError"
-          | please enter a whole number
 
-    br
-    label
-      | Optional
-    br
+          .btn.btn-sm.btn-primary ng-click="open($event)"
+            i.fa.fa-calendar
+            | Select {{dt | date : longDate}}
+          span.or-word
+            = "or "
+          span
+            a.enter-free-text ng-click="enterFreeText()"
+              | enter free text
+          input.custom-date-picker-hidden-input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+        input.form-control.free-text-field placeholder="E.g. Last two weeks of #{last_month_in_words}" ng-show="freeTextDates"
+        .error-text ng-show="dateError"
+          | please enter a date
 
-    div
-      .btn.btn-default.btn-sm ng-click="toggleDescription()"
-        | {{descriptionButtonText}}
-
-      .btn.btn-default.btn-sm.add-pictures-button ng-click="togglePictures()" class="#{'hide' if has_media_file}"
-        | {{pictureButtonText}}
-    br
-
-    div ng-show="showDescription"
-      = je.input :description, :placeholder => "Describe how your volunteering went."
-
-    div ng-show="showPictures"
-      .media-files-list
-        = je.simple_fields_for :media_files do |media|
-          = image_tag media.object.image.url(:thumb) if media.object.id
+      .form-inline.custom-hours-holder
+        .form-group
+          label for="customHours"
+            | * Hours
           div
-            label
-              = "Image "
-            span
-              = media.link_to_remove "Remove", :class => "link_to_remove"
-          = media.input :image, label: false, input_html: { style: "border: none; box-shadow: none; margin: 0px 0px -10px -15px;" }
-          = media.input :caption
+            .input-group
+              .input-group-addon ng-click="subtractHour()"
+                i.fa.fa-minus
+              input.custom-hours-input class="form-control" id="customHours" ng-model="hours" type="tel" name="journal_entry[hours]"
+              .input-group-addon ng-click="addHour()"
+                i.fa.fa-plus
+          .error-text ng-show="hoursError"
+            | please enter a whole number
 
-        = je.link_to_add "Add another picture", :media_files
-    
+      br
+      label
+        | Optional
+      br
+
+      div
+        .btn.btn-default.btn-sm ng-click="toggleDescription()"
+          | {{descriptionButtonText}}
+
+        .btn.btn-default.btn-sm.add-pictures-button ng-click="togglePictures()" class="#{'hide' if has_media_file}"
+          | {{pictureButtonText}}
+      br
+
+      div ng-show="showDescription"
+        = je.input :description, :placeholder => "Describe how your volunteering went."
+
+      div ng-show="showPictures"
+        .media-files-list
+          = je.simple_fields_for :media_files do |media|
+            = image_tag media.object.image.url(:thumb) if media.object.id
+            div
+              label
+                = "Image "
+              span
+                = media.link_to_remove "Remove", :class => "link_to_remove"
+            = media.input :image, label: false, input_html: { style: "border: none; box-shadow: none; margin: 0px 0px -10px -15px;" }
+            = media.input :caption
+
+          = je.link_to_add "Add another picture", :media_files
+      
     br
     - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
     .btn.btn-success.submit-journal-entry ng-click="submitForm()"
