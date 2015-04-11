@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @title = "￼Raise Change <span class='highlight'>records</span> your story as you help <span class='highlight'>influence</span> and <span class='highlight'>communicate</span> change."
+    @title = "Raise Change <span class='highlight'>records</span> your story as you help <span class='highlight'>influence</span> and <span class='highlight'>communicate</span> change."
     @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer2.jpg"
   end
 end
