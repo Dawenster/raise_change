@@ -1,14 +1,44 @@
 @media(max-width:767px) {
   .landing-call-to-action {
-    height: 70px;
-    width: 300px;
-    font-size: 16px;
-    padding: 10px 35px 10px 10px;
+    height: 50px;
+    width: 260px;
+    font-size: 14px;
+    padding: 10px 45px 10px 10px;
 
     .arrow-right {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 17px;
+      right: 15px;
+      width: 0; 
+      height: 0; 
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #ff9900;
+    }
+  }
+
+  .landing-call-to-action-top {
+    padding-top: 6px;
+    bottom: 210px;
+  }
+
+  .landing-call-to-action-bottom {
+    padding-top: 17px;
+    bottom: 150px;
+  }
+}
+
+@media(min-width:768px) {
+  .landing-call-to-action {
+    height: 70px;
+    width: 380px;
+    font-size: 18px;
+    padding: 10px 50px 10px 10px;
+
+    .arrow-right {
+      position: absolute;
+      top: 22px;
+      right: 15px;
       width: 0; 
       height: 0; 
       border-top: 15px solid transparent;
@@ -18,43 +48,13 @@
   }
 
   .landing-call-to-action-top {
-    padding-top: 15px;
-    bottom: 250px;
+    padding-top: 13px;
+    bottom: 235px;
   }
 
   .landing-call-to-action-bottom {
-    padding-top: 25px;
-    bottom: 160px;
-  }
-}
-
-@media(min-width:768px) {
-  .landing-call-to-action {
-    height: 100px;
-    width: 400px;
-    font-size: 20px;
-    padding: 20px 50px 20px 20px;
-
-    .arrow-right {
-      position: absolute;
-      top: 30px;
-      right: 20px;
-      width: 0; 
-      height: 0; 
-      border-top: 20px solid transparent;
-      border-bottom: 20px solid transparent;
-      border-left: 20px solid #ff9900;
-    }
-  }
-
-  .landing-call-to-action-top {
     padding-top: 23px;
-    bottom: 280px;
-  }
-
-  .landing-call-to-action-bottom {
-    padding-top: 35px;
-    bottom: 150px;
+    bottom: 140px;
   }
 }
 
@@ -64,6 +64,7 @@
   color: white;
   text-transform: uppercase;
   font-family: 'Qotho-Dark';
+  text-align: right;
 
   span.highlight {
     color: #ff9900;
