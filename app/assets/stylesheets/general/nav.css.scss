@@ -8,6 +8,12 @@
   border: none;
   z-index: 5;
 
+  a.brand-logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
   .navbar-nav {
     li {
       margin-top: 30px;
@@ -55,6 +61,18 @@
   }
 }
 
+@media(max-width:767px) {
+  .navbar-default {
+    height: 75px;
+  }
+}
+
+@media(min-width:768px) {
+  .navbar-default {
+    height: 105px;
+  }
+}
+
 // START: Mobile menu toggle
 
 .navbar-default .navbar-toggle {
@@ -68,6 +86,10 @@
 
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #ff9900;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  background-color: #006633;
 }
 
 // END: Mobile menu toggle
