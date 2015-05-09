@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   def amounts_to_donate
-    return ["$0.25", "$0.50", "$1.00"]
+    # return ["$0.25", "$0.50", "$1.00"]
+    return ["$0.25"]
   end
 
   def donation_period
