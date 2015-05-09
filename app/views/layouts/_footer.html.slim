@@ -1,12 +1,14 @@
+- footer_text = "Follow #RaiseChange"
+
 footer.footer
   .hidden-xs
     .pull-left.follow-raise-change-text
-      | Follow #Raise_Change
+      = footer_text
     .pull-right
       = render "layouts/footer_social_links"
 
   .visible-xs-block
     div
-      | Follow #Raise_Change
+      = footer_text
     .mobile-social-links
       = render "layouts/footer_social_links"
