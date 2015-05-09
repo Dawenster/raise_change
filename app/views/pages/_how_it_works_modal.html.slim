@@ -1,0 +1,16 @@
+#how-it-works-modal.modal.fade tabindex="-1" role="dialog"
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true"
+            | &times;
+        h2.modal-title
+          | How it works
+
+      .modal-body
+        = render "pages/how_it_works"
+
+      .modal-footer
+        button.btn-lg.btn-primary type="button" data-dismiss="modal"
+          | Got it!
