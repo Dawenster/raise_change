@@ -10,6 +10,30 @@
     text-align: center;
   }
 
+  .action-buttons, .xs-campaign-stats-holder {
+    margin-top: 20px;
+    text-align: center;
+
+    .button {
+      padding: 10px;
+      font-size: 16px;
+      font-family: 'Qotho-Dark';
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .support-button {
+      color: #333333;
+      background-color: #ff9900;
+
+      &:hover {
+        background-color: rgba(255,153,0,0.7);
+      }
+    }
+  }
+
   .campaign-show-details-holder {
     .campaign-how-it-works {
       font-style: italic;
@@ -35,8 +59,13 @@
   }
 
   .xs-campaign-stats-holder {
+    text-align: left; 
     margin-top: 20px;
-    height: 60px;
+
+    .xs-stats {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
   }
 
   .campaign-show-statistics {

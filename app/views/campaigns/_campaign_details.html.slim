@@ -18,13 +18,14 @@
           = render "layouts/share_this_buttons"
 
     .xs-campaign-stats-holder
-      span.pull-left
-        = link_to "Support", new_donation_path(campaign), :class => "btn btn-info"
-      span.pull-left.xs-campaign-stats
+      = link_to "Support", new_donation_path(campaign), :class => "button support-button"
+      .xs-stats
         div
           = "<strong>#{number_to_currency(campaign.donations_per_hour)}</strong> raised per hour".html_safe
         div
-          = "<strong>#{campaign.num_sponsors}</strong> supporters".html_safe
+          = "<strong>#{number_with_delimiter(campaign.num_sponsors, :delimiter => ",")}</strong> #{'supporter'.pluralize(campaign.num_sponsors)}".html_safe
+        div
+          = "<strong>#{number_with_delimiter(campaign.num_hours, :delimiter => ",")}</strong> #{'hour'.pluralize(campaign.num_hours)} volunteered".html_safe
 
 .campaign-show-statistics.bg-warning.hidden-xs
   .top-title-row
@@ -35,6 +36,13 @@
 
   .bottom-stats-row
     .row
+      .col-xs-3
+        .campaign-show-detailed-stats
+          h1
+            = number_with_delimiter(campaign.num_sponsors, :delimiter => ",")
+          p
+            = "supporter".pluralize(campaign.num_sponsors)
+
       .col-xs-4
         .campaign-show-detailed-stats
           h1
@@ -45,10 +53,6 @@
       .col-xs-4
         .campaign-show-detailed-stats
           h1
-            = number_with_delimiter(campaign.num_sponsors, :delimiter => ",")
+            = number_with_delimiter(campaign.num_hours, :delimiter => ",")
           p
-            = "supporter".pluralize(campaign.num_sponsors)
-
-      .col-xs-4
-        .campaign-show-sponsor-button-holder
-          = link_to "Support", new_donation_path(campaign), :class => "btn btn-default btn-lg"
+            = "#{'hour'.pluralize(campaign.num_hours)} volunteered"

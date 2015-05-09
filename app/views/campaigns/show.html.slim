@@ -11,6 +11,9 @@
 
           = render "layouts/share_this_buttons"
 
+          .action-buttons
+            = link_to "Support", new_donation_path(@campaign), :class => "button support-button"
+
         .col-xs-12.col-sm-9
           = render "campaign_details", :campaign => @campaign, :user => @user
 

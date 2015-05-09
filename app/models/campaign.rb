@@ -35,4 +35,8 @@ class Campaign < ActiveRecord::Base
   def num_sponsors
     self.donations.select(:user_id).uniq.count
   end
+
+  def num_hours
+    self.journal_entries.sum(:hours)
+  end
 end
