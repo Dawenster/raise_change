@@ -15,7 +15,7 @@
       small
         = "By #{link_to user.full_name, user_path(user)}".html_safe
         .mobile-share-buttons
-          = render "layouts/share_this_buttons"
+          = render "layouts/share_this_buttons", :campaign => campaign
 
     .xs-campaign-stats-holder
       = link_to "Support", new_donation_path(campaign), :class => "button support-button"

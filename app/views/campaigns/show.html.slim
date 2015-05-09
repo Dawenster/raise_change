@@ -1,4 +1,3 @@
-= render "layouts/share_this_js"
 .row
   .col-xs-12.col-md-8.col-md-offset-2
     .show-campaign-holder
@@ -9,7 +8,7 @@
 
           = render "users/big_user_picture_and_name", :user => @user
 
-          = render "layouts/share_this_buttons"
+          = render "layouts/share_this_buttons", :campaign => @campaign
 
           .action-buttons
             = link_to "Support", new_donation_path(@campaign), :class => "button support-button"

@@ -1,5 +1,15 @@
 @media(min-width:768px) {
   .share-this-buttons {
     text-align: center;
+    font-size: 30px;
+
+    i {
+      color: #006633;
+      margin: 0px 2px;
+
+      &:hover {
+        color: #333333;
+      }
+    }
   }
 }
