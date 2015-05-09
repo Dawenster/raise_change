@@ -1,39 +1,54 @@
 .campaign-show-details-holder
-  h2
-    = campaign.title
-    = render "campaigns/edit_campaign_text", :campaign => campaign
   h4
-    small
-      .visible-xs-block
+    a.campaign-how-it-works href="#" data-toggle="modal" data-target="#how-it-works-modal"
+      | How it works
+      i.fa.fa-question-circle
+
+    .pull-right.hidden-xs
+      = render "campaigns/edit_campaign_text", :campaign => campaign
+
+  .visible-xs-block
+    h2
+      = campaign.title
+      = render "campaigns/edit_campaign_text", :campaign => campaign
+    h4
+      small
         = "By #{link_to user.full_name, user_path(user)}".html_safe
         .mobile-share-buttons
           = render "layouts/share_this_buttons"
 
-  .xs-campaign-stats-holder.visible-xs-block
-    span.pull-left
-      = link_to "Support", new_donation_path(campaign), :class => "btn btn-info"
-    span.pull-left.xs-campaign-stats
-      div
-        = "<strong>#{number_to_currency(campaign.donations_per_hour)}</strong> raised per hour".html_safe
-      div
-        = "<strong>#{campaign.num_sponsors}</strong> supporters".html_safe
+    .xs-campaign-stats-holder
+      span.pull-left
+        = link_to "Support", new_donation_path(campaign), :class => "btn btn-info"
+      span.pull-left.xs-campaign-stats
+        div
+          = "<strong>#{number_to_currency(campaign.donations_per_hour)}</strong> raised per hour".html_safe
+        div
+          = "<strong>#{campaign.num_sponsors}</strong> supporters".html_safe
 
 .campaign-show-statistics.bg-warning.hidden-xs
-  .row
-    .col-xs-4
-      .campaign-show-detailed-stats
-        h1
-          = number_to_currency(campaign.donations_per_hour)
-        p
-          | raised per hour
+  .top-title-row
+    .row
+      .col-xs-12
+        .campaign-title
+          = campaign.title
 
-    .col-xs-4
-      .campaign-show-detailed-stats
-        h1
-          = campaign.num_sponsors
-        p
-          | supporters
+  .bottom-stats-row
+    .row
+      .col-xs-4
+        .campaign-show-detailed-stats
+          h1
+            = number_to_currency(campaign.donations_per_hour)
+          p
+            | raised per hour
 
-    .col-xs-4
-      .campaign-show-sponsor-button-holder
-        = link_to "Support", new_donation_path(campaign), :class => "btn btn-info btn-lg"
+      .col-xs-4
+        .campaign-show-detailed-stats
+          h1
+            = number_with_delimiter(campaign.num_sponsors, :delimiter => ",")
+          p
+            = "supporter".pluralize(campaign.num_sponsors)
+
+      .col-xs-4
+        .campaign-show-sponsor-button-holder
+          = link_to "Support", new_donation_path(campaign), :class => "btn btn-default btn-lg"
