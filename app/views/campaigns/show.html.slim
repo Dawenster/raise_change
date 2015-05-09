@@ -27,7 +27,11 @@
             - else
               = "All proceeds go towards: #{link_to @organization.name, @organization.website, :target => '_blank'}".html_safe
 
-          a href="#{campaigns_path}"
-            i.fa.fa-chevron-circle-left
-            span.back-to-all-campaigns
-              | Back to all campaigns
+          .bottom-buttons
+            = link_to "Support", new_donation_path(@campaign), :class => "button support-button"
+
+          div
+            a href="#{campaigns_path}"
+              i.fa.fa-chevron-circle-left
+              span.back-to-all-campaigns
+                | Back to all campaigns

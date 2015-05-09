@@ -34,3 +34,22 @@ p, div {
     background-color: #ff9900;
   }
 }
+
+.button {
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Qotho-Dark';
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.support-button {
+  color: #333333;
+  background-color: #ff9900;
+
+  &:hover {
+    background-color: rgba(255,153,0,0.7);
+  }
+}
