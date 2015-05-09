@@ -101,20 +101,32 @@
 }
 
 .campaign-show-sub-nav-holder {
+  margin-top: -5px;
+  text-align: left;
+
   .nav-badge {
     margin-left: 5px;
     background-color: #31b0d5;
   }
 
   .nav-justified {
+    border-bottom: 1px solid #006633;
+
     li {
       a {
+        color: #006633;
         border-radius: 0 !important;
       }
     }
 
     li.active {
       font-weight: bold;
+
+      a {
+        color: white;
+        background-color: #006633;
+        border: 1px solid #006633;
+      }
     }
   }
 }

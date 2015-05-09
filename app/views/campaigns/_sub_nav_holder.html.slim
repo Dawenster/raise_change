@@ -4,13 +4,13 @@
       li.active role="presentation"
         a href="#activities" aria-controls="activities" role="tab" data-toggle="tab"
           | Activity
-          span.badge.nav-badge
-            = campaign.journal_entries.count
+          span
+            = " (#{number_with_delimiter(campaign.journal_entries.count, :delimiter => ',')})"
       li role="presentation"
         a href="#supporters" aria-controls="supporters" role="tab" data-toggle="tab"
           | Supporters
-          span.badge.nav-badge
-            = campaign.donations.count
+          span
+            = " (#{number_with_delimiter(campaign.donations.count, :delimiter => ',')})"
       li role="presentation"
         a href="#description" aria-controls="description" role="tab" data-toggle="tab"
           | Description
