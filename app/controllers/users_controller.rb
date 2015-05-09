@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @donations = @user.donations
     @own_page = @user == current_user
     @title = "#{@user.first_name} <span class='highlight'>#{@user.last_name}</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @user_profile_image = true
   end
 

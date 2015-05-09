@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @title = "<span class='highlight'>Sign up</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @center = true
     
     super
@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def edit
     @title = "Account <span class='highlight'>settings</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @center = true
 
     super

@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
 
   def index
     @title = "All <span class='highlight'>campaigns</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @campaigns = Campaign.all
   end
 
@@ -18,7 +18,7 @@ class CampaignsController < ApplicationController
     @organization.campaigns.build
     @organization.contacts.build
     @title = "Create <span class='highlight'>campaign</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @center = true
   end
 
@@ -27,7 +27,7 @@ class CampaignsController < ApplicationController
     @organization = @campaign.organization
     @organization.contacts.build unless @organization.contacts.any?
     @title = "Edit <span class='highlight'>campaign</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @center = true
   end
 

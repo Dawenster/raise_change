@@ -6,7 +6,7 @@ class JournalEntriesController < ApplicationController
     @journal_entry.media_files.build
     @campaigns = current_user.campaigns
     @title = "Create <span class='highlight'>journal entry</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_soccer.jpg"
     @center = true
   end
 
@@ -28,7 +28,7 @@ class JournalEntriesController < ApplicationController
     @journal_entry = JournalEntry.find(params[:id])
     @campaigns = current_user.campaigns
     @title = "Edit <span class='highlight'>journal entry</span>"
-    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/volunteer.jpg"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_soccer.jpg"
     @center = true
   end
 
