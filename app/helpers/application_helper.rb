@@ -36,4 +36,13 @@ module ApplicationHelper
       return dates
     end
   end
+
+  def generate_meta_tags(title, description, image)
+    meta :title => title, :description => description
+    meta [:property => "og:image", :content => image] unless image.blank?
+    meta [:property => "og:title", :content => title]
+    meta [:property => "og:url", :content => request.original_url]
+    meta [:property => "og:description", :content => description]
+    meta [:property => "og:type", :content => "website"]
+  end
 end

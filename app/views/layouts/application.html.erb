@@ -1,7 +1,27 @@
 <!DOCTYPE html>
 <html ng-app="raisechange">
 <head>
-  <title>RaiseChange</title>
+  <% 
+    title = "Raise Change ⋅ Micro donations for each hour you volunteer"
+    description = "Raise Change is a platform that allows you to crowdsource micro donations for each volunteer hour that you do."
+  %>
+
+  <% meta :title => title, :description => description, :keywords => %w(raise change volunteer hour micro donations crowdsource) %>
+
+  <% facebook_app_id = Rails.env.development? ? 952931041384040 : 952917808052030 %>
+
+  <% 
+    meta [:property => "og:url", :content => "https://www.raisechange.com"]
+    meta [:property => "og:title", :content => title]
+    meta [:property => "og:description", :content => description]
+    meta [:property => "og:image", :content => "https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg"]
+    meta [:property => "og:type", :content => "website"]
+    meta [:property => "fb:admins", :content => "81007543"]
+    meta [:property => "fb:app_id", :content => facebook_app_id]
+  %>
+
+  <%= metamagic %>
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
