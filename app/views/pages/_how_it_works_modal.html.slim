@@ -6,11 +6,11 @@
           span aria-hidden="true"
             | &times;
         h2.modal-title
-          | How it works
+          = "How it <span class='highlight'>works</span>".html_safe
 
       .modal-body
         = render "pages/how_it_works"
 
       .modal-footer
-        button.btn-lg.btn-primary type="button" data-dismiss="modal"
+        button.btn-lg.btn-default type="button" data-dismiss="modal"
           | Got it!

@@ -1,5 +1,25 @@
 #how-it-works-modal {
-  .modal-header, .modal-footer {
+  .modal-header {
     text-align: center;
+    background-color: #006633;
+
+    .modal-title {
+      color: white;
+      font-family: 'Qotho-Dark';
+      text-transform: uppercase;
+
+      .highlight {
+        color: #ff9900;
+      }
+    }
+
+    .close {
+      color: white;
+    }
+  }
+
+  .modal-footer {
+    text-align: center;
+    background-color: #006633;
   }
 }
