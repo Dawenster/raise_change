@@ -67,10 +67,10 @@
           = je.link_to_add "Add another picture", :media_files
       
     br
-    - button_text = @journal_entry.id ? "Edit journal entry" : "Create journal entry"
+    - button_text = @journal_entry.id ? "Edit hours log" : "Log hours"
     .btn.btn-success.submit-button.submit-journal-entry ng-click="submitForm()"
       = button_text.html_safe
 
     - if @journal_entry.id
       div style="margin-top: 10px;"
-        = link_to "Delete", { :id => @journal_entry.id, :action => :destroy }, :method => :delete, data: { confirm: "Are you sure?  You're about to delete this journal entry..." }
+        = link_to "Delete", { :id => @journal_entry.id, :action => :destroy }, :method => :delete, data: { confirm: "Are you sure?  You're about to delete this hours log..." }
