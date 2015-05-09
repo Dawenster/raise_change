@@ -77,10 +77,6 @@
   }
 
   .list-image {
-    img {
-      border-radius: 10px;
-    }
-
     @media(max-width:767px) {
       img {
         margin-bottom: 10px;
