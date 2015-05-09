@@ -7,7 +7,7 @@ class DonationsController < ApplicationController
     @cards = has_credit_card? ? current_user.credit_cards : []
     @title = "Donate to <span class='highlight'>#{@campaign.title}</span>"
     @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_food.jpg"
-    @center = true
+    @center = @campaign.title.length > 56 ? false : true
   end
 
   def create
