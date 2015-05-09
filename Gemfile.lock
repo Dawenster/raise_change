@@ -117,6 +117,8 @@ GEM
       skinny (>= 0.1.2)
       sqlite3-ruby
       thin
+    metamagic (2.0.6)
+      rails (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
@@ -247,6 +249,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mailcatcher
+  metamagic
   nested_form
   omniauth-facebook
   paperclip!
