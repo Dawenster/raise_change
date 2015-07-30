@@ -12,7 +12,7 @@
             .hidden-xs
               .pull-left.profile-picture
                 = profile_picture(@user) if @user_profile_image
-              - if !@own_page
+              - if !@own_page && @user_profile_image
                 .pull-left.title-text.follow-section-title
                   = @title.html_safe
                   .clearfix
@@ -26,6 +26,6 @@
                 = @title.html_safe
               .pull-left.profile-picture
                 = profile_picture(@user) if @user_profile_image
-              - if !@own_page
+              - if !@own_page && @user_profile_image
                 .pull-left
                   = render "users/follow_section"
