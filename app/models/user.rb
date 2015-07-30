@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :donations
   has_many :journal_entries
   has_many :organizations, :through => :campaigns
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -82,6 +86,18 @@ class User < ActiveRecord::Base
     last4 = customer.cards.data[0].last4
     customer.cards.retrieve(card_id).delete
     return last4
+  end
+
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   private
