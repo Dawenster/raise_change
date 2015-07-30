@@ -27,4 +27,20 @@ class UsersController < ApplicationController
     flash[:notice] = "Your credit card ending in #{last4} has been deleted."
     redirect_to edit_user_registration_path
   end
+
+  def follow
+    respond_to do |format|
+      other_user = User.find(params[:user_id])
+      current_user.follow(other_user)
+      format.json { render :json => { :status => 200 } }
+    end
+  end
+
+  def unfollow
+    respond_to do |format|
+      other_user = User.find(params[:user_id])
+      current_user.unfollow(other_user)
+      format.json { render :json => { :status => 200 } }
+    end
+  end
 end

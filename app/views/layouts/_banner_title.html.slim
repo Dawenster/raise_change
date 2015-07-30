@@ -12,11 +12,20 @@
             .hidden-xs
               .pull-left.profile-picture
                 = profile_picture(@user) if @user_profile_image
-              .pull-left.title-text
-                = @title.html_safe
+              - if !@own_page
+                .pull-left.title-text.follow-section-title
+                  = @title.html_safe
+                  .clearfix
+                  = render "users/follow_section"
+              - else
+                .pull-left.title-text
+                  = @title.html_safe
 
             .visible-xs-block
               div.title-text
                 = @title.html_safe
-              .profile-picture
+              .pull-left.profile-picture
                 = profile_picture(@user) if @user_profile_image
+              - if !@own_page
+                .pull-left
+                  = render "users/follow_section"

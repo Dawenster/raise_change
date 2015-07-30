@@ -1,0 +1,31 @@
+.follow-section-holder {
+  .fa-question-circle {
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+}
+
+@media(max-width:767px) {
+  .follow-section-holder {
+    margin-left: 10px;
+    margin-top: 30px;
+  }
+}
+
+.follow-button {
+  &:hover {
+    color: white;
+    background-color: #006633;
+  }
+}
+
+.unfollow-button {
+  background-color: #006633;
+  width: 105px;
+
+  &.hovering {
+    color: white;
+    background-color: red;
+  }
+}

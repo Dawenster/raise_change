@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   post "create-or-update-credit-card" => "users#create_or_update_credit_card", as: :create_or_update_credit_card
   delete "delete-credit-card" => "users#delete_credit_card", as: :delete_credit_card
   resources :users, :only => [:show]
+
+  post "follow/:user_id" => "users#follow", as: :follow
+  delete "follow/:user_id" => "users#unfollow", as: :unfollow
 end

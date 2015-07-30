@@ -49,9 +49,22 @@
     z-index: 3;
     color: white;
     font-family: 'Qotho-Dark';
+    width: 100%;
 
     .title-text {
       font-family: 'Qotho-Dark';
+
+      &.follow-section-title {
+        margin-top: -20px;
+      }
+    }
+
+    .btn {
+      text-transform: none;
+
+      i {
+        margin-right: 5px;
+      }
     }
 
     span.highlight {
