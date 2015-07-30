@@ -3,33 +3,7 @@
   /   .col-xs-6.col-xs-offset-3.col-sm-2.col-sm-offset-5
   /     = render "users/big_user_picture_and_name", :user => @user
   .row
-    .col-xs-12.col-sm-4
-      .info-box-holder.green
-        .info-box-holder-header
-          | Campaigns
-        .info-box-holder-content
-          - if @user_campaigns.any?
-              - @user_campaigns.each do |campaign|
-                = render "campaigns/grid", :campaign => campaign
-
-          - elsif @own_page
-            .prompt-content-holder
-              p
-                | Your page is looking a bit empty - let's start a campaign!
-
-              br
-              a.call-to-action href="#{new_campaign_path}"
-                | Create campaign
-                .arrow-right
-
-          - else
-            .prompt-content-holder
-              p
-                = "#{@user.first_name} has not created any campaigns yet.".html_safe
-
-      br
-
-    .col-xs-12.col-sm-4
+    .col-xs-12.col-sm-8
       .info-box-holder.yellow
         .info-box-holder-header
           | Activities
@@ -65,6 +39,31 @@
       br
 
     .col-xs-12.col-sm-4
+      .info-box-holder.green
+        .info-box-holder-header
+          | Campaigns Created
+        .info-box-holder-content
+          - if @user_campaigns.any?
+              - @user_campaigns.each do |campaign|
+                = render "campaigns/grid", :campaign => campaign
+
+          - elsif @own_page
+            .prompt-content-holder
+              p
+                | Your page is looking a bit empty - let's start a campaign!
+
+              br
+              a.call-to-action href="#{new_campaign_path}"
+                | Create campaign
+                .arrow-right
+
+          - else
+            .prompt-content-holder
+              p
+                = "#{@user.first_name} has not created any campaigns yet.".html_safe
+
+      br
+
       .info-box-holder.grey
         .info-box-holder-header
           | Supporting
