@@ -9,13 +9,16 @@
             | Raise Change is a platform that allows you to crowdsource micro donations for each volunteer hour that you do.
           p
             = "First, you will need to #{link_to 'create a campaign', new_campaign_path} that showcases the volunteer work that you're doing, and which organization the micro donations will go towards. Then, you simply share the page with your friends!".html_safe
-          p
-            | Raise Change does not collect any fees until $100 has been raised, per campaign. Raise Change takes a 10% processing fee on all subsequent donations.
+          / p
+          /   | Raise Change does not collect any fees until $100 has been raised, per campaign. Raise Change takes a 10% processing fee on all subsequent donations.
 
-          br
-          a.call-to-action href="#{new_campaign_path}"
-            | Start a campaign
-            .arrow-right
+          p
+            | Raise Change takes a 10% processing fee on all donations.
+
+          / br
+          / a.call-to-action href="#{new_campaign_path}"
+          /   | Start a campaign
+          /   .arrow-right
 
       br
 
@@ -28,14 +31,14 @@
             | If you see a campaign that you would love to support, simply click on the "Support" button. 
 
           p
-            = "As our name suggests, all donations are in tiny increments of one dollar or less, for each hour that the campaign creator volunteers. Donations are calculated and made #{donation_period}".html_safe
+            = "As our name suggests, all donations are in tiny increments of one dollar or less, for each hour that the campaign creator volunteers. Donations are calculated and made #{donation_period}.".html_safe
           p
             | You can cancel your donation at any time before the payment date and not be liable for any donations.
 
-          br
-          a.call-to-action href="#{campaigns_path}"
-            | Browse campaigns
-            .arrow-right
+          / br
+          / a.call-to-action href="#{campaigns_path}"
+          /   | Browse campaigns
+          /   .arrow-right
 
       br
 
@@ -44,16 +47,16 @@
         .info-box-holder-header
           | Recording impact
         .info-box-holder-content
-          p
-            | Whether you're creating a campaign or supporting someone else's campaign... or both, you are making a positive impact.
+          / p
+          /   | Whether you're creating a campaign or supporting someone else's campaign... or both, you are making a positive impact.
           p
             | Raise Change helps to record your impact and your journey towards discovering the beauty that is helping others.
           p
-            | On RaiseChange.com, you can upload pictures of your volunteering, share your experiences with others, and keep a journal of all your volunteering activities.
+            | You can upload pictures of your volunteering, share your experiences with others, and keep a journal of all your volunteering activities.
           p
             | Thank you for supporting volunteerism!
 
-          br
-          a.call-to-action href="#{new_user_registration_path}"
-            | Create an account
-            .arrow-right
+          / br
+          / a.call-to-action href="#{new_user_registration_path}"
+          /   | Create an account
+          /   .arrow-right
