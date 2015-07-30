@@ -17,9 +17,9 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     @organization.assign_attributes(organization_params)
     if @organization.save
-      campaign = @organization.campaigns.last
-      flash[:notice] = "\"#{campaign.title}\" updated successfully."
-      redirect_to campaign_path(campaign)
+      @campaign = @organization.campaigns.last
+      flash[:notice] = "\"#{@campaign.title}\" updated successfully."
+      redirect_to campaign_path(@campaign)
     else
       flash.now[:alert] = @organization.errors.full_messages.join(". ") + "."
       render "campaigns/edit"
