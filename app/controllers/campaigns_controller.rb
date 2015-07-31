@@ -45,15 +45,16 @@ class CampaignsController < ApplicationController
   end
 
   def update
-    @organization = Organization.find(params[:id])
-    @organization.assign_attributes(organization_params)
-    campaign = @organization.campaigns.last
-    if @organization.save
-      flash[:notice] = "\"#{campaign.title}\" updated successfully."
-      redirect_to campaign_path(campaign)
+    @campaign = Campaign.find(params[:id])
+    @campaign.assign_attributes(campaign_params)
+    org = Organization.find_by_slug_or_create(params[:campaign][:organization_name])
+    @campaign.organization_id = org.id
+    if @campaign.save
+      flash[:notice] = "\"#{@campaign.title}\" updated successfully."
+      redirect_to campaign_path(@campaign)
     else
-      flash[:alert] = @organization.errors.full_messages.join(". ") + "."
-      redirect_to edit_campaign_path(campaign)
+      flash.now[:alert] = @campaign.errors.full_messages.join(". ") + "."
+      render "edit"
     end
   end
 

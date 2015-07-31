@@ -4,7 +4,11 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
   // initialWebsiteLinkText();
   // initialValidationSectionText();
 
-  $(".organization-name-autocomplete").on('autocompleteresponse', function(event, ui) {
+  // Add class to autocomplete field
+  
+  $("#campaign_organization_name").addClass("form-control")
+
+  $("#campaign_organization_name").on('autocompleteresponse', function(event, ui) {
     var content;
     if (((content = ui.content) != null ? content[0].id.length : void 0) === 0) {
       $(this).autocomplete('close');
@@ -60,10 +64,6 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
     }
     $(this).attr("disabled", "disabled")
   });
-
-  // Add class to autocomplete field
-  
-  $("#campaign_organization_name").addClass("form-control")
 
   // To so feedback after image file select
 

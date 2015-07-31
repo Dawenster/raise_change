@@ -7,7 +7,8 @@
     .general-form-holder
       = campaign.input :title, :placeholder => "E.g. Let's make sure nobody goes hungry", :label => "Campaign title"
 
-      = image_tag @campaign.image.url(:display), :width => "100%" if @campaign.id && @campaign.image.exists?
+      .campaign-preview-image
+        = image_tag @campaign.image.url(:display), :width => "100%" if @campaign.id && @campaign.image.exists?
       .btn.btn-primary.btn-file
         | Select campaign image
         = campaign.input :image, label: false, :required => false, input_html: { :accept => "image/jpg, image/jpeg, image/png, image/gif", :class => "string required form-control" }
@@ -21,7 +22,7 @@
 
     .general-form-holder
       .autocomplete-field-holder
-        = campaign.input :organization_name, :as => :autocomplete, :url => autocomplete_organization_name_campaigns_path, :class => "string required form-control organization-name-autocomplete", :as => :autocomplete, :append_to => ".autocomplete-field-holder", :placeholder => "E.g. Foodbank", :label => "Name of organization"
+        = campaign.input :organization_name, :as => :autocomplete, :url => autocomplete_organization_name_campaigns_path, :class => "string required form-control organization-name-autocomplete", :append_to => ".autocomplete-field-holder", :placeholder => "E.g. Foodbank", :label => "Name of organization", input_html: { "data-append-to" => ".autocomplete-field-holder" }
 
       br
       = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
