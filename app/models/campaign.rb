@@ -20,9 +20,9 @@ class Campaign < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
+  # def to_param
+  #   "#{id}-#{title.parameterize}"
+  # end
 
   def donations_per_hour_in_cents
     self.donations.sum(:amount)
