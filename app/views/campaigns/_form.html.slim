@@ -1,5 +1,5 @@
 .div ng-controller="CampaignFormCtrl"
-  = simple_form_for @campaign, defaults: { input_html: { class: 'form-control' }} do |campaign|
+  = simple_form_for @campaign, html: { class: 'campaign-form' } do |campaign|
     h4
       | General
     br
