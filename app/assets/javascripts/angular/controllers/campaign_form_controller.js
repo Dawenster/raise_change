@@ -59,8 +59,11 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
       $(".campaign-form").submit()
     }
     $(this).attr("disabled", "disabled")
-    debugger
   });
+
+  // Add class to autocomplete field
+  
+  $("#campaign_organization_name").addClass("form-control")
 
   // To so feedback after image file select
 
