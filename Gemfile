@@ -13,6 +13,7 @@ gem 'omniauth-facebook'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'pg'
 gem 'rails', '4.1.8'
+gem 'rails-jquery-autocomplete'
 gem 'rinku'
 gem 'sass-rails', '~> 4.0.3'
 gem 'simple_form'
