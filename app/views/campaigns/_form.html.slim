@@ -5,10 +5,14 @@
     br
 
     .general-form-holder
-      = campaign.input :title, :placeholder => "E.g. Save the puppies!"
+      = campaign.input :title, :placeholder => "E.g. Save the puppies!", :label => "Campaign title"
 
       = image_tag @campaign.image.url(:display), :width => "100%" if @campaign.id && @campaign.image.exists?
-      = campaign.input :image, label: "Awesome picture for your campaign", :required => false, input_html: { style: "border: none; box-shadow: none; margin: 10px 0px -20px -15px;" }
+      .btn.btn-primary.btn-file
+        | Select campaign image
+        = campaign.input :image, label: false, :required => false, input_html: { style: "border: none; box-shadow: none;", :accept => "image/jpg, image/jpeg, image/png, image/gif" }
+
+      .selected-image-file-name
     
     br
     h4
