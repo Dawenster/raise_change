@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  autocomplete :organization, :name, :full => true
+  
   before_filter :authenticate_user!, :only => [:new, :edit]
 
   def index

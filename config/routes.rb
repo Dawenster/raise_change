@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   get "create-campaign" => "campaigns#new", as: :new_campaign
   get "edit-campaign/:id" => "campaigns#edit", as: :edit_campaign
+  resources :campaigns do
+    get :autocomplete_organization_name, :on => :collection
+  end
   resources :campaigns, :only => [:index, :show, :create, :update, :destroy]
 
   get ":campaign_id/donate" => "donations#new", as: :new_donation

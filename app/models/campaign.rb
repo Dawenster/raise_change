@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-  validates :title, :description, presence: true
+  validates :organization_name, :title, :description, presence: true
 
   belongs_to :user
   belongs_to :organization

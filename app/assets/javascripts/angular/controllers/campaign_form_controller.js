@@ -4,6 +4,13 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
   initialWebsiteLinkText();
   initialValidationSectionText();
 
+  $(".organization-name-autocomplete").on('autocompleteresponse', function(event, ui) {
+    var content;
+    if (((content = ui.content) != null ? content[0].id.length : void 0) === 0) {
+      $(this).autocomplete('close');
+    }
+  });
+
   $scope.websiteLinkToggle = function() {
     $scope.websiteField = !$scope.websiteField;
     if ($scope.websiteField) {

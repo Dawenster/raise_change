@@ -15,6 +15,7 @@
 //= require jquery_nested_form
 //= require twitter/bootstrap
 //= require angular
+//= require autocomplete-rails
 //= require_tree .
 
 // To fix UI carousel conflict with UI bootstrap

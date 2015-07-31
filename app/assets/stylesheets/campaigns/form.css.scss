@@ -10,3 +10,44 @@
     margin-right: 5px;
   }
 }
+
+.autocomplete-field-holder {
+  width: 100%;
+  position: relative;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+ul.ui-autocomplete {
+  border-right: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+
+  li {
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    list-style: none;
+    margin-left: -38px;
+    position: relative;
+  }
+}
+
+.ui-corner-all {
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+  // background-color: #ACF0F2 !important;
+  text-decoration: underline;
+  border: none !important;
+  color: #225378 !important;
+  border-radius: 0 !important;
+  font-weight: normal !important;
+}
