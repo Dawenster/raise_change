@@ -10,7 +10,10 @@ class User < ActiveRecord::Base
   has_many :donations
   has_many :journal_entries
   has_many :organizations, :through => :campaigns
-  has_many :organizations_as_admin, class_name: "OrgAdmin", foreign_key: "user_id", dependent: :destroy
+
+  has_many :org_admins, class_name: "OrgAdmin", foreign_key: "user_id", dependent: :destroy
+  has_many :organizations_as_admin, through: :org_admins, source: :organization
+  
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
+  scope "/admin" do
+    post "add-org-admin" => "admins#add_org_admin", as: :add_org_admin
+  end
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations", :sessions => "sessions" }
 
   root "pages#landing"
