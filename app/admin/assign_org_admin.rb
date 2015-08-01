@@ -15,5 +15,25 @@ ActiveAdmin.register_page "Assign Org Admin" do
 
       input class: "btn btn-default submit-button", name: "commit", type: "submit", value: "Make admin"
     end
+
+    br
+
+    table do
+      thead do
+        tr do
+          th "User"
+          th "Organization"
+        end
+      end
+
+      tbody do
+        OrgAdmin.order("user_id ASC").each do |oa|
+          tr do
+            td oa.user.full_name
+            td oa.organization.name
+          end
+        end
+      end
+    end
   end
 end
