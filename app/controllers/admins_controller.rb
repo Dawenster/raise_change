@@ -4,17 +4,17 @@ class AdminsController < ApplicationController
   before_filter :can_view_charity_admin_page, :only => :index
 
   def add_org_admin
-    user = User.find_by_email(params[:user_email])
+    user = User.find(params[:user_id])
     org = Organization.find_by_slug_or_create(params[:organization_name])
 
     if org.admin_users.include?(user)
-      flash[:notice] = "\"#{user.email}\" is already an admin for \"#{org.name}\""
+      flash[:notice] = "\"#{user.full_name}\" is already an admin for \"#{org.name}\""
     else
       OrgAdmin.create(
         :user_id => user.id,
         :organization_id => org.id
       )
-      flash[:notice] = "\"#{user.email}\" added as admin to \"#{org.name}\""
+      flash[:notice] = "\"#{user.full_name}\" added as admin to \"#{org.name}\""
     end
     redirect_to request.referrer || root_path
   end
