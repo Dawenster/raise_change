@@ -1,4 +1,12 @@
 ActiveAdmin.register_page "Assign Org Admin" do
+  ActiveAdmin.register User do
+    permit_params(
+      :first_name,
+      :last_name,
+      :email
+    )
+  end
+
   content do
     form action: "#{add_org_admin_path}", method: "post" do
       select name: "user_email" do
