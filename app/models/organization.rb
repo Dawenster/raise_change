@@ -9,6 +9,7 @@ class Organization < ActiveRecord::Base
   has_many :users, :through => :campaigns
   has_many :org_admins, class_name: "OrgAdmin", foreign_key: "organization_id", dependent: :destroy
   has_many :admin_users, through: :org_admins, source: :user
+  has_many :journal_entries, :through => :campaigns
 
   accepts_nested_attributes_for :campaigns
   accepts_nested_attributes_for :contacts, :reject_if => proc { |contact| contact['name'].blank? && contact['email'].blank? }
