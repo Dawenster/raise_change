@@ -3,13 +3,13 @@ ActiveAdmin.register_page "Assign Org Admin" do
     form action: "#{add_org_admin_path}", method: "post" do
       select name: "user_email" do
         User.all.each do |user|
-          option "#{user.email}"
+          option "#{user.full_name} (#{user.email})"
         end
       end
 
       select name: "organization_name" do
         Organization.all.each do |org|
-          option "#{org.name}"
+          option org.name
         end
       end
 
