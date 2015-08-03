@@ -81,8 +81,51 @@
         }
       }
       
-      .campaign-show-sponsor-button-holder {
-        margin-top: 25px;
+      .campaign-show-detailed-support-button-holder {
+        margin-top: 35px;
+      }
+
+      .campaign-show-share-holder {
+        margin-top: 35px;
+
+        .share-link {
+          color: #ff9900;
+          cursor: pointer;
+          height: 50px;
+
+          .share-icon {
+            font-size: 24px;
+            margin-left: 10px;
+            margin-right: 5px;
+          }
+
+          &:hover {
+            color: #FAAF4D;
+            text-decoration: none;
+          }
+        }
+
+        .popover {
+          .popover-title {
+            color: #006633;
+          }
+
+          .popover-content {
+            .popover-social-links {
+              color: #006633;
+
+              i {
+                color: #006633;
+                font-size: 24px;
+                margin-right: 5px;
+
+                &:hover {
+                  color: #333333;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

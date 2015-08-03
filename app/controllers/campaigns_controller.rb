@@ -13,6 +13,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @user = @campaign.user
     @organization = @campaign.organization
+    @share_html_as_string = render_to_string(:template => ('layouts/_share_this_buttons.html.slim'), :layout => false, :locals => {:campaign => @campaign} )
   end
 
   def new
