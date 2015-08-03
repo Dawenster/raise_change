@@ -39,4 +39,12 @@ class Campaign < ActiveRecord::Base
   def num_hours
     self.journal_entries.sum(:hours)
   end
+
+  def total_donations_raised_in_cents
+    donations_per_hour_in_cents * num_hours
+  end
+
+  def total_donations_raised_in_dollars
+    total_donations_raised_in_cents.to_f / 100
+  end
 end
