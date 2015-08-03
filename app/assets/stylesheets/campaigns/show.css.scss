@@ -116,6 +116,7 @@
       a {
         color: #006633;
         border-radius: 0 !important;
+        margin-bottom: -1px;
       }
     }
 
@@ -125,7 +126,11 @@
       a {
         color: white;
         background-color: #006633;
-        border: 1px solid #006633;
+        border: none;
+
+        &:hover, &:focus {
+          border: none;
+        }
       }
     }
   }
