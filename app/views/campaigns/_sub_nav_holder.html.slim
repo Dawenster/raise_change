@@ -2,9 +2,6 @@
   div role="tabpanel"
     ul class="nav nav-tabs nav-justified" role="tablist"
       li.active role="presentation"
-        a href="#description" aria-controls="description" role="tab" data-toggle="tab"
-          | Description
-      li role="presentation"
         a href="#activities" aria-controls="activities" role="tab" data-toggle="tab"
           | Activity
           span
@@ -14,12 +11,12 @@
           | Supporters
           span
             = " (#{number_with_delimiter(campaign.donations.count, :delimiter => ',')})"
+      li role="presentation"
+        a href="#description" aria-controls="description" role="tab" data-toggle="tab"
+          | Description
 
     .tab-content
-      .description-holder role="tabpanel" class="tab-pane active" id="description"
-        = Rinku.auto_link(simple_format(campaign.description))
-
-      .journal-entries-holder role="tabpanel" class="tab-pane" id="activities"
+      .journal-entries-holder role="tabpanel" class="tab-pane active" id="activities"
         - if campaign.journal_entries.any?
           - campaign.journal_entries.order('created_at DESC').each do |je|
             = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => false
@@ -32,3 +29,6 @@
             = render "donations/donation_grid", :donation => donation
         - else
           = "This campaign has no supporters yet - #{link_to 'be the first', new_donation_path(campaign)}!".html_safe
+
+      .description-holder role="tabpanel" class="tab-pane" id="description"
+        = Rinku.auto_link(simple_format(campaign.description))

@@ -28,13 +28,6 @@ class ApplicationController < ActionController::Base
     user_signed_in? && current_user.campaigns.any?
   end
 
-  def authenticate_admin_user!
-    unless current_user.try(:admin?)
-      flash[:alert] = "You are not authorized to access this page."
-      redirect_to root_path
-    end
-  end
-
   protected
 
   def configure_devise_permitted_parameters

@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  ActiveAdmin.routes(self)
-  scope "/admin" do
-    post "add-org-admin" => "admins#add_org_admin", as: :add_org_admin
-  end
-
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations", :sessions => "sessions" }
 
   root "pages#landing"
   
   get "how-it-works" => "pages#how_it_works", as: :how_it_works
   get "about" => "pages#about", as: :about
+
+  # resources :organizations, :only => [:create, :update]
 
   get "create-campaign" => "campaigns#new", as: :new_campaign
   get "edit-campaign/:id" => "campaigns#edit", as: :edit_campaign
@@ -29,6 +26,4 @@ Rails.application.routes.draw do
 
   post "follow/:user_id" => "users#follow", as: :follow
   delete "follow/:user_id" => "users#unfollow", as: :unfollow
-
-  get "charity-admin" => "admins#index", as: :charity_admin
 end
