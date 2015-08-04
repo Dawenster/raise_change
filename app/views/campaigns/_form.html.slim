@@ -1,4 +1,4 @@
-.div ng-controller="CampaignFormCtrl"
+.campaign-form-holder ng-controller="CampaignFormCtrl" data-estimated-hours="#{@campaign.estimated_hours}"
   = simple_form_for @campaign, html: { class: 'campaign-form' } do |campaign|
     h4
       | General
@@ -37,11 +37,9 @@
                 .input-group
                   .input-group-addon ng-click="subtractHour()"
                     i.fa.fa-minus
-                  input.custom-hours-input class="form-control" id="customHours" ng-model="hours" type="tel" name="campaigns[estimated_hours]"
+                  input.custom-hours-input class="form-control" id="estimatedHours" ng-model="hours" type="tel" name="campaign[estimated_hours]"
                   .input-group-addon ng-click="addHour()"
                     i.fa.fa-plus
-              .error-text ng-show="hoursError"
-                | please enter a whole number
 
         .col-xs-12.col-sm-8
           div
@@ -49,12 +47,12 @@
               | * Frequency
           div
             .btn-group data-toggle="buttons"
-              label.btn.btn-primary.active
-                input type="radio" name="campaigns[frequency]" id="option1" autocomplete="off" checked="checked" value="weekly"
+              label.btn.btn-primary class="#{'active' if @campaign.frequency == 'weekly' || @campaign.frequency.nil?}"
+                input type="radio" name="campaign[frequency]" id="option1" autocomplete="off" checked="#{'checked' if @campaign.frequency == 'weekly' || @campaign.frequency.nil?}" value="weekly"
                   | Weekly
 
-              label.btn.btn-primary
-                input type="radio" name="campaigns[frequency]" id="option2" autocomplete="off" checked="checked" value="monthly"
+              label.btn.btn-primary class="#{'active' if @campaign.frequency == 'monthly'}"
+                input type="radio" name="campaign[frequency]" id="option2" autocomplete="off" checked="#{'checked' if @campaign.frequency == 'monthly'}" value="monthly"
                   | Monthly
 
       = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }

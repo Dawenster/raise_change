@@ -24,6 +24,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
+    binding.pry
     @campaign = Campaign.new(campaign_params)
     org = Organization.find_by_slug_or_create(params[:campaign][:organization_name])
     @campaign.organization_id = org.id

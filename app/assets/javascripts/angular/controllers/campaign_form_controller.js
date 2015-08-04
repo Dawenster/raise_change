@@ -15,6 +15,9 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
     }
   });
 
+  $scope.hours = parseInt($(".campaign-form-holder").attr("data-estimated-hours")) || 5;
+  $scope.hours = parseInt($(".campaign-form-holder").attr("data-estimated-hours")) || 5;
+
   // $scope.websiteLinkToggle = function() {
   //   $scope.websiteField = !$scope.websiteField;
   //   if ($scope.websiteField) {
@@ -64,6 +67,16 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
     }
     $(this).attr("disabled", "disabled")
   });
+
+  $scope.addHour = function() {
+    $scope.hours = parseInt($scope.hours) + 1;
+  }
+
+  $scope.subtractHour = function() {
+    if (parseInt($scope.hours) > 1) {
+      $scope.hours = parseInt($scope.hours) - 1;
+    }
+  }
 
   // To so feedback after image file select
 
