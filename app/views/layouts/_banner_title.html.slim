@@ -16,7 +16,7 @@
                 .pull-left.title-text.follow-section-title
                   = @title.html_safe
                   .clearfix
-                  = render "users/follow_section"
+                  = render "users/follow_section", :location => "banner"
               - else
                 .pull-left.title-text
                   = @title.html_safe
@@ -28,4 +28,4 @@
                 = profile_picture(@user) if @user_profile_image
               - if !@own_page && @user_profile_image
                 .mobile-follow-section-holder
-                  = render "users/follow_section"
+                  = render "users/follow_section", :location => "banner"

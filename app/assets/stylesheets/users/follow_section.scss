@@ -4,6 +4,14 @@
     margin-left: 5px;
     cursor: pointer;
   }
+
+  .btn {
+    text-transform: none;
+
+    i {
+      margin-right: 5px;
+    }
+  }
 }
 
 @media(max-width:767px) {
@@ -18,6 +26,10 @@
     color: white;
     background-color: #006633;
   }
+
+  &.campaign-page {
+    border: 1px solid #006633;
+  }
 }
 
 .unfollow-button {
@@ -28,4 +40,12 @@
     color: white;
     background-color: red;
   }
+
+  &.campaign-page {
+    color: white;
+  }
+}
+
+.campaign-page-question-tooltip {
+  margin-top: 5px;
 }
