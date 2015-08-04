@@ -48,15 +48,22 @@ nav.navbar.navbar-default role="navigation"
               li
                 a href="#{new_campaign_path}" class="#{'highlighted-dropdown' if params[:action] == 'new' && params[:controller] == 'campaigns'}"
                   | Create campaign
+
             li
               a href="#{user_path(current_user)}" class="#{'highlighted-dropdown' if params[:action] == 'show' && params[:controller] == 'users'}"
                 | Profile page
 
             li.divider
 
+            - if current_user.organizations_as_admin.any?
+              li
+                a href="#{charity_admin_path}" class="#{'highlighted-dropdown' if params[:action] == 'index' && params[:controller] == 'admins'}"
+                  | Charity admin
+
             li
               a href="#{edit_user_registration_path}" class="#{'highlighted-dropdown' if params[:action] == 'edit' && params[:controller] == 'registrations'}"
                 | Account settings
+                
             li
               = link_to "Logout", destroy_user_session_path, :method => :delete
 

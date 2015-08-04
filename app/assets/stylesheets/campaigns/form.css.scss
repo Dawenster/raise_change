@@ -11,6 +11,10 @@
   }
 }
 
+.campaign-preview-image {
+  margin-bottom: 10px;
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -59,7 +63,8 @@ ul.ui-autocomplete {
     cursor: pointer;
     padding: 5px;
     list-style: none;
-    margin-left: -38px;
+    margin-left: -40px;
+    background-color: white;
     position: relative;
   }
 }

@@ -13,6 +13,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @user = @campaign.user
     @organization = @campaign.organization
+    @share_html_as_string = render_to_string(:template => ('layouts/_share_this_buttons.html.slim'), :layout => false, :locals => {:campaign => @campaign} )
   end
 
   def new
@@ -23,14 +24,15 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @organization = Organization.new(organization_params)
-    if @organization.save
-      campaign = @organization.campaigns.last
-      flash[:notice] = "\"#{campaign.title}\" created successfully."
-      redirect_to campaign_path(campaign)
+    @campaign = Campaign.new(campaign_params)
+    org = Organization.find_by_slug_or_create(params[:campaign][:organization_name])
+    @campaign.organization_id = org.id
+    if @campaign.save
+      flash[:notice] = "\"#{@campaign.title}\" created successfully."
+      redirect_to campaign_path(@campaign)
     else
-      flash.now[:alert] = @organization.errors.full_messages.join(". ") + "."
-      render "campaigns/new"
+      flash.now[:alert] = @campaign.errors.full_messages.join(". ") + "."
+      render "new"
     end
   end
 
@@ -44,15 +46,16 @@ class CampaignsController < ApplicationController
   end
 
   def update
-    @organization = Organization.find(params[:id])
-    @organization.assign_attributes(organization_params)
-    campaign = @organization.campaigns.last
-    if @organization.save
-      flash[:notice] = "\"#{campaign.title}\" updated successfully."
-      redirect_to campaign_path(campaign)
+    @campaign = Campaign.find(params[:id])
+    @campaign.assign_attributes(campaign_params)
+    org = Organization.find_by_slug_or_create(params[:campaign][:organization_name])
+    @campaign.organization_id = org.id
+    if @campaign.save
+      flash[:notice] = "\"#{@campaign.title}\" updated successfully."
+      redirect_to campaign_path(@campaign)
     else
-      flash[:alert] = @organization.errors.full_messages.join(". ") + "."
-      redirect_to edit_campaign_path(campaign)
+      flash.now[:alert] = @campaign.errors.full_messages.join(". ") + "."
+      render "edit"
     end
   end
 
@@ -60,5 +63,21 @@ class CampaignsController < ApplicationController
     campaign = Campaign.find(params[:id]).destroy
     flash[:notice] = "\"#{campaign.title}\" has been deleted."
     redirect_to root_path
+  end
+
+  private 
+
+  def campaign_params
+    params.require(:campaign).permit(
+      :id,
+      :organization_name,
+      :title,
+      :description,
+      :user_id,
+      :organization_id,
+      :image,
+      :donation_period,
+      :_destroy
+    )
   end
 end

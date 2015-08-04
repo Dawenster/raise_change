@@ -1,0 +1,29 @@
+.row
+  .col-xs-12
+    - current_user.organizations_as_admin.each do |org|
+      h4
+        = org.name
+
+      table.table.table-striped
+        thead
+          tr
+            th
+              | Volunteer
+            th
+              | Campaign title
+            th
+              | Date(s) volunteered
+            th
+              | Hours
+
+        tbody
+          - org.journal_entries.order("created_at DESC").each do |entry|
+            tr
+              td
+                = entry.user.full_name
+              td
+                = entry.campaign.title
+              td
+                = entry.dates
+              td
+                = entry.hours
