@@ -77,6 +77,8 @@ class CampaignsController < ApplicationController
       :organization_id,
       :image,
       :donation_period,
+      :estimated_hours,
+      :frequency,
       :_destroy
     )
   end

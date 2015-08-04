@@ -26,6 +26,37 @@
 
       br
       = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
+
+      .row
+        .col-xs-12.col-sm-4
+          .form-inline.custom-hours-holder
+            .form-group
+              label for="customHours"
+                | * Estimated Hours
+              div
+                .input-group
+                  .input-group-addon ng-click="subtractHour()"
+                    i.fa.fa-minus
+                  input.custom-hours-input class="form-control" id="customHours" ng-model="hours" type="tel" name="campaigns[estimated_hours]"
+                  .input-group-addon ng-click="addHour()"
+                    i.fa.fa-plus
+              .error-text ng-show="hoursError"
+                | please enter a whole number
+
+        .col-xs-12.col-sm-8
+          div
+            label for="customHours"
+              | * Frequency
+          div
+            .btn-group data-toggle="buttons"
+              label.btn.btn-primary.active
+                input type="radio" name="campaigns[frequency]" id="option1" autocomplete="off" checked="checked" value="weekly"
+                  | Weekly
+
+              label.btn.btn-primary
+                input type="radio" name="campaigns[frequency]" id="option2" autocomplete="off" checked="checked" value="monthly"
+                  | Monthly
+
       = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       = campaign.input :donation_period, :as => :hidden, :input_html => { :value => donation_period }
 
