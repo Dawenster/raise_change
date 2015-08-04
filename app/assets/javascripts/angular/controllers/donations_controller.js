@@ -10,4 +10,15 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
       $scope.year = dates.year
     }
   }
+
+  var slider = document.getElementById("amount-slider")
+
+  noUiSlider.create(slider, {
+    start: [ 100 ],
+    connect: "lower",
+    range: {
+      'min': [  25 ],
+      'max': [ 500 ]
+    }
+  });
 }]);

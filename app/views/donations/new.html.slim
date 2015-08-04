@@ -9,7 +9,8 @@
         .has-card-details data-has-card="#{@cards.any?}"
         .row
           .col-xs-12.col-sm-6
-            = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
+            / = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
+            #amount-slider
           .col-xs-12.col-sm-6
             .donation-field-description
               = "Amount to be donated per hour volunteered by #{@campaign.user.full_name}, donated #{@campaign.donation_period}"
