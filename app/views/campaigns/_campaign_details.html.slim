@@ -24,8 +24,8 @@
           = "<strong>#{number_to_currency(campaign.donations_per_hour)}</strong> raised per hour".html_safe
         div
           = "<strong>#{number_with_delimiter(campaign.num_sponsors, :delimiter => ",")}</strong> #{'supporter'.pluralize(campaign.num_sponsors)}".html_safe
-        div
-          = "<strong>#{number_with_delimiter(campaign.num_hours, :delimiter => ",")}</strong> #{'hour'.pluralize(campaign.num_hours)} volunteered".html_safe
+        / div
+        /   = "<strong>#{number_with_delimiter(campaign.num_hours, :delimiter => ",")}</strong> #{'hour'.pluralize(campaign.num_hours)} volunteered".html_safe
 
 .campaign-show-statistics.bg-warning.hidden-xs
   .top-title-row
