@@ -27,5 +27,5 @@
               .pull-left.profile-picture
                 = profile_picture(@user) if @user_profile_image
               - if !@own_page && @user_profile_image
-                .pull-left
+                .mobile-follow-section-holder
                   = render "users/follow_section"

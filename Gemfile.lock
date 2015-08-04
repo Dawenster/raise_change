@@ -305,6 +305,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   mailcatcher
   metamagic
   nested_form
