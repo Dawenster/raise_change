@@ -15,7 +15,10 @@ app.controller('CampaignFormCtrl', ['$scope', function($scope) {
     }
   });
 
-  $scope.hours = parseInt($(".campaign-form-holder").attr("data-estimated-hours")) || 5;
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
   $scope.hours = parseInt($(".campaign-form-holder").attr("data-estimated-hours")) || 5;
 
   // $scope.websiteLinkToggle = function() {

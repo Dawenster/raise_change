@@ -32,7 +32,8 @@
           .form-inline.custom-hours-holder
             .form-group
               label for="customHours"
-                | * Estimated Hours
+                | * Estimated Hours 
+                i.fa.fa-question-circle.estimated-hours-info-tooltip data-toggle="tooltip" data-placement="top" title="This gives your donors a sense of how much they might have to donate"
               div
                 .input-group
                   .input-group-addon ng-click="subtractHour()"
