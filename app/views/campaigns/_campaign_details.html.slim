@@ -36,7 +36,7 @@
 
   .bottom-stats-row
     .row
-      .col-xs-3
+      .col-xs-2
         .campaign-show-detailed-stats
           h1
             = number_with_delimiter(campaign.num_sponsors, :delimiter => ",")
@@ -50,9 +50,18 @@
           p
             | raised per hour
 
-      .col-xs-4
-        .campaign-show-detailed-stats
-          h1
-            = number_with_delimiter(campaign.num_hours, :delimiter => ",")
-          p
-            = "#{'hour'.pluralize(campaign.num_hours)} volunteered"
+      .col-xs-3
+        .campaign-show-detailed-support-button-holder
+          = link_to "Support", new_donation_path(@campaign), :class => "button support-button"
+
+      .col-xs-3
+        .campaign-show-share-holder
+          a.share-link data-toggle="popover" data-placement="bottom" title="Spread the love" data-content="<div class='popover-social-links'>#{@campaign.social_links_as_string(request.original_url)}</div>" data-html="true"
+            i.fa.fa-share-alt-square.share-icon
+            | Share
+
+      /   .campaign-show-detailed-stats
+      /     h1
+      /       = number_with_delimiter(campaign.num_hours, :delimiter => ",")
+      /     p
+      /       = "#{'hour'.pluralize(campaign.num_hours)} volunteered"
