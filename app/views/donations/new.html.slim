@@ -22,12 +22,14 @@
             label
               | * Amount per hour: $
               span.donation-amount-display
+                | {{donationAmount}}
 
             #amount-slider
             .total-donation-display-holder
               = "Estimted total #{@campaign.donation_period} donation: "
               div
                 .total-donation-display
+                  | ${{totalQuarterlyDonation}}
 
             = donation.input :amount, :as => :hidden
           .col-xs-12.col-sm-6

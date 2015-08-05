@@ -25,8 +25,11 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
 
   slider.noUiSlider.on('update', function( values, handle ) {
     var amount = (Math.round(values[handle] * 4) / 4).toFixed(2)
-    $(".donation-amount-display").html(amount)
-    $(".total-donation-display").html("$" + (amount * $scope.quarterlyHours).toFixed(2))
+    $scope.donationAmount = amount
+    $scope.totalQuarterlyDonation = (amount * $scope.quarterlyHours).toFixed(2)
+    if(!$scope.$$phase) {
+      $scope.$apply()
+    }
   });
 
   slider.noUiSlider.on('change', function ( values, handle ) {
