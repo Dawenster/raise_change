@@ -17,7 +17,7 @@
 
     .tab-content
       .description-holder role="tabpanel" class="tab-pane active" id="description"
-        = Rinku.auto_link(simple_format(campaign.description))
+        = Rinku.auto_link(simple_format(campaign.description)).html_safe
 
       .journal-entries-holder role="tabpanel" class="tab-pane" id="activities"
         - if campaign.journal_entries.any?
