@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  def landing
+    
+  end
+
   def how_it_works
     @title = "How it <span class='highlight'>works</span>"
     @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"

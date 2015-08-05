@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   helper_method :amounts_to_donate, :donation_period, :has_credit_card?, :can_create_journal_entries?
 
   def after_sign_in_path_for(resource)
-    user_path(resource) || root_path
+    # user_path(resource) || root_path
+    root_path
   end
 
   def amounts_to_donate
