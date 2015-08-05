@@ -27,6 +27,9 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
     var amount = (Math.round(values[handle] * 4) / 4).toFixed(2)
     $scope.donationAmount = amount
     $scope.totalQuarterlyDonation = (amount * $scope.quarterlyHours).toFixed(2)
+    // Max is defaulted to 10% above what the total quarterly is estimated to be
+    $scope.maxDonation = parseInt(Math.round(parseFloat($scope.totalQuarterlyDonation) * 1.1))
+    $scope.minimumMaxAmount = Math.ceil($scope.totalQuarterlyDonation)
     if(!$scope.$$phase) {
       $scope.$apply()
     }
@@ -37,4 +40,23 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
       slider.noUiSlider.set(0.25);
     }
   });
+
+  $scope.addHour = function() {
+    $scope.maxDonation = parseInt($scope.maxDonation) + 1;
+  }
+
+  $scope.subtractHour = function() {
+    if (parseInt($scope.maxDonation) > $scope.minimumMaxAmount) {
+      $scope.maxDonation = parseInt($scope.maxDonation) - 1;
+    }
+  }
+
+  $(".custom-hours-input").blur(function() {
+    if (parseInt($scope.maxDonation) < $scope.minimumMaxAmount) {
+      $scope.maxDonation = $scope.minimumMaxAmount
+      if(!$scope.$$phase) {
+        $scope.$apply()
+      }
+    }
+  })
 }]);

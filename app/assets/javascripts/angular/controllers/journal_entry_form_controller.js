@@ -100,12 +100,12 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   }
 
   $scope.addHour = function() {
-    $scope.hours += 1;
+    $scope.hours = parseInt($scope.hours) + 1;
   }
 
   $scope.subtractHour = function() {
-    if ($scope.hours > 1) {
-      $scope.hours -= 1;
+    if (parseInt($scope.hours) > 1) {
+      $scope.hours = parseInt($scope.hours) - 1;
     }
   }
 

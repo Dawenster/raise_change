@@ -23,6 +23,7 @@
               | * Amount per hour: $
               span.donation-amount-display
                 | {{donationAmount}}
+              input.hidden name="donation[amount]" ng-model="donationAmount"
 
             #amount-slider
             .total-donation-display-holder
@@ -31,7 +32,6 @@
                 .total-donation-display
                   | ${{totalQuarterlyDonation}}
 
-            = donation.input :amount, :as => :hidden
           .col-xs-12.col-sm-6
             .donation-field-description
               = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer hours will be done #{@campaign.frequency}; your donation will be charged #{@campaign.donation_period}"
@@ -62,12 +62,12 @@
                     .input-group
                       .input-group-addon ng-click="subtractHour()"
                         i.fa.fa-minus
-                      input.custom-hours-input class="form-control" id="estimatedHours" ng-model="hours" type="tel" name="campaign[estimated_hours]"
+                      input.custom-hours-input class="form-control" id="estimatedHours" type="tel" name="donation[max]" ng-model="maxDonation"
                       .input-group-addon ng-click="addHour()"
                         i.fa.fa-plus
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)"
+              = "Maximum amount you're willing to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)"
 
         - if has_credit_card?
           = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
