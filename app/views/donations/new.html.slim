@@ -34,7 +34,7 @@
 
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer hours will be done #{@campaign.frequency}; your donation will be charged #{@campaign.donation_period}"
+              = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer #{'hour'.pluralize(@campaign.estimated_hours)} will be done #{@campaign.frequency}; your donation will be charged #{@campaign.donation_period}"
               
         / .row
         /   .col-xs-12.col-sm-6
