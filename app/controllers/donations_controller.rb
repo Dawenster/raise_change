@@ -1,5 +1,6 @@
 class DonationsController < ApplicationController
   before_filter :authenticate_user!
+  skip_before_action :verify_authenticity_token, :only => :add_donation_message
 
   def new
     @campaign = Campaign.find(params[:campaign_id])
@@ -16,7 +17,8 @@ class DonationsController < ApplicationController
     @donation = Donation.new(donation_params)
 
     if @donation.save
-      flash[:notice] = "You are now supporting \"#{@campaign.title}\"."
+      flash[:notice] = "Thank you! You are now supporting \"#{@campaign.title}\"."
+      cookies[:just_donated] = true
       redirect_to campaign_path(@campaign)
     else
       flash.now[:alert] = @donation.errors.full_messages.join(". ") + "."
@@ -36,6 +38,16 @@ class DonationsController < ApplicationController
         redirect_to url
       end
     end
+  end
+
+  def add_donation_message
+    message = params[:donation][:message]
+    if message
+      donation = current_user.donations.order("created_at ASC").last
+      donation.update_attributes(:message => message)
+    end
+    flash[:notice] = "Thank you! Your message has been saved."
+    redirect_to campaign_path(donation.campaign)
   end
 
   private 

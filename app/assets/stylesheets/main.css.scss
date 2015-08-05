@@ -55,6 +55,47 @@ p, div {
   }
 }
 
+.call-to-action {
+  padding: 10px 30px 10px 10px;
+  color: white;
+  background-color: #333333;
+  font-size: 16px;
+  position: relative;
+  font-family: 'Qotho-Dark';
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.8;
+    color: white;
+  }
+
+  .arrow-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #ff9900;
+
+    &.main {
+      border-left: 10px solid #333333;
+    }
+  }
+
+  &.main {
+    color: #333333;
+    background-color: #ff9900;
+    margin-right: 20px;
+
+    &:hover {
+      background-color: #FAAF4D;
+    }
+  }
+}
+
 .input-group {
   width: 120px;
 }

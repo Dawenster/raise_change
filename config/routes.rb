@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get ":campaign_id/donate" => "donations#new", as: :new_donation
   resources :donations, :only => [:create, :destroy]
+  post "/donations/add-donation-message" => "donations#add_donation_message", as: :add_donation_message
 
   resources :journal_entries, :except => [:index, :show]
 

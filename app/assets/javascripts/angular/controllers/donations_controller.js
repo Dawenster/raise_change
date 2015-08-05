@@ -59,4 +59,11 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
       }
     }
   })
+
+  $('body').on('click', '.submit-button', function(e) {
+    if (!$(this).is(":disabled")) {
+      $(".new_donation").submit()
+    }
+    $(this).attr("disabled", "disabled")
+  });
 }]);
