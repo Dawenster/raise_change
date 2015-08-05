@@ -1,7 +1,6 @@
 var app = angular.module('raisechange');
 
 app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, CreditCards) {
-  $scope.makeDonation = CreditCards.makeDonation
   $scope.quarterlyHours = $(".donations-controller").attr("data-campaign-estimated-quarterly-hours")
 
   $scope.splitDate = function() {
@@ -60,10 +59,50 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
     }
   })
 
-  $('body').on('click', '.submit-button', function(e) {
-    if (!$(this).is(":disabled")) {
-      $(".new_donation").submit()
+  $scope.makeDonation = function() {
+    if (fieldsFilledIn()) {
+      if (!$(this).is(":disabled")) {
+        CreditCards.makeDonation()
+        // $(".new_donation").submit()
+      }
+      $(this).attr("disabled", "disabled")
     }
-    $(this).attr("disabled", "disabled")
-  });
+  }
+
+  function fieldsFilledIn() {
+    var isSignedIn = $(".donations-controller").attr("data-user-signed-in")
+    if (isSignedIn == "false") {
+      var clear = true
+      $(".user-sign-up-error").addClass("hide")
+
+      var inputs = $(".account-details-input")
+      for (var i = 0; i < inputs.length; i++) {
+        if ($(inputs[i]).val() == "") {
+          $(inputs[i]).siblings(".user-sign-up-error").removeClass("hide")
+          clear = false
+        }
+      };
+
+      var email = $(".email-input").val()
+      if (!isEmail(email)) {
+        $(".email-input").siblings(".user-sign-up-error").removeClass("hide")
+        clear = false
+      }
+
+      var password = $(".password-input").val()
+      if (password.length < 8) {
+        $(".password-input").siblings(".user-sign-up-error").removeClass("hide")
+        clear = false
+      }
+
+      return clear
+    } else {
+      return true
+    }
+  }
+
+  function isEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+  }
 }]);

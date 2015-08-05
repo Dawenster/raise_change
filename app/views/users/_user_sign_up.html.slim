@@ -1,0 +1,48 @@
+.user-sign-up-partial
+  .row
+    .col-xs-12.col-sm-6
+      label
+        | * First name
+      input.form-control.account-details-input.first-name name="first_name" type="text"
+      .user-sign-up-error.hide
+        | Please fill in
+
+    .col-xs-12.col-sm-6
+      .donation-field-description
+        | To match your credit card
+
+  .row
+    .col-xs-12.col-sm-6
+      label
+        | * Last name
+      input.form-control.account-details-input.last-name name="last_name" type="text"
+      .user-sign-up-error.hide
+        | Please fill in
+
+    .col-xs-12.col-sm-6
+      .donation-field-description
+        | To match your credit card (and to address you politely)
+
+  .row
+    .col-xs-12.col-sm-6
+      label
+        | * Email
+      input.form-control.account-details-input.email-input name="email" type="email"
+      .user-sign-up-error.hide
+        | Please fill in correctly
+
+    .col-xs-12.col-sm-6
+      .donation-field-description
+        | To send you a receipt
+
+  .row
+    .col-xs-12.col-sm-6
+      label
+        | * Password (min 8 characters)
+      input.form-control.account-details-input.password-input name="password" type="password"
+      .user-sign-up-error.hide
+        | Please fill in correctly
+
+    .col-xs-12.col-sm-6
+      .donation-field-description
+        = "So you can log in to track your donations and view updates from #{campaign.user.first_name}"

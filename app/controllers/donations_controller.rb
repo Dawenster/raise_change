@@ -1,11 +1,15 @@
 class DonationsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:new, :create]
   skip_before_action :verify_authenticity_token, :only => :add_donation_message
 
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @donation = Donation.new
-    @cards = has_credit_card? ? current_user.credit_cards : []
+    if current_user
+      @cards = has_credit_card? ? current_user.credit_cards : []
+    else
+      @cards = []
+    end
     @title = "Donate to <span class='highlight'>#{@campaign.title}</span>"
     @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_food.jpg"
     @center = @campaign.title.length > 56 ? false : true
@@ -13,8 +17,16 @@ class DonationsController < ApplicationController
 
   def create
     @campaign = Campaign.find(params[:donation][:campaign_id])
-    current_user.create_or_update_stripe_customer(params[:stripeToken]) unless has_credit_card?
+
+    if current_user
+      user = current_user
+    else
+      user = create_and_sign_in_user
+    end
+
+    user.create_or_update_stripe_customer(params[:stripeToken]) unless has_credit_card?
     @donation = Donation.new(donation_params)
+    @donation.user_id = user.id
 
     if @donation.save
       flash[:notice] = "Thank you! You are now supporting \"#{@campaign.title}\"."
