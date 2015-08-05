@@ -227,7 +227,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   if Rails.env.production?
     config.omniauth :facebook, "952917808052030", ENV['FACEBOOK_APP_SECRET'], {:scope => 'email', :client_options => {}} 
   else
