@@ -29,9 +29,16 @@ class DonationsController < ApplicationController
     @donation.user_id = user.id
 
     if @donation.save
-      flash[:notice] = "Thank you! You are now supporting \"#{@campaign.title}\"."
-      cookies[:just_donated] = true
-      redirect_to campaign_path(@campaign)
+      begin
+        DonationMailer.successful_donation(@donation.id).deliver
+        flash[:notice] = "Thank you! You are now supporting \"#{@campaign.title}\"."
+        cookies[:just_donated] = true
+        redirect_to campaign_path(@campaign)
+      rescue
+        flash[:alert] = "Your donation was logged but an error occured when sending you the confirmation. Please let us know at team@raisechange.com - sorry for the trouble!"
+        cookies[:just_donated] = true
+        redirect_to campaign_path(@campaign)
+      end
     else
       flash.now[:alert] = @donation.errors.full_messages.join(". ") + "."
       render "new"
