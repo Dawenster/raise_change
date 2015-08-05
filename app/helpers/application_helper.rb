@@ -23,6 +23,10 @@ module ApplicationHelper
     end
   end
 
+  def has_picture(user)
+    return user.uid.present? || user.avatar.present?
+  end
+
   def last_month_in_words
     (Time.now - 1.month).strftime('%B')
   end

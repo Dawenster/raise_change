@@ -1,6 +1,16 @@
-.row.donations-controller ng-controller="DonationCtrl"
-  .col-xs-12.col-sm-6.col-sm-offset-3
-    = image_tag @campaign.image.url(:thumb), :width => "100%" if @campaign.image.exists?
+.row.donations-controller ng-controller="DonationCtrl" data-campaign-estimated-quarterly-hours="#{@campaign.estimated_hours_per_quarter}"
+  .col-xs-12.col-md-6.col-md-offset-3
+    .donation-top-profile-picture-holder
+      - if has_picture(@campaign.user)
+        h3
+          = "Thank you for your support! - #{@campaign.user.full_name}"
+        = profile_picture(@campaign.user)
+      - else
+        h3
+          | Thank you for your support!
+        h4
+          = "- #{@campaign.user.full_name}"
+        br
 
     = simple_form_for @donation, defaults: { input_html: { class: 'form-control' }} do |donation|
       .general-form-holder
@@ -9,25 +19,53 @@
         .has-card-details data-has-card="#{@cards.any?}"
         .row
           .col-xs-12.col-sm-6
-            / = donation.input :amount, :collection => amounts_to_donate, :selected => amounts_to_donate.first
+            label
+              | * Amount per hour: $
+              span.donation-amount-display
+
             #amount-slider
+            .total-donation-display-holder
+              = "Estimted total #{@campaign.donation_period} donation: "
+              div
+                .total-donation-display
+
+            = donation.input :amount, :as => :hidden
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "Amount to be donated per hour volunteered by #{@campaign.user.full_name}, donated #{@campaign.donation_period}"
+              = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer hours will be done #{@campaign.frequency}; your donation will be charged #{@campaign.donation_period}"
               
-        .row
-          .col-xs-12.col-sm-6
-            = donation.input :max
-          .col-xs-12.col-sm-6
-            .donation-field-description
-              = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
+        / .row
+        /   .col-xs-12.col-sm-6
+        /     = donation.input :max
+        /   .col-xs-12.col-sm-6
+        /     .donation-field-description
+        /       = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
+
+        / .row
+        /   .col-xs-12.col-sm-6
+        /     = donation.input :message, :label => "Message to #{@campaign.user.first_name} (optional)", :placeholder => "E.g. Go #{@campaign.user.first_name} go!"
+        /   .col-xs-12.col-sm-6
+        /     .donation-field-description
+        /       = "Message will show up on the campaign page for the public to see."
 
         .row
           .col-xs-12.col-sm-6
-            = donation.input :message, :label => "Message to #{@campaign.user.first_name} (optional)"
+            .row
+              .col-xs-6.col-sm-8
+                .form-inline.custom-hours-holder
+                .form-group
+                  label for="customHours"
+                    | * Max donation
+                  div
+                    .input-group
+                      .input-group-addon ng-click="subtractHour()"
+                        i.fa.fa-minus
+                      input.custom-hours-input class="form-control" id="estimatedHours" ng-model="hours" type="tel" name="campaign[estimated_hours]"
+                      .input-group-addon ng-click="addHour()"
+                        i.fa.fa-plus
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "Message will show up on the campaign page for the public to see."
+              = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)"
 
         - if has_credit_card?
           = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true

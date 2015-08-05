@@ -77,4 +77,18 @@ class Campaign < ActiveRecord::Base
 
     return str
   end
+
+  def estimated_hours_per_quarter
+    if self.frequency == "monthly"
+      multiple = 3
+    elsif self.frequency == "weekly"
+      multiple = 13
+    end
+
+    if self.estimated_hours.nil? || multiple.nil?
+      return 15
+    else
+      return self.estimated_hours * multiple
+    end
+  end
 end

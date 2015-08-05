@@ -2,6 +2,7 @@ var app = angular.module('raisechange');
 
 app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, CreditCards) {
   $scope.makeDonation = CreditCards.makeDonation
+  $scope.quarterlyHours = $(".donations-controller").attr("data-campaign-estimated-quarterly-hours")
 
   $scope.splitDate = function() {
     var dates = CreditCards.splitDate($scope.expiryDate)
@@ -14,11 +15,23 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
   var slider = document.getElementById("amount-slider")
 
   noUiSlider.create(slider, {
-    start: [ 100 ],
+    start: [ 1 ],
     connect: "lower",
     range: {
-      'min': [  25 ],
-      'max': [ 500 ]
+      'min': [ 0 ],
+      'max': [ 5 ]
+    }
+  });
+
+  slider.noUiSlider.on('update', function( values, handle ) {
+    var amount = (Math.round(values[handle] * 4) / 4).toFixed(2)
+    $(".donation-amount-display").html(amount)
+    $(".total-donation-display").html("$" + (amount * $scope.quarterlyHours).toFixed(2))
+  });
+
+  slider.noUiSlider.on('change', function ( values, handle ) {
+    if ( values[handle] < 0.25 ) {
+      slider.noUiSlider.set(0.25);
     }
   });
 }]);
