@@ -22,6 +22,9 @@
               p
                 = link_to "Browse other campaigns", campaigns_path
 
+              p
+                = link_to "I'm feeling lucky", campaign_path(Campaign.all.sample)
+
             .visible-xs
               hr
 
@@ -35,6 +38,10 @@
                   = render "journal_entries/journal_entry_grid", :je => activity, :show_campaign_title => true
                 - else
                   = render "donations/donation_in_newsfeed", :donation => activity
+
+            - else
+              p
+                | Support or follow other users to see their feed!
 
           .col-sm-3.hidden-xs
             = render "following_and_supporting"
