@@ -1,0 +1,23 @@
+.following-and-supporting-holder
+  - if current_user.donations.any?
+    .title
+      | Supporting:
+
+    p
+      ul.list-inline
+        - current_user.users_supported.each do |user|
+          li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
+            = link_to avatar(user), user_path(user)
+
+  - if current_user.following.any?
+    .title
+      | Following:
+
+    p
+      ul.list-inline
+        - current_user.following.each do |user|
+          li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
+            = link_to avatar(user), user_path(user)
+
+.visible-xs
+  hr

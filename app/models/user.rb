@@ -108,7 +108,7 @@ class User < ActiveRecord::Base
     ids = []
     activities = []
 
-    ids << self.users_supported
+    ids << self.ids_for_users_supported
     ids << self.following.map {|u| u.id}
     ids << self.id # So users can always see their own activity
     ids = ids.flatten.uniq
@@ -118,8 +118,12 @@ class User < ActiveRecord::Base
     return activities.flatten.sort_by {|activity| activity.created_at}.reverse
   end
 
-  def users_supported
+  def ids_for_users_supported
     self.donations.pluck(:user_id).uniq
+  end
+
+  def users_supported
+    self.donations.map{|donation| donation.user}.uniq
   end
 
   private
