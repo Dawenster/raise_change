@@ -2,4 +2,27 @@
   .row
     .col-xs-12
       .main-content
-        | Harro
+        .row
+          .col-xs-12.col-sm-4.col-md-3
+            .news-feed-left-side-holder
+              ul.list-inline
+                li
+                  = avatar(current_user)
+                li
+                  = "Hi #{link_to current_user.first_name, user_path(current_user)}!".html_safe
+              p
+                | Here's how the people you support and follow have been raising change.
+
+              p
+                | Inspired?
+
+              p
+                = link_to "Create your own campaign", new_campaign_path
+
+              p
+                = link_to "Browse other campaigns", campaigns_path
+
+          .col-xs-12.col-sm-8.col-md-6
+            - if @activities.any?
+              - @activities.each do |je|
+                = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => true

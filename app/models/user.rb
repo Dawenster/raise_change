@@ -104,6 +104,11 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  def newsfeed
+    following_ids = self.following.map {|u| u.id}
+    return JournalEntry.where(:user_id => following_ids).order("created_at DESC")
+  end
+
   private
 
   def stripe_setup

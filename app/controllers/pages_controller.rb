@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def landing
-    
+    if current_user
+      @activities = current_user.newsfeed
+      @title = "News <span class='highlight'>feed</span>"
+      @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
+    end
   end
 
   def how_it_works
