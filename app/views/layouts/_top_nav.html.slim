@@ -44,6 +44,10 @@ nav.navbar.navbar-default role="navigation"
             = current_user.first_name
             span.caret
           ul.dropdown-menu
+            li
+              a href="#{root_path}" class="#{'highlighted-dropdown' if params[:action] == 'landing' && params[:controller] == 'pages'}"
+                | News feed
+
             - if can_create_journal_entries?
               li
                 a href="#{new_campaign_path}" class="#{'highlighted-dropdown' if params[:action] == 'new' && params[:controller] == 'campaigns'}"
