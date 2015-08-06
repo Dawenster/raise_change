@@ -6,11 +6,12 @@
       .left-side
         = link_to avatar(user), user_path(user)
       .right-side
+        - pronoun = current_user == user ? "You" : user.full_name
         div
-          = "#{link_to user.full_name, user_path(user)} supported #{link_to campaign.user.full_name, user_path(campaign.user)} #{number_to_currency(donation.amount_in_dollars)} an hour - #{link_to campaign.title, campaign_path(campaign)}".html_safe
+          = "#{link_to pronoun, user_path(user)} supported #{link_to campaign.user.full_name, user_path(campaign.user)} #{number_to_currency(donation.amount_in_dollars)} an hour - #{link_to campaign.title, campaign_path(campaign)}".html_safe
         .sponsored-amount
           = donation.created_at.strftime("%b %-d, %Y (%a)")
 
         .donation-message
-          = "#{link_to user.full_name, user_path(user)} also said: #{donation.message}".html_safe unless donation.message.blank?
+          = "#{link_to pronoun, user_path(user)} also said: #{donation.message}".html_safe unless donation.message.blank?
         = link_to image_tag(campaign.image.url(:thumb), :width => "100%"), campaign_path(campaign) if campaign.image.exists?
