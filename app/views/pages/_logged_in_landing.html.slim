@@ -24,5 +24,8 @@
 
           .col-xs-12.col-sm-8.col-md-6
             - if @activities.any?
-              - @activities.each do |je|
-                = render "journal_entries/journal_entry_grid", :je => je, :show_campaign_title => true
+              - @activities.each do |activity|
+                - if activity.is_a? JournalEntry
+                  = render "journal_entries/journal_entry_grid", :je => activity, :show_campaign_title => true
+                - else
+                  = render "donations/donation_grid", :donation => activity

@@ -105,8 +105,21 @@ class User < ActiveRecord::Base
   end
 
   def newsfeed
-    following_ids = self.following.map {|u| u.id}
-    return JournalEntry.where(:user_id => following_ids).order("created_at DESC")
+    ids = []
+    activities = []
+
+    ids << self.users_supported
+    ids << self.following.map {|u| u.id}
+    ids << self.id # So users can always see their own activity
+    ids = ids.flatten.uniq
+
+    activities << JournalEntry.where(:user_id => ids)
+    activities << Donation.where(:user_id => ids)
+    return activities.flatten.sort_by {|activity| activity.created_at}.reverse
+  end
+
+  def users_supported
+    self.donations.pluck(:user_id).uniq
   end
 
   private
