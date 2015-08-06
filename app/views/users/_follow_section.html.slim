@@ -1,18 +1,18 @@
-.follow-section-holder ng-controller="FollowCtrl" data-following="#{current_user.following?(@user)}"
-  .btn.btn-default.follow-button class="#{'campaign-page' if location == 'campaign_page'}" data-follow-url="#{follow_path(@user)}" ng-click="follow()" ng-show="!following"
+.follow-section-holder ng-controller="FollowCtrl" data-following="#{current_user.following?(user)}"
+  .btn.btn-default.follow-button class="#{'campaign-page' unless location == 'banner'}" data-follow-url="#{follow_path(user)}" ng-click="follow()" ng-show="!following"
     i.fa.fa-star-o
     | Follow
 
-  .btn.unfollow-button ng-class="hovering ? 'hovering' : ''" ng-mouseover="hovering = true" ng-mouseleave="hovering = false" ng-show="following" ng-click="unfollow()" data-unfollow-url="#{unfollow_path(@user)}" class="#{'campaign-page' if location == 'campaign_page'}"
+  .btn.unfollow-button ng-class="hovering ? 'hovering' : ''" ng-mouseover="hovering = true" ng-mouseleave="hovering = false" ng-show="following" ng-click="unfollow()" data-unfollow-url="#{unfollow_path(user)}" class="#{'campaign-page' unless location == 'banner'}"
     div ng-show="!hovering"
       i.fa.fa-star
       | Following
 
-    div ng-show="hovering" data-unfollow-url="#{unfollow_path(@user)}"
+    div ng-show="hovering" data-unfollow-url="#{unfollow_path(user)}"
       | Unfollow
 
   - if location == 'campaign_page'
     .campaign-page-question-tooltip
-      i.fa.fa-question-circle data-toggle="tooltip" data-placement="bottom" title="Follow to see activities by #{@user.first_name} in your feed"
+      i.fa.fa-question-circle data-toggle="tooltip" data-placement="bottom" title="Follow to see activities by #{user.first_name} in your feed"
   - else
-    i.fa.fa-question-circle data-toggle="tooltip" data-placement="right" title="Follow to see activities by #{@user.first_name} in your feed"
+    i.fa.fa-question-circle data-toggle="tooltip" data-placement="right" title="Follow to see activities by #{user.first_name} in your feed"
