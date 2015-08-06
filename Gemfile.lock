@@ -269,6 +269,7 @@ GEM
     sqlite3 (1.3.10)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
+    switch_user (0.9.5)
     temple (0.6.7)
     thin (1.5.1)
       daemons (>= 1.0.9)
@@ -323,5 +324,6 @@ DEPENDENCIES
   slim
   spring
   stripe!
+  switch_user
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
