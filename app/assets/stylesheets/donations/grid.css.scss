@@ -7,6 +7,10 @@
     float: left;
   }
 
+  .right-side {
+    margin-left: 50px;
+  }
+
   .donor-details-holder {
     margin-left: 50px;
   }
@@ -15,6 +19,11 @@
     color: grey;
     font-style: italic;
     font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .donation-message {
+    margin-bottom: 10px;
   }
 }
 

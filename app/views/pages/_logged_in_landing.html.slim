@@ -28,4 +28,4 @@
                 - if activity.is_a? JournalEntry
                   = render "journal_entries/journal_entry_grid", :je => activity, :show_campaign_title => true
                 - else
-                  = render "donations/donation_grid", :donation => activity
+                  = render "donations/donation_in_newsfeed", :donation => activity
