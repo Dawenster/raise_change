@@ -77,10 +77,9 @@
 
     .general-form-holder
       p
-        | Thank you for being a great volunteer, and good luck with the campaign!
-
+        = "If you haven't already, please make sure you have read the #{link_to 'FAQ', faq_path, :target => '_blank'}. Specifically, we want to point out that campaigns are free, and we only take 5% of any funds raised, plus applicable credit card processing fees. This is so that we can continue to offer our unique platform to raise change per volunteer hour.".html_safe
       p
-        = "If you haven't already, please make sure you have read the #{link_to 'FAQ', faq_path}. Specifically, we want to point out that campaigns are free, and we only take 5% of any funds raised, plus applicable credit card processing fees.".html_safe
+        | Thank you for being a great volunteer, and good luck with the campaign!
 
     br
     - button_text = @campaign.id ? "Update campaign" : "Create campaign"

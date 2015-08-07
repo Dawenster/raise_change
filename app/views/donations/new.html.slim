@@ -33,21 +33,7 @@
 
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer #{'hour'.pluralize(@campaign.estimated_hours)} will be done #{@campaign.frequency}; your donation will be charged #{@campaign.donation_period}"
-              
-        / .row
-        /   .col-xs-12.col-sm-6
-        /     = donation.input :max
-        /   .col-xs-12.col-sm-6
-        /     .donation-field-description
-        /       = "Maximum amount, in dollars, you wish to donate on a #{@campaign.donation_period} basis"
-
-        / .row
-        /   .col-xs-12.col-sm-6
-        /     = donation.input :message, :label => "Message to #{@campaign.user.first_name} (optional)", :placeholder => "E.g. Go #{@campaign.user.first_name} go!"
-        /   .col-xs-12.col-sm-6
-        /     .donation-field-description
-        /       = "Message will show up on the campaign page for the public to see."
+              = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer #{'hour'.pluralize(@campaign.estimated_hours)} will be done #{@campaign.frequency}; your donation will be charged #{@campaign.donation_period}."
 
         .row
           .col-xs-12.col-sm-6
@@ -66,7 +52,7 @@
                         i.fa.fa-plus
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "Max dollar amount you're willing to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)"
+              = "Max dollar amount you're willing to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)."
 
         - if has_credit_card?
           = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
@@ -79,7 +65,17 @@
           = render "users/user_sign_up", :campaign => @campaign
     
       br
+      h4
+        | Notes
+      br
+
+      .general-form-holder
+        p
+          = "If you haven't already, please make sure you have read the #{link_to 'FAQ', faq_path, :target => '_blank'}. Specifically, we want to point out that Raise Change only takes 5% of any funds raised, plus applicable credit card processing fees. This is so that we can continue to offer our unique platform to raise change per volunteer hour.".html_safe
+        p
+          = "Thank you for supporting #{@campaign.user.first_name}!"
         
+      br
       .btn.btn-success.submit-button.make-donation-button ng-click="makeDonation()"
         | Support
 
