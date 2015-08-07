@@ -1,14 +1,17 @@
-- footer_text = "Follow #RaiseChange"
+- footer_links = link_to "FAQ", faq_path
+- footer_links += " ⋅ "
+- footer_links += link_to "About", about_path
 
 footer.footer
   .hidden-xs
-    .pull-left.follow-raise-change-text
-      = footer_text
+    .pull-left.raise-change-links
+      = image_tag "https://s3-us-west-2.amazonaws.com/raisechange/general/Raise_Change_token.png", :width => "50"
+      = footer_links.html_safe
     .pull-right
       = render "layouts/footer_social_links"
 
   .visible-xs-block
-    div
-      = footer_text
+    .raise-change-links
+      = footer_links.html_safe
     .mobile-social-links
       = render "layouts/footer_social_links"

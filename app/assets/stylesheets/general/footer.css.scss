@@ -42,9 +42,22 @@ html {
   text-transform: uppercase;
 }
 
-.follow-raise-change-text {
-  margin-top: 15px;
+.raise-change-links {
   font-family: 'Qotho-Dark';
+  color: white;
+
+  a {
+    color: white;
+
+    &:hover {
+      color: #ff9900;
+      text-decoration: none;
+    }
+  }
+
+  img {
+    margin-right: 10px;
+  }
 }
 
 .footer-icon-link {
