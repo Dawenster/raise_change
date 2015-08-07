@@ -1,9 +1,7 @@
 var app = angular.module('raisechange');
 
-app.controller('CampaignShowCtrl', ['$scope', function($scope) {
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  })
+app.controller('CampaignShowCtrl', ['$scope', 'Popover', function($scope, Popover) {
+  Popover.initialize()
 
   if ($.cookie('just_donated') == "true") {
     $('#after-donation-modal').modal("show");
