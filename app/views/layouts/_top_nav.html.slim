@@ -56,7 +56,7 @@ nav.navbar.navbar-default role="navigation"
                   | Create campaign
 
             li
-              a href="#{user_path(current_user)}" class="#{'highlighted-dropdown' if params[:action] == 'show' && params[:controller] == 'users'}"
+              a href="#{user_path(current_user)}" class="#{'highlighted-dropdown' if params[:action] == 'show' && params[:controller] == 'users' && @user == current_user}"
                 | Profile page
 
             li.divider
