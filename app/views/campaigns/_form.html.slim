@@ -1,7 +1,17 @@
 .campaign-form-holder ng-controller="CampaignFormCtrl" data-estimated-hours="#{@campaign.estimated_hours}"
   = simple_form_for @campaign, html: { class: 'campaign-form' } do |campaign|
+    br
     h4
-      | General
+      | Which organization are you supporting?
+    br
+
+    .general-form-holder
+      .autocomplete-field-holder
+        = campaign.input :organization_name, :as => :autocomplete, :url => autocomplete_organization_name_campaigns_path, :class => "string required form-control organization-name-autocomplete", :append_to => ".autocomplete-field-holder", :placeholder => "E.g. Foodbank", :label => "Name of organization", input_html: { "data-append-to" => ".autocomplete-field-holder" }
+
+    br
+    h4
+      | Page setup
     br
 
     .general-form-holder
@@ -15,17 +25,18 @@
 
       .selected-image-file-name
     
-    br
-    h4
-      | Which organization are you supporting?
-    br
-
-    .general-form-holder
-      .autocomplete-field-holder
-        = campaign.input :organization_name, :as => :autocomplete, :url => autocomplete_organization_name_campaigns_path, :class => "string required form-control organization-name-autocomplete", :append_to => ".autocomplete-field-holder", :placeholder => "E.g. Foodbank", :label => "Name of organization", input_html: { "data-append-to" => ".autocomplete-field-holder" }
 
       br
       = campaign.input :description, :label => "Why people should support your campaign", input_html: { style: "height: 100px;" }, :as => :text
+
+    br
+    h4
+      | Estimated volunteering
+    br
+
+    .general-form-holder
+      p
+        | This is just to give your supporters an idea of how much they might be donating in total - it can be a rough estimate.
 
       .row
         .col-xs-12.col-sm-4
@@ -58,6 +69,18 @@
 
       = campaign.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       = campaign.input :donation_period, :as => :hidden, :input_html => { :value => donation_period }
+
+    br
+    h4
+      | Notes
+    br
+
+    .general-form-holder
+      p
+        | Thank you for being a great volunteer, and good luck with the campaign!
+
+      p
+        = "If you haven't already, please make sure you have read the #{link_to 'FAQ', faq_path}. Specifically, we want to point out that campaigns are free, and we only take 5% of any funds raised, plus applicable credit card processing fees.".html_safe
 
     br
     - button_text = @campaign.id ? "Update campaign" : "Create campaign"
