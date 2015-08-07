@@ -3,7 +3,7 @@
   /   .col-xs-6.col-xs-offset-3.col-sm-2.col-sm-offset-5
   /     = render "users/big_user_picture_and_name", :user => @user
   .row
-    .col-xs-12.col-sm-8
+    .col-xs-12.col-sm-4
       .info-box-holder.yellow
         .info-box-holder-header
           | Activities
@@ -44,8 +44,8 @@
           | Campaigns Created
         .info-box-holder-content
           - if @user_campaigns.any?
-              - @user_campaigns.each do |campaign|
-                = render "campaigns/grid", :campaign => campaign
+            - @user_campaigns.each do |campaign|
+              = render "campaigns/grid", :campaign => campaign
 
           - elsif @own_page
             .prompt-content-holder
@@ -64,6 +64,7 @@
 
       br
 
+    .col-xs-12.col-sm-4
       .info-box-holder.grey
         .info-box-holder-header
           | Supporting

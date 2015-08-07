@@ -4,7 +4,7 @@
       | Supporting:
 
     p
-      ul.list-inline
+      ul.list-inline.avatar-list
         - current_user.users_supported.each do |user|
           li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
             = link_to avatar(user), user_path(user)
@@ -14,7 +14,7 @@
       | Following:
 
     p
-      ul.list-inline
+      ul.list-inline.avatar-list
         - current_user.following.each do |user|
           li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
             = link_to avatar(user), user_path(user)

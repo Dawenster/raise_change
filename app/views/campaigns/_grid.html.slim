@@ -1,6 +1,6 @@
 - organization = campaign.organization
 - user = campaign.user
-.campaign-main-grid
+.campaign-main-grid ng-controller="CampaignGridCtrl"
   .row
     .col-xs-12
       h4
@@ -10,4 +10,8 @@
       .grid-section
         = link_to image_tag(campaign.image.url(:thumb), :width => "100%"), campaign_path(campaign) if campaign.image.exists?
       .grid-section.support-detail
-        = "#{campaign.num_sponsors} #{'person'.pluralize(campaign.num_sponsors)} supporting #{organization.name}".html_safe
+        = "#{campaign.num_supporters} #{'person'.pluralize(campaign.num_supporters)} supporting #{organization.name}".html_safe
+      ul.list-inline.avatar-list
+        - campaign.donations.each do |donation|
+          li data-toggle="popover" data-placement="bottom" title="<a href=#{'"' + user_path(donation.user) + '"'}>#{donation.user.full_name}</a>" data-content="<div class='popover-donation-details'>#{donation.details_for_popover_as_string(campaign.user == current_user)}</div>" data-html="true"
+            = avatar(donation.user)

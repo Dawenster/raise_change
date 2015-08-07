@@ -32,8 +32,12 @@ class Campaign < ActiveRecord::Base
     donations_per_hour_in_cents.to_f / 100
   end
 
-  def num_sponsors
+  def num_supporters
     self.donations.select(:user_id).uniq.count
+  end
+
+  def unique_supporters
+    self.donations.map{|donation| donation.user}.uniq
   end
 
   def num_hours
