@@ -66,7 +66,7 @@
                         i.fa.fa-plus
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "Maximum amount you're willing to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)"
+              = "Max dollar amount you're willing to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)"
 
         - if has_credit_card?
           = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true
