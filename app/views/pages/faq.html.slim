@@ -1,0 +1,39 @@
+.row
+  .col-xs-12
+    .faq-holder ng-controller="FAQCtrl"
+      .question-section
+        .row
+          - @sections.each do |section|
+            .col-xs-12.col-sm-4
+              h4
+                b
+                  = section[:name]
+
+              - section[:questions].each_with_index do |question, i|
+                p
+                  a href="##{section[:id] + i.to_s}"
+                    = question[:question]
+
+      hr
+
+      - @sections.each do |section|
+        h4
+          b
+            = section[:name]
+
+        - section[:questions].each_with_index do |question, i|
+          .question-holder
+            h5 id="#{section[:id] + i.to_s}"
+              b
+                = question[:question]
+
+            .answer
+              - question[:answer_paragraphs].each do |answer|
+                p
+                  = answer.html_safe
+
+            a.back-to-top-link href="#wrap"
+              i.fa.fa-caret-up
+              | Back to top
+
+        hr
