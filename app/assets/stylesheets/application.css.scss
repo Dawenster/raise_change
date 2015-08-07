@@ -27,6 +27,7 @@
 @font-face {
   font-family: 'Avenir';
   src: font-url('Avenir-Book.ttf');
+  src: font-url('Avenir-Book.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -34,6 +35,7 @@
 @font-face {
   font-family: 'Avenir-Heavy';
   src: font-url('Avenir-Heavy.ttf');
+  src: font-url('Avenir-Heavy.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
 }
