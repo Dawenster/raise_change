@@ -31,4 +31,4 @@
           - campaign.donations.order('created_at DESC').each do |donation|
             = render "donations/donation_grid", :donation => donation
         - else
-          = "This campaign has no supporters yet - #{link_to 'be the first', new_donation_path(campaign)}!".html_safe
+          = "This campaign has no supporters yet - #{link_to 'be the first', new_donation_path(campaign)}! #{'Did you know you can support your own campaign as well? In fact, we recommend it so that others will see you have some skin in the game too!' if current_user && campaign.user == current_user}".html_safe
