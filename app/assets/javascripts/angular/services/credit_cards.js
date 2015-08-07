@@ -1,4 +1,4 @@
-var app = angular.module('raisechange.services', []);
+var app = angular.module('raisechange.services');
 
 app.factory("CreditCards", function() {
   var CreditCards = {};

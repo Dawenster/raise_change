@@ -1,6 +1,6 @@
 var app = angular.module('raisechange');
 
-app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
+app.controller('JournalEntryFormCtrl', ['$scope', 'ImageSelect', function($scope, ImageSelect) {
   $scope.dateError = false
   $scope.hoursError = false
   $scope.freeTextDates = false
@@ -14,6 +14,8 @@ app.controller('JournalEntryFormCtrl', ['$scope', function($scope) {
   dateSetup()
   pictureSetup()
   descriptionSetup()
+
+  ImageSelect.fileNameFeedback()
 
   $scope.today = function() {
     $scope.dt = new Date();

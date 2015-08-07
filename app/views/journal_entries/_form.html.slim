@@ -61,9 +61,12 @@
                 = "Image "
               span
                 = media.link_to_remove "Remove", :class => "link_to_remove"
-            = media.input :image, label: false, input_html: { style: "border: none; box-shadow: none; margin: 0px 0px -10px -15px;" }
-            = media.input :caption
+            .btn.btn-primary.btn-file
+              | Select image
+              = media.input :image, label: false, :required => false, input_html: { :accept => "image/jpg, image/jpeg, image/png, image/gif", :class => "string required form-control" }
 
+            .selected-image-file-name
+            = media.input :caption, label: "Caption (optional)"
           = je.link_to_add "Add another picture", :media_files
       
     br
