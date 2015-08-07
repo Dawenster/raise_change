@@ -45,4 +45,8 @@ class Organization < ActiveRecord::Base
   def has_contact?
     self.id && self.contacts.first.id.nil? ? 'noContact' : 'hasContact'
   end
+
+  def all_hours_are_verified?
+    return self.journal_entries.where(:verified => false).empty?
+  end
 end

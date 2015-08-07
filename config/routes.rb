@@ -33,4 +33,5 @@ Rails.application.routes.draw do
 
   get "charity-admin" => "admins#index", as: :charity_admin
   post "admin/verify/:journal_entry_id" => "admins#verify", as: :verify_journal_entry
+  post "admin/verify-all/:org_id" => "admins#verify_all", as: :verify_all_journal_entries_for_org
 end

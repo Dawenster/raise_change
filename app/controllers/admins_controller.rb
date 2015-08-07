@@ -30,6 +30,15 @@ class AdminsController < ApplicationController
     end
   end
 
+  def verify_all
+    respond_to do |format|
+      Organization.find(params[:org_id]).journal_entries.where(:verified => false).each do |entry|
+        entry.update_attributes(:verified => true)
+      end
+      format.json { render :json => { :status => 200 } }
+    end
+  end
+
   private
 
   def can_view_charity_admin_page
