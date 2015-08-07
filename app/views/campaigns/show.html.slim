@@ -25,7 +25,7 @@
 
           h4
             - if @organization.website.blank?
-              = "All proceeds go towards: #{@organization.name}".html_safe
+              = "All proceeds go towards: #{link_to @organization.name, 'https://www.google.ca/search?q=' + @organization.name, :target => '_blank'}".html_safe
             - else
               = "All proceeds go towards: #{link_to @organization.name, @organization.website, :target => '_blank'}".html_safe
 
