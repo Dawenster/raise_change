@@ -24,4 +24,14 @@ class PagesController < ApplicationController
     @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @sections = sections
   end
+
+  def terms
+    @title = "Terms and <span class='highlight'>Conditions</span>"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
+  end
+
+  def privacy
+    @title = "Privacy <span class='highlight'>policy</span>"
+    @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
+  end
 end
