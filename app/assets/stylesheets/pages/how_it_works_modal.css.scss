@@ -18,6 +18,15 @@
     }
   }
 
+  .modal-body {
+    padding: 30px;
+
+    .content-holder {
+      margin-top: -50px;
+      margin-bottom: -30px;
+    }
+  }
+
   .modal-footer {
     text-align: center;
     background-color: #006633;
