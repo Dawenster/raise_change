@@ -1,6 +1,6 @@
 var app = angular.module('raisechange');
 
-app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', function($scope, ImageSelect) {
+app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', 'ToolTip', function($scope, ImageSelect, ToolTip) {
   $("#campaign_organization_name").addClass("form-control")
 
   $("#campaign_organization_name").on('autocompleteresponse', function(event, ui) {
@@ -10,9 +10,7 @@ app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', function($scope, Im
     }
   });
 
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+  ToolTip.initialize()
 
   $scope.hours = parseInt($(".campaign-form-holder").attr("data-estimated-hours")) || 5;
 

@@ -1,13 +1,10 @@
 var app = angular.module('raisechange');
 
-app.controller('FollowCtrl', ['$scope', '$element', function($scope, $element) {
+app.controller('FollowCtrl', ['$scope', '$element', 'ToolTip', function($scope, $element, ToolTip) {
   initialFollowStatus($element)
   $scope.hovering = false
 
-  // Initialize tooltip feature
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+  ToolTip.initialize()
 
   function initialFollowStatus($element) {
     var status = $($element).attr("data-following") == "true"
