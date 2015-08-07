@@ -5,39 +5,47 @@
         - if @activities.any?
           .row
             .col-xs-12.col-sm-3
-              .news-feed-left-side-holder
-                ul.list-inline
-                  li
-                    = avatar(current_user)
-                  li.greeting
-                    = "Hi #{link_to current_user.first_name, user_path(current_user)}!".html_safe
-                p
-                  | Here's how the people you support and follow have been raising change.
+              .info-box-holder.yellow
+                .info-box-holder-header
+                  | Greetings
+                .info-box-holder-content
+                  .news-feed-left-side-holder
+                    ul.list-inline
+                      li
+                        = avatar(current_user)
+                      li.greeting
+                        = "Hi #{link_to current_user.first_name, user_path(current_user)}!".html_safe
+                    p
+                      | Here's how the people you support and follow have been raising change.
 
-                p
-                  | Inspired?
+                    p
+                      | Inspired?
 
-                p
-                  = link_to "Create your own campaign", new_campaign_path
+                    p
+                      = link_to "Create your own campaign", new_campaign_path
 
-                p
-                  = link_to "Browse other campaigns", campaigns_path
+                    p
+                      = link_to "Browse other campaigns", campaigns_path
 
-                p
-                  = link_to "I'm feeling lucky", campaign_path(Campaign.all.sample)
+                    p
+                      = link_to "I'm feeling lucky", campaign_path(Campaign.all.sample)
 
-              .visible-xs
-                hr
+                  .visible-xs
+                    hr
 
             .col-xs-12.visible-xs
               = render "following_and_supporting"
 
             .col-xs-12.col-sm-6
-              - @activities.each do |activity|
-                - if activity.is_a? JournalEntry
-                  = render "journal_entries/journal_entry_grid", :je => activity, :show_campaign_title => true
-                - else
-                  = render "donations/donation_in_newsfeed", :donation => activity
+              .info-box-holder.green
+                .info-box-holder-header
+                  | News feed
+                .info-box-holder-content
+                  - @activities.each do |activity|
+                    - if activity.is_a? JournalEntry
+                      = render "journal_entries/journal_entry_grid", :je => activity, :show_campaign_title => true
+                    - else
+                      = render "donations/donation_in_newsfeed", :donation => activity
 
             .col-sm-3.hidden-xs
               = render "following_and_supporting"
@@ -57,13 +65,14 @@
                   | Browse campaigns
                   .arrow-right
 
-                .clearfix
+                - if current_user.campaigns.empty?
+                  .clearfix
 
-                p.create-paragraph
-                  | Or, you can also create your own campaign!
+                  p.create-paragraph
+                    | Or, you can also create your own campaign!
 
-                a.call-to-action.main href="#{new_campaign_path}"
-                  | Create campaign
-                  .arrow-right.main
+                  a.call-to-action.main href="#{new_campaign_path}"
+                    | Create campaign
+                    .arrow-right.main
 
               br

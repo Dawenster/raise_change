@@ -1,23 +1,24 @@
 .following-and-supporting-holder
-  - if current_user.donations.any?
-    .title
-      | Supporting:
+  .info-box-holder.grey
+    .info-box-holder-header
+      | Awesome people
+    .info-box-holder-content
+      - if current_user.donations.any?
+        .title
+          | Supporting:
 
-    p
-      ul.list-inline.avatar-list
-        - current_user.users_supported.each do |user|
-          li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
-            = link_to avatar(user), user_path(user)
+        p
+          ul.list-inline.avatar-list
+            - current_user.users_supported.each do |user|
+              li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
+                = link_to avatar(user), user_path(user)
 
-  - if current_user.following.any?
-    .title
-      | Following:
+      - if current_user.following.any?
+        .title
+          | Following:
 
-    p
-      ul.list-inline.avatar-list
-        - current_user.following.each do |user|
-          li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
-            = link_to avatar(user), user_path(user)
-
-.visible-xs
-  hr
+        p
+          ul.list-inline.avatar-list
+            - current_user.following.each do |user|
+              li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
+                = link_to avatar(user), user_path(user)
