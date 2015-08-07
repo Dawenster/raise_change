@@ -49,4 +49,8 @@ module ApplicationHelper
     meta [:property => "og:description", :content => description]
     meta [:property => "og:type", :content => "website"]
   end
+
+  def general_contact_email
+    "team@raisechange.com"
+  end
 end
