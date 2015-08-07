@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   end
 
   def faq
-    @title = "<span class='highlight'>FAQ</span>"
+    @title = "Frequently Asked <span class='highlight'>Questions</span>"
     @image = "https://s3-us-west-2.amazonaws.com/raisechange/general/generic_shovel.jpg"
     @sections = sections
   end
