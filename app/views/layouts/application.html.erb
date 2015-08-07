@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html ng-app="raisechange">
-<head>
-  <% 
-    title = "Raise Change ⋅ Micro donations for each hour you volunteer"
-    description = "Raise Change is a platform that allows you to crowdsource micro donations for each volunteer hour that you do."
-  %>
+  <!--[if IE 9]>
+    <html class="lt-ie10" lang="en">
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <style>#wrap{display:none;}#not-ie{display:block!important;}</style>
+  <![endif]-->
+  <head>
+    <% 
+      title = "Raise Change ⋅ Micro donations for each hour you volunteer"
+      description = "Raise Change is a platform that allows you to crowdsource micro donations for each volunteer hour that you do."
+    %>
 
-  <% meta :title => title, :description => description, :keywords => %w(raise change volunteer hour micro donations crowdsource) %>
+    <% meta :title => title, :description => description, :keywords => %w(raise change volunteer hour micro donations crowdsource) %>
 
-  <% facebook_app_id = Rails.env.development? ? 952931041384040 : 952917808052030 %>
+    <% facebook_app_id = Rails.env.development? ? 952931041384040 : 952917808052030 %>
 
-  <% 
-    meta [:property => "og:url", :content => "https://www.raisechange.com"]
-    meta [:property => "og:title", :content => title]
-    meta [:property => "og:description", :content => description]
-    meta [:property => "og:image", :content => "https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg"]
-    meta [:property => "og:type", :content => "website"]
-    meta [:property => "fb:admins", :content => "81007543"]
-    meta [:property => "fb:app_id", :content => facebook_app_id]
-  %>
+    <% 
+      meta [:property => "og:url", :content => "https://www.raisechange.com"]
+      meta [:property => "og:title", :content => title]
+      meta [:property => "og:description", :content => description]
+      meta [:property => "og:image", :content => "https://s3-us-west-2.amazonaws.com/raisechange/general/victory.jpg"]
+      meta [:property => "og:type", :content => "website"]
+      meta [:property => "fb:admins", :content => "81007543"]
+      meta [:property => "fb:app_id", :content => facebook_app_id]
+    %>
 
-  <%= metamagic %>
+    <%= metamagic %>
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  
-  <%= csrf_meta_tags %>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <%= render "layouts/stripe_javascript" %>
-  <%= render "layouts/google_analytics" if Rails.env.production? %>
-  <meta name="google-site-verification" content="4W06qW6z6ZADdxJU_-o6SqQKAvO7YSHtUm66W_cV7ew" />
-</head>
-<body>
-  <%= render "layouts/facebook" %>
-  <%= render "layouts/top_nav" %>
-  <%= render "layouts/banner_title" if @title && @image %>
-  <%= render "layouts/alerts" %>
-  <%= render "pages/how_it_works_modal" %>
-  <% unless params[:action] == 'landing' && params[:controller] == 'pages' %>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="main-content">
-            <%= yield %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= render "layouts/stripe_javascript" %>
+    <%= render "layouts/google_analytics" if Rails.env.production? %>
+    <meta name="google-site-verification" content="4W06qW6z6ZADdxJU_-o6SqQKAvO7YSHtUm66W_cV7ew" />
+  </head>
+  <body>
+    <div id="wrap">
+      <%= render "layouts/facebook" %>
+      <%= render "layouts/top_nav" %>
+      <%= render "layouts/banner_title" if @title && @image %>
+      <%= render "layouts/alerts" %>
+      <%= render "pages/how_it_works_modal" %>
+      <% unless params[:action] == 'landing' && params[:controller] == 'pages' %>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="main-content">
+                <%= yield %>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
+      <%= render "layouts/footer" %>
     </div>
-  <% else %>
-    <%= yield %>
-  <% end %>
-  <%= render "layouts/footer" %>
-</body>
+    <%= render "layouts/not_ie" %>
+  </body>
 </html>
