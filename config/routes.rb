@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   delete "follow/:user_id" => "users#unfollow", as: :unfollow
 
   get "charity-admin" => "admins#index", as: :charity_admin
+  post "admin/verify/:journal_entry_id" => "admins#verify", as: :verify_journal_entry
 end

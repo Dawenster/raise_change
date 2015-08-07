@@ -23,6 +23,13 @@ class AdminsController < ApplicationController
     
   end
 
+  def verify
+    respond_to do |format|
+      JournalEntry.find(params[:journal_entry_id]).update_attributes(:verified => true)
+      format.json { render :json => { :status => 200 } }
+    end
+  end
+
   private
 
   def can_view_charity_admin_page

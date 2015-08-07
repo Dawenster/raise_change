@@ -1,10 +1,10 @@
-.row
+.row ng-controller="CharityAdminCtrl"
   .col-xs-12
     - current_user.organizations_as_admin.each do |org|
       h4
         = org.name
 
-      table.table.table-striped
+      table.table.table-striped.table-hover
         thead
           tr
             th
@@ -15,6 +15,8 @@
               | Date(s) volunteered
             th
               | Hours
+            th
+              | Status
 
         tbody
           - org.journal_entries.order("created_at DESC").each do |entry|
@@ -24,6 +26,15 @@
               td
                 = entry.campaign.title
               td
-                = entry.dates
+                = format_je_dates(entry.dates)
               td
                 = entry.hours
+              td.verified-cell
+                - if entry.verified
+                  | Verified
+                - else
+                  .btn.btn-primary.btn-xs ng-click="verifyEntry($event)" data-url="#{verify_journal_entry_path(entry)}"
+                    | Verify
+
+      .btn.btn-primary
+        | Verify all
