@@ -16,4 +16,9 @@ app.controller('AfterCreationModalCtrl', ['$scope', function($scope) {
       console.log('Oops, unable to copy');
     }
   });
+
+  if ($.cookie('just_created') == "true") {
+    $('#after-creation-modal').modal("show");
+    $.cookie('just_created', false, { path: '/' });
+  }
 }]);

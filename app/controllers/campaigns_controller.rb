@@ -29,6 +29,7 @@ class CampaignsController < ApplicationController
     @campaign.organization_id = org.id
     if @campaign.save
       flash[:notice] = "\"#{@campaign.title}\" created successfully."
+      cookies[:just_created] = true
       redirect_to campaign_path(@campaign)
     else
       flash.now[:alert] = @campaign.errors.full_messages.join(". ") + "."
