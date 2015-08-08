@@ -1,4 +1,4 @@
-.row.donations-controller ng-controller="DonationCtrl" data-campaign-estimated-quarterly-hours="#{@campaign.estimated_hours_per_quarter}" data-user-signed-in="#{user_signed_in?}"
+.row.donations-controller ng-controller="DonationCtrl" data-campaign-estimated-hours="#{@campaign.estimated_hours_per_period}" data-user-signed-in="#{user_signed_in?}"
   .col-xs-12.col-md-6.col-md-offset-3
     .donation-top-profile-picture-holder
       - if has_picture(@campaign.user)
@@ -26,14 +26,14 @@
 
             #amount-slider
             .total-donation-display-holder
-              = "Estimted total #{@campaign.donation_period} donation: "
+              = "Estimted total #{donation_period} donation: "
               div
                 .total-donation-display
-                  | ${{totalQuarterlyDonation}}
+                  | ${{totalDonationPerPeriod}}
 
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer #{'hour'.pluralize(@campaign.estimated_hours)} will be done #{@campaign.frequency}; your donation will be charged #{@campaign.donation_period}."
+              = "#{@campaign.user.first_name} estimates a total of #{@campaign.estimated_hours} volunteer #{'hour'.pluralize(@campaign.estimated_hours)} will be done #{@campaign.frequency}; your donation will be charged #{donation_period}."
 
         .row
           .col-xs-12.col-sm-6
@@ -52,7 +52,7 @@
                         i.fa.fa-plus
           .col-xs-12.col-sm-6
             .donation-field-description
-              = "Max dollar amount you're willing to donate on a #{@campaign.donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)."
+              = "Max dollar amount you're willing to donate on a #{donation_period} basis (in case #{@campaign.user.first_name} suddenly goes on a volunteering binge)."
 
         - if has_credit_card?
           = render "users/existing_credit_cards", :cards => @cards, :show_card_description => true

@@ -834,7 +834,7 @@ body.outlook p {
                                 Support amount: <%= number_to_currency(@donation.amount.to_f / 100) %> per hour
                               </div>
                               <div>
-                                Max amount: <%= number_to_currency(@donation.max.to_f / 100) %> per quarter
+                                Max amount: <%= number_to_currency(@donation.max.to_f / 100) %> per <%= donation_period_name %>
                               </div>
                             </p>
                             <p>

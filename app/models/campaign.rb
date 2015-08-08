@@ -1,6 +1,4 @@
 class Campaign < ActiveRecord::Base
-  include SocialHelper
-
   validates :title, :organization_name, :description, presence: true
 
   belongs_to :user
@@ -62,17 +60,17 @@ class Campaign < ActiveRecord::Base
     return str
   end
 
-  def estimated_hours_per_quarter
+  def estimated_hours_per_period
     if self.frequency == "monthly"
-      multiple = 3
+      multiple = 12 / ApplicationController.helpers.donation_periods_per_year
     elsif self.frequency == "weekly"
-      multiple = 13
+      multiple = 52.0 / ApplicationController.helpers.donation_periods_per_year
     end
 
     if self.estimated_hours.nil? || multiple.nil?
-      return 15
+      return 4
     else
-      return self.estimated_hours * multiple
+      return (self.estimated_hours * multiple).round
     end
   end
 end

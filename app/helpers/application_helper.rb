@@ -53,4 +53,8 @@ module ApplicationHelper
   def general_contact_email
     "team@raisechange.com"
   end
+
+  def donation_periods_per_year
+    12
+  end
 end
