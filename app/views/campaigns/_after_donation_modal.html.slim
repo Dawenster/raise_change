@@ -5,23 +5,24 @@
         button.close type="button" data-dismiss="modal" aria-label="Close"
           span aria-hidden="true"
             | &times;
-        h2
-          = "Thank you for supporting #{@campaign.user.first_name}!"
-        
-        h5
-          | Would you like to write a public message on the campaign page?
+        .content-holder
+          h2
+            = "Thank you for supporting #{@campaign.user.first_name}!"
+          
+          h5
+            | Would you like to write a public message on the campaign page?
 
-        form#add-message action="#{add_donation_message_path}" method="post"
-          textarea class="form-control" rows="3" placeholder="E.g. Go #{@campaign.user.first_name} go!" name="donation[message]"
+          form#add-message action="#{add_donation_message_path}" method="post"
+            textarea class="form-control" rows="3" placeholder="E.g. Go #{@campaign.user.first_name} go!" name="donation[message]"
+
+            br
+
+            .call-to-action-holder
+              a.call-to-action onclick="$('#add-message').submit();"
+                | Submit
+                .arrow-right
 
           br
 
-          .call-to-action-holder
-            a.call-to-action onclick="$('#add-message').submit();"
-              | Submit
-              .arrow-right
-
-        br
-
-        a href="" data-dismiss="modal"
-          | No thanks
+          a href="" data-dismiss="modal"
+            | No thanks

@@ -1,0 +1,48 @@
+#after-creation-modal.modal.fade tabindex="-1" role="dialog" ng-controller="AfterCreationModalCtrl"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-body
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true"
+            | &times;
+        .content-holder
+          h2
+            | Your campaign is ready to rock!
+          
+          h4.content-suggestion
+            = "Woo hoo! Now let's get some supporters."
+
+          h4.content-suggestion
+            = "For each person that sponsors you at $1 per hour, you'll raise $#{@campaign.estimated_hours_per_quarter * 4} a year (based on your estimated hours)."
+
+          h4.content-suggestion
+            | So share that love!
+
+          ul.list-inline.social-share-list
+            li
+              a href="#{facebook_link(request.original_url, @campaign)}" target="_blank"
+                .social-share-icon-link
+                  i.fa.fa-facebook
+            li
+              a href="#{twitter_link(request.original_url, @campaign)}" target="_blank"
+                .social-share-icon-link
+                  i.fa.fa-twitter
+            li
+              a href="#{linkedin_link(request.original_url, @campaign)}" target="_blank"
+                .social-share-icon-link
+                  i.fa.fa-linkedin
+            li
+              a href="#{email_link(request.original_url, @campaign)}" target="_blank"
+                .social-share-icon-link
+                  i.fa.fa-envelope-o
+
+          .copy-url-section-holder
+            h4.content-suggestion
+              | You can also copy the below URL to send to your friends and family!
+              input.form-control.js-copytextarea value="#{request.original_url.gsub("https://", "")}"
+
+            .btn.btn-primary.js-textareacopybtn
+              | Copy URL
+
+            span.copied-text style="display: none;"
+              | Copied!
