@@ -56,14 +56,10 @@
 
       .col-xs-3
         .campaign-show-share-holder
-          - if current_user && @campaign.user == current_user
-            a.share-link data-toggle="modal" data-target="#after-creation-modal"
-              i.fa.fa-share-alt-square.share-icon
-              | Share
-          - else
-            a.share-link data-toggle="popover" data-placement="bottom" title="Spread the love" data-content="<div class='popover-social-links'>#{@campaign.social_links_as_string(request.original_url)}</div>" data-html="true"
-              i.fa.fa-share-alt-square.share-icon
-              | Share
+          a.share-link data-toggle="modal" data-target="#after-creation-modal"
+            i.fa.fa-share-alt-square.share-icon
+            | Share
+          / a.share-link data-toggle="popover" data-placement="bottom" title="Spread the love" data-content="<div class='popover-social-links'>#{@campaign.social_links_as_string(request.original_url)}</div>" data-html="true"
 
       /   .campaign-show-detailed-stats
       /     h1

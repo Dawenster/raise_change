@@ -6,14 +6,22 @@
           span aria-hidden="true"
             | &times;
         .content-holder
-          h2
-            | Your campaign is ready to rock!
-          
-          h4.content-suggestion
-            = "Woo hoo! Now let's get some supporters."
+          - if current_user && @campaign.user == current_user
+            h2
+              | Your campaign is ready to rock!
+            
+            h4.content-suggestion
+              = "Woo hoo! Now let's get some supporters."
 
-          h4.content-suggestion
-            = "For each person that sponsors you at $1 per hour, you'll raise $#{@campaign.estimated_hours_per_quarter * 4} a year (based on your estimated hours)."
+            h4.content-suggestion
+              = "For each person that sponsors you at $1 per hour, you'll raise $#{@campaign.estimated_hours_per_quarter * 4} a year (based on your estimated hours)."
+
+          - else
+            h2
+              = "Help #{@campaign.user.first_name} by sharing!"
+
+            h4.content-suggestion
+              | Every dollar of support makes a huge impact.
 
           h4.content-suggestion
             | So share that love!

@@ -4,6 +4,7 @@ app.controller('AfterCreationModalCtrl', ['$scope', function($scope) {
   var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
 
   copyTextareaBtn.addEventListener('click', function(event) {
+    // var copyTextarea = $(this).parents(".copy-url-section-holder").find(".js-copytextarea")
     var copyTextarea = document.querySelector('.js-copytextarea');
     copyTextarea.select();
 
