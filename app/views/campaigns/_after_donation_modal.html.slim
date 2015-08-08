@@ -1,4 +1,4 @@
-#after-donation-modal.modal.fade tabindex="-1" role="dialog"
+#after-donation-modal.modal.fade tabindex="-1" role="dialog" ng-controller="AfterDonationModalCtrl"
   .modal-dialog.modal-md
     .modal-content
       .modal-body
@@ -13,12 +13,12 @@
             | Would you like to write a public message on the campaign page?
 
           form#add-message action="#{add_donation_message_path}" method="post"
-            textarea class="form-control" rows="3" placeholder="E.g. Go #{@campaign.user.first_name} go!" name="donation[message]"
+            textarea.add-message class="form-control" rows="3" placeholder="E.g. Go #{@campaign.user.first_name} go!" name="donation[message]"
 
             br
 
             .call-to-action-holder
-              a.call-to-action onclick="$('#add-message').submit();"
+              a.call-to-action ng-click="submitMessage()"
                 | Submit
                 .arrow-right
 
