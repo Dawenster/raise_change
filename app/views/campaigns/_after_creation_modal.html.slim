@@ -14,7 +14,7 @@
               = "Woo hoo! Now let's get some supporters."
 
             h4.content-suggestion
-              = "For each person that sponsors you at $1 per hour, you'll raise $#{@campaign.estimated_hours_per_period * donation_periods_per_year} a year (based on your estimated hours)."
+              = "For each person that sponsors you at $1 per hour, you'll raise $#{(@campaign.estimated_hours_per_period * donation_periods_per_year).round} a year (based on your estimated hours)."
 
           - else
             h2

@@ -70,7 +70,7 @@ class Campaign < ActiveRecord::Base
     if self.estimated_hours.nil? || multiple.nil?
       return 4
     else
-      return (self.estimated_hours * multiple).round
+      return self.estimated_hours * multiple
     end
   end
 end
