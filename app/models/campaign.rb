@@ -3,8 +3,8 @@ class Campaign < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :organization
-  has_many :donations
-  has_many :journal_entries
+  has_many :donations, :dependent => :destroy
+  has_many :journal_entries, :dependent => :destroy
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
