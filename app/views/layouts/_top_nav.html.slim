@@ -75,8 +75,8 @@ nav.navbar.navbar-default role="navigation"
 
       - else
         li
-          a href="#{new_user_registration_path}"
+          a href="#{new_user_registration_path}" class="#{'active-underline' if params[:action] == 'new' && params[:controller] == 'registrations'}"
             | Sign up free
         li
-          a href="#{new_user_session_path}"
+          a href="#{new_user_session_path}" class="#{'active-underline' if params[:action] == 'new' && params[:controller] == 'sessions'}"
             | Login
