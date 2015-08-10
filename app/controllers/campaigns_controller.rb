@@ -87,7 +87,7 @@ class CampaignsController < ApplicationController
 
   def authorized_user
     @campaign = Campaign.find(params[:id])
-    if current_user && (@campaign.user != current_user || !current_user.admin)
+    if current_user && ((@campaign.user != current_user) || !current_user.admin)
       flash[:alert] = "You are not authorized to view this page"
       redirect_to campaign_path(@campaign)
     end
