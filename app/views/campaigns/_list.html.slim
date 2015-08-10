@@ -15,7 +15,7 @@
 
       .campaign-main-description
         p
-          = link_to truncate(campaign.description, :length => 400), campaign_path(campaign)
+          = link_to simple_format(truncate(campaign.description.html_safe, :length => 400, omission: '... (read more)')), campaign_path(campaign)
       .campaign-user-holder
         - if user
           .pull-left.user-image
