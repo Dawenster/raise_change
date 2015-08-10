@@ -32,10 +32,10 @@ nav.navbar.navbar-default role="navigation"
       - if user_signed_in?
         li
           - if can_create_journal_entries?
-            a href="#{new_journal_entry_path}" style="margin-right: 10px;"
+            a href="#{new_journal_entry_path}" style="margin-right: 10px;" class="#{'active-underline' if params[:action] == 'new' && params[:controller] == 'journal_entries'}"
               | Log hours
           - else
-            a href="#{new_campaign_path}" style="margin-right: 10px;"
+            a href="#{new_campaign_path}" style="margin-right: 10px;" class="#{'active-underline' if params[:action] == 'new' && params[:controller] == 'campaigns'}"
               | Create campaign
 
         li.navbar-avatar
