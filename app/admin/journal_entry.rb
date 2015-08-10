@@ -3,8 +3,20 @@ ActiveAdmin.register JournalEntry do
     :dates,
     :hours,
     :description,
-    :user_id,
-    :campaign_id,
+    :user,
+    :campaign,
     :verified
   )
+
+  index :as => ActiveAdmin::Views::IndexAsTable do
+    column :id
+    column :user
+    column :campaign
+    column :description
+    column :dates
+    column :hours
+    column :verified
+
+    actions
+  end
 end

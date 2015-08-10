@@ -11,6 +11,7 @@ ActiveAdmin.register Campaign do
   )
 
   index :as => ActiveAdmin::Views::IndexAsTable do
+    column :id
     column :title
     column :description
     column :user
