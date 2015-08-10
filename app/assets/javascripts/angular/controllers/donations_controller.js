@@ -23,9 +23,9 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
   });
 
   slider.noUiSlider.on('update', function(values, handle) {
-    var amount = (Math.round(values[handle] * 4) / 4).toFixed(2) // To round to nearest $0.25
+    var amount = roundToIncrement(values[handle])
     $scope.donationAmount = amount
-    $scope.totalDonationPerPeriod = (amount * $scope.hoursPerPeriod).toFixed(2)
+    $scope.totalDonationPerPeriod = roundToIncrement(amount * $scope.hoursPerPeriod)
     // Max is defaulted to 10% above what the total estimated amount per period
     $scope.maxDonation = parseInt(Math.round(parseFloat($scope.totalDonationPerPeriod) * 1.2))
     $scope.minimumMaxAmount = Math.ceil($scope.totalDonationPerPeriod)
@@ -104,5 +104,10 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
   function isEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
+  }
+
+  function roundToIncrement(num) {
+    // To round to nearest $0.25
+    return (Math.round(num * 4) / 4).toFixed(2)
   }
 }]);
