@@ -2,6 +2,7 @@ class CampaignsController < ApplicationController
   autocomplete :organization, :name, :full => true
   
   before_filter :authenticate_user!, :only => [:new, :edit]
+  before_filter :authorized_user, :only => [:edit, :update, :destroy]
 
   def index
     @title = "All <span class='highlight'>campaigns</span>"
@@ -82,5 +83,13 @@ class CampaignsController < ApplicationController
       :frequency,
       :_destroy
     )
+  end
+
+  def authorized_user
+    @campaign = Campaign.find(params[:id])
+    if current_user && (@campaign.user != current_user || !current_user.admin)
+      flash[:alert] = "You are not authorized to view this page"
+      redirect_to campaign_path(@campaign)
+    end
   end
 end
