@@ -12,7 +12,7 @@
             = " (#{link_to "edit", edit_journal_entry_path(je)})".html_safe if user == current_user
         - if je.description
           div
-            = je.description
+            = simple_format(je.description)
         .volunteer-date
           = "#{format_je_dates(je.dates)}"
         - if je.media_files.any?
