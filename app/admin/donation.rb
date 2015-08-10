@@ -4,6 +4,17 @@ ActiveAdmin.register Donation do
     :max,
     :user_id,
     :campaign_id,
-    :message,
+    :message
   )
+
+  index :as => ActiveAdmin::Views::IndexAsTable do
+    column :id
+    column :user
+    column :campaign
+    column :amount
+    column :max
+    column :message
+
+    actions
+  end
 end
