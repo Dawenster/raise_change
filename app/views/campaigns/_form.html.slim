@@ -20,7 +20,10 @@
       .campaign-preview-image
         = image_tag @campaign.image.url(:display), :width => "100%" if @campaign.id && @campaign.image.exists?
       .btn.btn-primary.btn-file
-        | Select campaign image
+        - if @campaign.id
+          | Change campaign image
+        - else
+          | Select campaign image
         = campaign.input :image, label: false, :required => false, input_html: { :accept => "image/jpg, image/jpeg, image/png, image/gif", :class => "string required form-control" }
 
       .selected-image-file-name
