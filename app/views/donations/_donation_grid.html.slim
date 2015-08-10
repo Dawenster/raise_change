@@ -8,4 +8,4 @@
         div
           = "#{link_to user.full_name, user_path(user)} #{'"' + donation.message + '"' unless donation.message.blank?}".html_safe
         .sponsored-amount
-          = "Sponsored #{number_to_currency(donation.amount_in_dollars)} #{time_ago_in_words(donation.created_at)} ago"
+          = "Sponsored #{number_to_currency(donation.amount_in_dollars)} per hour #{time_ago_in_words(donation.created_at)} ago"
