@@ -57,4 +57,8 @@ module ApplicationHelper
   def donation_periods_per_year
     12
   end
+
+  def donation_period_name
+    "month"
+  end
 end
