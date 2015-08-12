@@ -49,7 +49,7 @@
                         = render "donations/donation_in_newsfeed", :donation => activity
 
                   - else
-                    | Hum dee dum... just waiting for people to post some activities :)
+                    | Hum dee dum... just waiting for people to post some activities.
 
             .col-sm-3.hidden-xs
               = render "following_and_supporting"
@@ -63,7 +63,7 @@
                   = "Welcome #{current_user.first_name}!"
 
                 p.browse-paragraph
-                  | This is where your news feed will show up. Start following or supporting others on the site to see their updates and activities :)
+                  | This is where your news feed will show up. Start following or supporting others on the site to see their updates and activities.
 
                 a.call-to-action href="#{campaigns_path}"
                   | Browse campaigns
