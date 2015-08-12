@@ -6,6 +6,20 @@ module FaqHelper
         :id => "gen",
         :questions => [
           {
+            :question => "What is Raise Change?",
+            :answer_paragraphs => [
+              "Raise Change is a platform to raise micro donations for each hour someone volunteers. Volunteers start a cammpaign for their volunteer work and log their hours as they go. Friends, family and strangers can support their volunteer work by pledging to donate a set amount of dollars for every hour volunteered. All donations go to the charity the individual volunteered at or a related organization."
+            ]
+          },
+          {
+            :question => "What are the basics?",
+            :answer_paragraphs => [
+              "Users create <strong>campaigns</strong> to show off their volunteer work and ask for pledges.",
+              "As campaign creators <strong>volunteer</strong>, they <strong>log volunteer hours</strong> on their campaign page.",
+              "Friends, family and strangers can <strong>support</strong> these campaigns by pledging a small amount of money per hour."
+            ]
+          },
+          {
             :question => "How much do you charge?",
             :answer_paragraphs => [
               "We collect a 5% fee on donations in order to keep the website running and feed ourselves. We also collect a 2.9% + $0.30 processing fees on donations in order to pay the stripe fees that cover credit card costs. This amount will be deducted from your donation pledge automatically."
@@ -20,7 +34,13 @@ module FaqHelper
           {
             :question => "Are you a not-for-profit?",
             :answer_paragraphs => [
-              "Raise Change is a social enterprise that aligns its business goals with doing good."
+              "Raise Change is a social enterprise that aligns its business goals with doing good. We want to make volunteering exciting for everyone."
+            ]
+          },
+          {
+            :question => "What currency are the donations made in?",
+            :answer_paragraphs => [
+              "All donations are converted to Canadian dollars. As the website grows, we will include other currencies."
             ]
           }
         ]
@@ -30,15 +50,33 @@ module FaqHelper
         :id => "vol",
         :questions => [
           {
+            :question => "How do I get started?",
+            :answer_paragraphs => [
+              "Before you can start collecting pledges, you will need to start a campaign. Then, simply log into your account and press 'start a camapign' on your front page. Once you create a camaign, you will have a dedicated page that you can share with others. Your campaign page will show you how many supporters are backing you and the amount of donations you are earning per volunteer hour. Everytime you volunteer, log into your account and log these hours in order for the donations to be made."
+            ]
+          },
+          {
+            :question => "Why do I need to log my volunteer hours?",
+            :answer_paragraphs => [
+              "You need to log volunteer hours on your profile in order for us to calculate the donation amounts you will receive at the end of the month."
+            ]
+          },
+          {
+            :question => "How often do I need to log my volunteer hours?",
+            :answer_paragraphs => [
+              "The sooner the better. We calculate the donation amounts at the end of each month, but in order to keep your profile fresh with content, we suggest logging your hours at the end of the day, or at least at the end of the week. Don't forget to upload exciting photos from your volunteering adventures."
+            ]
+          },
+          {
             :question => "Will I get paid to volunteer?",
             :answer_paragraphs => [
-              "No. All the money from the donors goes directly to the organization you volunteered at or a related nonprofit"
+              "No. All the money from the donors goes directly to the organization you volunteered at or a related nonprofit."
             ]
           },
           {
             :question => "How does the nonprofit get the money I raised?",
             :answer_paragraphs => [
-              "At the end of each month, we will mail the campaign creator (you) a cheque for the amount that was collected from the donors. That way, you can present the cheque to the nonprofit yourself :)"
+              "At the end of each month, we will mail the campaign creator (you) a cheque for the amount that was collected from the donors. That way, you can present the cheque to the nonprofit yourself &#x263A"
             ]
           },
           {
