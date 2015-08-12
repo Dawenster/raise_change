@@ -1,6 +1,6 @@
 var app = angular.module('raisechange');
 
-app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', 'ToolTip', function($scope, ImageSelect, ToolTip) {
+app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', 'ToolTip', 'HoursInput', function($scope, ImageSelect, ToolTip, HoursInput) {
   $("#campaign_organization_name").addClass("form-control")
 
   $("#campaign_organization_name").on('autocompleteresponse', function(event, ui) {
@@ -24,7 +24,7 @@ app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', 'ToolTip', function
   });
 
   $scope.addHour = function() {
-    if (parseInt($scope.hours) < (maxHours())) { // Max hours, depending on the frequency
+    if (parseInt($scope.hours) < HoursInput.maxHours()) { // Max hours, depending on the frequency
       $scope.hours = parseInt($scope.hours) + 1;
     }
   }
@@ -35,20 +35,5 @@ app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', 'ToolTip', function
     }
   }
 
-  $(".custom-hours-input").blur(function() {
-    if (parseInt($scope.hours) > maxHours()) {
-      $scope.hours = maxHours()
-      if(!$scope.$$phase) {
-        $scope.$apply()
-      }
-    }
-  })
-
-  function maxHours() {
-    var days = 31
-    if ($(".weekly-button").hasClass("active")) {
-      days = 7
-    }
-    return 24 * days
-  }
+  HoursInput.preventManualInputCheating($scope)
 }]);
