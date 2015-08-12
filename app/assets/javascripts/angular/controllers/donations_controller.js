@@ -65,7 +65,7 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
         CreditCards.makeDonation()
         // $(".new_donation").submit()
       }
-      $(this).attr("disabled", "disabled")
+      $(".make-donation-button").attr("disabled", "disabled")
     }
   }
 
