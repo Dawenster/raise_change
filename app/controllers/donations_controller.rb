@@ -31,6 +31,7 @@ class DonationsController < ApplicationController
     if @donation.save
       begin
         DonationMailer.successful_donation(@donation.id, donation_period_name).deliver
+        DonationMailer.notify_creator_of_donation(@donation.id, donation_period_name).deliver
         flash[:notice] = "Thank you! You are now supporting \"#{@campaign.title}\"."
         cookies[:just_donated] = true
         redirect_to campaign_path(@campaign)

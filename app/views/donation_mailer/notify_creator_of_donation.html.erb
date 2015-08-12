@@ -797,7 +797,7 @@ body.outlook p {
                               <a href="<%= root_url %>"><img src="https://s3-us-west-2.amazonaws.com/raisechange/general/Raise_Change_logo_2_tight.png" style="width: 150px;"></a>
                             </td>
                             <td class="six sub-columns last" style="text-align:right; vertical-align:middle;">
-                              <span class="template-label">Support confirmation</span>
+                              <span class="template-label">Support received</span>
                             </td>
                             <td class="expander"></td>
                           </tr>
@@ -825,11 +825,8 @@ body.outlook p {
                           <td>
                             <br>
                             <p class="lead">Hi <%= @name %>,</p>
-                            <p>Thank you for supporting <%= link_to @campaign_user.full_name, user_url(@campaign_user) %> on Raise Change. The details of your support are below:</p>
+                            <p><%= link_to @donor.full_name, user_url(@donor) %> has supported your Raise Change campaign: <%= link_to @campaign.title, campaign_url(@campaign) %>. The details of the support are below:</p>
                             <p>
-                              <div>
-                                Campaign: <%= link_to @campaign.title, campaign_url(@campaign) %>
-                              </div>
                               <div>
                                 Support amount: <%= number_to_currency(@donation.amount.to_f / 100) %> per hour
                               </div>
@@ -838,7 +835,7 @@ body.outlook p {
                               </div>
                             </p>
                             <p>
-                              Check out some other campaigns if you're curious!
+                              Your new campaign total is now <%= number_to_currency(@campaign.donations_per_hour) %> per hour. Woo hoo! Keep up the good work! Don't forget to thank <%= @donor.first_name %> and share with more friends and family :)
                             </p>
                           </td>
                           <td class="expander"></td>
@@ -856,7 +853,7 @@ body.outlook p {
                       <table class="button">
                         <tr>
                           <td>
-                            <%= link_to 'All campaigns', campaigns_url %>
+                            <%= link_to 'View campaign', campaign_url(@campaign) %>
                           </td>
                         </tr>
                       </table>
