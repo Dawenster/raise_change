@@ -7,7 +7,7 @@ class MediaFile < ActiveRecord::Base
   }
 
   has_attached_file :image,
-                    :styles => { :thumb => "300x225#", :display => "720x540#" },
+                    :styles => { :thumb => "x225", :display => "x540" },
                     :s3_credentials => s3_credentials_hash,
                     :bucket => ENV['AWS_BUCKET'],
                     :default_url => "https://s3-us-west-2.amazonaws.com/timeauction/missing-auction-thumb.png",
