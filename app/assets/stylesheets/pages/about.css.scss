@@ -2,20 +2,38 @@
   margin-top: 30px;
 
   .text-only-holder {
-    padding: 30px;
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .text-only-holder-title {
+    padding-left: 20px;
     font-size: 24px;
-    color: white;
-    background-color: #006633;
+    color: black;
+  }
+
+  .text-only-holder-subtitle {
+    padding-left: 22px;
+    font-size: 16px;
+    color: #ff9900;
+  }
+
+  .text-only-holder-content{
+    padding-left: 22px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    color: black;
+  }
+
+  .individual-bio {
+    border-left: 2px solid #333333;
   }
 
   .vertical-divider {
     height: 30px;
-  }
-
-  .video-holder {
-    .with-text {
-      margin-top: -6px;
-    }
   }
 
   .with-text {
@@ -23,4 +41,10 @@
     background-color: #333333;
     color: white;
   }
+
+  .image-only-holder {
+    max-width: 300px;
+    padding-left: 25px;
+  }
+
 }
