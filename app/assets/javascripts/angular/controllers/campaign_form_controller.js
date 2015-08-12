@@ -24,12 +24,31 @@ app.controller('CampaignFormCtrl', ['$scope', 'ImageSelect', 'ToolTip', function
   });
 
   $scope.addHour = function() {
-    $scope.hours = parseInt($scope.hours) + 1;
+    if (parseInt($scope.hours) < (maxHours())) { // Max hours, depending on the frequency
+      $scope.hours = parseInt($scope.hours) + 1;
+    }
   }
 
   $scope.subtractHour = function() {
     if (parseInt($scope.hours) > 1) {
       $scope.hours = parseInt($scope.hours) - 1;
     }
+  }
+
+  $(".custom-hours-input").blur(function() {
+    if (parseInt($scope.hours) > maxHours()) {
+      $scope.hours = maxHours()
+      if(!$scope.$$phase) {
+        $scope.$apply()
+      }
+    }
+  })
+
+  function maxHours() {
+    var days = 31
+    if ($(".weekly-button").hasClass("active")) {
+      days = 7
+    }
+    return 24 * days
   }
 }]);

@@ -62,11 +62,11 @@
               | * Frequency
           div
             .btn-group data-toggle="buttons"
-              label.btn.btn-primary class="#{'active' if @campaign.frequency == 'weekly' || @campaign.frequency.nil?}"
+              label.btn.btn-primary.weekly-button class="#{'active' if @campaign.frequency == 'weekly' || @campaign.frequency.nil?}"
                 input type="radio" name="campaign[frequency]" id="option1" autocomplete="off" checked="#{'checked' if @campaign.frequency == 'weekly' || @campaign.frequency.nil?}" value="weekly"
                   | Weekly
 
-              label.btn.btn-primary class="#{'active' if @campaign.frequency == 'monthly'}"
+              label.btn.btn-primary.monthly-button class="#{'active' if @campaign.frequency == 'monthly'}"
                 input type="radio" name="campaign[frequency]" id="option2" autocomplete="off" checked="#{'checked' if @campaign.frequency == 'monthly'}" value="monthly"
                   | Monthly
 
