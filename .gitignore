@@ -18,3 +18,4 @@
 config/initializers/aaa_secrets.rb
 
 db/backups/*
+db/reachout/*
