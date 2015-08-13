@@ -1,10 +1,12 @@
+@import "colors.scss";
+
 .navbar {
   border-radius: 0px;
   margin-bottom: 0px;
 }
 
 .navbar-default {
-  background-color: #006633;
+  background-color: $custom1;
   border: none;
   z-index: 5;
 
@@ -33,7 +35,7 @@
     .open {
       a, a:focus, a:hover {
         color: white !important;
-        background-color: #006633 !important;
+        background-color: $custom1 !important;
       }
 
       .dropdown-menu {
@@ -42,7 +44,7 @@
 
           a {
             text-transform: none;
-            color: #006633 !important;
+            color: $custom1 !important;
             background-color: white !important;
             font-family: 'Avenir' !important;
 
@@ -89,7 +91,7 @@
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-  background-color: #006633;
+  background-color: $custom1;
 }
 
 // END: Mobile menu toggle

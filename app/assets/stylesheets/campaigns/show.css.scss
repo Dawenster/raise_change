@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 .show-campaign-holder {
   .organizer-title {
     display: block;
@@ -18,7 +20,7 @@
   .campaign-show-details-holder {
     .campaign-how-it-works {
       font-style: italic;
-      color: #333333;
+      color: $custom2;
       font-family: 'Avenir Book';
 
       i {
@@ -51,7 +53,7 @@
 
   .campaign-show-statistics {
     width: 100%;
-    background-color: #006633;
+    background-color: $custom1;
     color: white;
 
     .top-title-row {
@@ -101,27 +103,27 @@
           }
 
           &:hover {
-            color: #FAAF4D;
+            color: $custom3;
             text-decoration: none;
           }
         }
 
         .popover {
           .popover-title {
-            color: #006633;
+            color: $custom1;
           }
 
           .popover-content {
             .popover-social-links {
-              color: #006633;
+              color: $custom1;
 
               i {
-                color: #006633;
+                color: $custom1;
                 font-size: 24px;
                 margin-right: 5px;
 
                 &:hover {
-                  color: #333333;
+                  color: $custom2;
                 }
               }
             }
@@ -154,11 +156,11 @@
   }
 
   .nav-justified {
-    border-bottom: 1px solid #006633;
+    border-bottom: 1px solid $custom1;
 
     li {
       a {
-        color: #006633;
+        color: $custom1;
         border-radius: 0 !important;
         margin-bottom: -1px;
       }
@@ -169,7 +171,7 @@
 
       a {
         color: white;
-        background-color: #006633;
+        background-color: $custom1;
         border: none;
 
         &:hover, &:focus {
@@ -208,7 +210,7 @@
   }
 
   .large-right-column {
-    border-left: 2px solid #333333;
+    border-left: 2px solid $custom2;
     padding-left: 30px;
   }
 }

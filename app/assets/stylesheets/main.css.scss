@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 #not-ie {
   display: none;
   text-align: center;
@@ -53,19 +55,19 @@ p, div {
 }
 
 .support-button {
-  color: #333333;
+  color: $custom2;
   background-color: #ff9900;
 
   &:hover {
-    color: #333333;
-    background-color: #FAAF4D;
+    color: $custom2;
+    background-color: $custom3;
   }
 }
 
 .call-to-action {
   padding: 10px 30px 10px 10px;
   color: white;
-  background-color: #333333;
+  background-color: $custom2;
   font-size: 16px;
   position: relative;
   font-family: 'Qotho-Dark';
@@ -88,17 +90,17 @@ p, div {
     border-left: 10px solid #ff9900;
 
     &.main {
-      border-left: 10px solid #333333;
+      border-left: 10px solid $custom2;
     }
   }
 
   &.main {
-    color: #333333;
+    color: $custom2;
     background-color: #ff9900;
     margin-right: 20px;
 
     &:hover {
-      background-color: #FAAF4D;
+      background-color: $custom3;
     }
   }
 }
@@ -136,7 +138,7 @@ p, div {
   .social-share-icon-link {
     font-size: 18px;
     padding-top: 13px;
-    background-color: #006633;
+    background-color: $custom1;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -145,7 +147,7 @@ p, div {
 
     &:hover {
       background-color: #ff9900;
-      color: #333333;
+      color: $custom2;
     }
   }
 }
