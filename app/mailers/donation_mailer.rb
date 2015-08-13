@@ -1,7 +1,7 @@
 class DonationMailer < ActionMailer::Base
   helper :application # gives access to all helpers defined within `application_helper`.
 
-  default from: '"Raise Change Team" <team@timeauction.org>'
+  default from: '"Raise Change Team" <team@raisechange.org>'
 
   def successful_donation(donation_id, period)
     @donation = Donation.find(donation_id)
