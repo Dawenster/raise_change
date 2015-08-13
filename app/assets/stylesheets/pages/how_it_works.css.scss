@@ -37,7 +37,7 @@
       height: 0; 
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-left: 10px solid #ff9900;
+      border-left: 10px solid $custom4;
     }
   }
 }
@@ -51,10 +51,10 @@
 }
 
 .info-box-holder.yellow {
-  border-left: 2px solid #ff9900;
+  border-left: 2px solid $custom4;
 
   .info-box-holder-header {
-    background-color: #ff9900;
+    background-color: $custom4;
   }
 }
 

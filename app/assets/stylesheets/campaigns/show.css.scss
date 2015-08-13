@@ -74,7 +74,7 @@
       .campaign-show-detailed-stats {
         h1 {
           font-weight: 700;
-          color: #ff9900;
+          color: $custom4;
           font-family: 'Avenir-Heavy';
         }
 
@@ -92,7 +92,7 @@
         margin-top: 35px;
 
         .share-link {
-          color: #ff9900;
+          color: $custom4;
           cursor: pointer;
           height: 50px;
 

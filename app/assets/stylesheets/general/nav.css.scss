@@ -27,7 +27,7 @@
         font-size: 18px;
 
         &:hover {
-          color: #ff9900;
+          color: $custom4;
         }
       }
     }
@@ -78,16 +78,16 @@
 // START: Mobile menu toggle
 
 .navbar-default .navbar-toggle {
-  border-color: #ff9900;
+  border-color: $custom4;
 }
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #ff9900;
+  background-color: $custom4;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #ff9900;
+  background-color: $custom4;
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
@@ -118,5 +118,5 @@
 }
 
 .active-underline {
-  color: #ff9900 !important;
+  color: $custom4 !important;
 }
