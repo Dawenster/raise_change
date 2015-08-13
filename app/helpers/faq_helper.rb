@@ -22,7 +22,7 @@ module FaqHelper
           {
             :question => "How much do you charge?",
             :answer_paragraphs => [
-              "We collect a 5% fee on donations in order to keep the website running and feed ourselves. We also collect a 2.9% + $0.30 processing fees on donations in order to pay the stripe fees that cover credit card costs. This amount will be deducted from your donation pledge automatically."
+              "We collect a 5% fee on donations in order to keep the website running and feed ourselves. We also collect a 2.9% + $0.30 processing fees on donations in order to pay the Stripe fees that cover credit card costs. This amount will be deducted from your donation pledge automatically."
             ]
           },
           {
