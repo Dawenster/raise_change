@@ -1,7 +1,7 @@
 var app = angular.module('raisechange');
 
 app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, CreditCards) {
-  $scope.quarterlyHours = $(".donations-controller").attr("data-campaign-estimated-quarterly-hours")
+  $scope.hoursPerPeriod = $(".donations-controller").attr("data-campaign-estimated-hours")
 
   $scope.splitDate = function() {
     var dates = CreditCards.splitDate($scope.expiryDate)
@@ -22,13 +22,13 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
     }
   });
 
-  slider.noUiSlider.on('update', function( values, handle ) {
-    var amount = (Math.round(values[handle] * 4) / 4).toFixed(2)
+  slider.noUiSlider.on('update', function(values, handle) {
+    var amount = roundToIncrement(values[handle])
     $scope.donationAmount = amount
-    $scope.totalQuarterlyDonation = (amount * $scope.quarterlyHours).toFixed(2)
-    // Max is defaulted to 10% above what the total quarterly is estimated to be
-    $scope.maxDonation = parseInt(Math.round(parseFloat($scope.totalQuarterlyDonation) * 1.1))
-    $scope.minimumMaxAmount = Math.ceil($scope.totalQuarterlyDonation)
+    $scope.totalDonationPerPeriod = roundToIncrement(amount * $scope.hoursPerPeriod)
+    // Max is defaulted to 10% above what the total estimated amount per period
+    $scope.maxDonation = parseInt(Math.round(parseFloat($scope.totalDonationPerPeriod) * 1.2))
+    $scope.minimumMaxAmount = Math.ceil($scope.totalDonationPerPeriod)
     if(!$scope.$$phase) {
       $scope.$apply()
     }
@@ -104,5 +104,10 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
   function isEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
+  }
+
+  function roundToIncrement(num) {
+    // To round to nearest $0.25
+    return (Math.round(num * 4) / 4).toFixed(2)
   }
 }]);

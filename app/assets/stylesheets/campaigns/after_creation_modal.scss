@@ -1,0 +1,18 @@
+#after-creation-modal, #campaign-share-modal {
+  .content-suggestion {
+    line-height: 1.3;
+    font-weight: 300;
+  }
+
+  .copy-url-section-holder {
+    margin-top: 10px;
+
+    .copied-text {
+      margin-left: 10px;
+    }
+  }
+
+  .js-copytextarea {
+    margin: 15px 0px;
+  }
+}

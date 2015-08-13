@@ -828,13 +828,13 @@ body.outlook p {
                             <p>Thank you for supporting <%= @campaign_user.full_name %> on Raise Change. The details of your support are below:</p>
                             <p>
                               <div>
-                                Campaign: <%= @campaign.title %>
+                                Campaign: <%= link_to @campaign.title, campaign_url(@campaign) %>
                               </div>
                               <div>
                                 Support amount: <%= number_to_currency(@donation.amount.to_f / 100) %> per hour
                               </div>
                               <div>
-                                Max amount: <%= number_to_currency(@donation.max.to_f / 100) %> per quarter
+                                Max amount: <%= number_to_currency(@donation.max.to_f / 100) %> per <%= @donation_period_name %>
                               </div>
                             </p>
                             <p>

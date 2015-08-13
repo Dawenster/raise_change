@@ -22,3 +22,10 @@
             - current_user.following.each do |user|
               li data-toggle="tooltip" data-placement="bottom" title="#{user.full_name}"
                 = link_to avatar(user), user_path(user)
+
+      - if current_user.donations.empty? && current_user.following.empty?
+        p
+          | Follow or support others to see their updates in your news feed!
+
+        p
+          = link_to "Browse campaigns", campaigns_path

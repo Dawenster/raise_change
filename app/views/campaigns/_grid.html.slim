@@ -13,5 +13,5 @@
         = "#{campaign.num_supporters} #{'person'.pluralize(campaign.num_supporters)} supporting #{organization.name}".html_safe
       ul.list-inline.avatar-list
         - campaign.donations.each do |donation|
-          li data-toggle="popover" data-placement="bottom" title="<a href=#{'"' + user_path(donation.user) + '"'}>#{donation.user.full_name}</a>" data-content="<div class='popover-donation-details'>#{donation.details_for_popover_as_string(campaign.user == current_user)}</div>" data-html="true"
+          li data-toggle="popover" data-placement="bottom" title="<a href=#{'"' + user_path(donation.user) + '"'}>#{donation.user.full_name}</a>" data-content="<div class='popover-donation-details'>#{donation.details_for_popover_as_string(campaign.user == current_user, donation_period_name)}</div>" data-html="true"
             = avatar(donation.user)

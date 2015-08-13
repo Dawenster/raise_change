@@ -3,8 +3,8 @@ class Campaign < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :organization
-  has_many :donations
-  has_many :journal_entries
+  has_many :donations, :dependent => :destroy
+  has_many :journal_entries, :dependent => :destroy
 
   s3_credentials_hash = {
     :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -53,44 +53,22 @@ class Campaign < ActiveRecord::Base
   end
 
   def social_links_as_string(url)
-    facebook_app_id = Rails.env.development? ? 952931041384040 : 952917808052030
-    facebook_link = "https://www.facebook.com/dialog/feed"
-    facebook_link += "?app_id=#{facebook_app_id}"
-    facebook_link += "&display=popup"
-    facebook_link += "&caption=Raise%20Change"
-    facebook_link += "&link=#{url}"
-    facebook_link += "&redirect_uri=#{url}"
-    facebook_link += "&picture=#{self.image.url(:display)}"
-
-    twitter_link = "https://twitter.com/intent/tweet"
-    twitter_link += "?text=#{self.title}"
-    twitter_link += "&url=#{url}"
-    twitter_link += "&hashtags=raisechange"
-
-    linkedin_link = "https://www.linkedin.com/shareArticle"
-    linkedin_link += "?mini=true"
-    linkedin_link += "&url=#{url}"
-    linkedin_link += "&title=#{self.title}"
-
-    email_link ="mailto:?subject=#{self.title}&body=#{url}"
-
-    str = "<a href='" + facebook_link + "' target='_blank'><i class='fa fa-facebook-square'></i></a>"
-    str += "<a href='" + twitter_link + "' target='_blank'><i class='fa fa-twitter-square'></i></a>"
-    str += "<a href='" + linkedin_link + "' target='_blank'><i class='fa fa-linkedin-square'></i></a>"
-    str += "<a href='" + email_link + "' target='_blank'><i class='fa fa-envelope-square'></i></a>"
-
+    str = "<a href='" + ApplicationController.helpers.facebook_link(url, self) + "' target='_blank'><i class='fa fa-facebook-square'></i></a>"
+    str += "<a href='" + ApplicationController.helpers.twitter_link(url, self) + "' target='_blank'><i class='fa fa-twitter-square'></i></a>"
+    str += "<a href='" + ApplicationController.helpers.linkedin_link(url, self) + "' target='_blank'><i class='fa fa-linkedin-square'></i></a>"
+    str += "<a href='" + ApplicationController.helpers.email_link(url, self) + "' target='_blank'><i class='fa fa-envelope-square'></i></a>"
     return str
   end
 
-  def estimated_hours_per_quarter
+  def estimated_hours_per_period
     if self.frequency == "monthly"
-      multiple = 3
+      multiple = 12 / ApplicationController.helpers.donation_periods_per_year
     elsif self.frequency == "weekly"
-      multiple = 13
+      multiple = 52.0 / ApplicationController.helpers.donation_periods_per_year
     end
 
     if self.estimated_hours.nil? || multiple.nil?
-      return 15
+      return 4
     else
       return self.estimated_hours * multiple
     end

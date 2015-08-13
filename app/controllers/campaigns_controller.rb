@@ -2,6 +2,7 @@ class CampaignsController < ApplicationController
   autocomplete :organization, :name, :full => true
   
   before_filter :authenticate_user!, :only => [:new, :edit]
+  before_filter :authorized_user, :only => [:edit, :update, :destroy]
 
   def index
     @title = "All <span class='highlight'>campaigns</span>"
@@ -29,6 +30,7 @@ class CampaignsController < ApplicationController
     @campaign.organization_id = org.id
     if @campaign.save
       flash[:notice] = "\"#{@campaign.title}\" created successfully."
+      cookies[:just_created] = true
       redirect_to campaign_path(@campaign)
     else
       flash.now[:alert] = @campaign.errors.full_messages.join(". ") + "."
@@ -81,5 +83,15 @@ class CampaignsController < ApplicationController
       :frequency,
       :_destroy
     )
+  end
+
+  def authorized_user
+    @campaign = Campaign.find(params[:id])
+    if !current_user.admin
+      if @campaign.user != current_user
+        flash[:alert] = "You are not authorized to view this page"
+        redirect_to campaign_path(@campaign)
+      end
+    end
   end
 end
