@@ -13,10 +13,23 @@
     color: black;
   }
 
+  @media(max-width:768px) {
+    .text-only-holder-title {
+      margin-top: 6px;
+      margin-left: 6px;
+    }
+  }
+
   .text-only-holder-subtitle {
     padding-left: 22px;
     font-size: 16px;
     color: #ff9900;
+  }
+
+  @media(max-width:768px) {
+    .text-only-holder-subtitle {
+      margin-left: 6px;
+    }
   }
 
   .text-only-holder-content{
@@ -26,6 +39,12 @@
     padding-right: 10px;
     font-size: 14px;
     color: black;
+  }
+
+  @media(max-width:768px) {
+    .text-only-holder-content {
+      margin-left: 6px;
+    }
   }
 
   .individual-bio {
