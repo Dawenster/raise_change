@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 .donation-grid-holder {
   margin: 10px 0px;
   display: block;
@@ -33,10 +35,10 @@
     font-family: 'Qotho-Dark';
 
     a {
-      color: #333333;
+      color: $custom2;
 
       &:hover {
-        color: #006633;
+        color: $custom1;
         text-decoration: none;
       }
     }

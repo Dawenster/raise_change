@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 .landing-main-holder {
   text-align: center;
   margin-top: 10%;
@@ -27,7 +29,7 @@
       height: 0; 
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-left: 10px solid #ff9900;
+      border-left: 10px solid $custom4;
     }
   }
 
@@ -57,7 +59,7 @@
       height: 0; 
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
-      border-left: 15px solid #ff9900;
+      border-left: 15px solid $custom4;
     }
   }
 
@@ -74,13 +76,13 @@
 
 .landing-call-to-action {
   position: absolute;
-  background-color: #006633;
+  background-color: $custom1;
   color: white;
   text-transform: uppercase;
   font-family: 'Qotho-Dark';
   text-align: right;
 
   span.highlight {
-    color: #ff9900;
+    color: $custom4;
   }
 }

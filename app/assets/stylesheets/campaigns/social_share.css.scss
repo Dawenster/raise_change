@@ -1,13 +1,15 @@
+@import "colors.scss";
+
 @media(max-width:767px) {
   .share-this-buttons {
     font-size: 30px;
 
     i {
-      color: #006633;
+      color: $custom1;
       margin: 0px 2px;
 
       &:hover {
-        color: #333333;
+        color: $custom2;
       }
     }
   }

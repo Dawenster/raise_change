@@ -1,7 +1,9 @@
+@import "colors.scss";
+
 #how-it-works-modal {
   .modal-header {
     text-align: center;
-    background-color: #006633;
+    background-color: $custom1;
 
     .modal-title {
       color: white;
@@ -9,7 +11,7 @@
       text-transform: uppercase;
 
       .highlight {
-        color: #ff9900;
+        color: $custom4;
       }
     }
 
@@ -29,6 +31,6 @@
 
   .modal-footer {
     text-align: center;
-    background-color: #006633;
+    background-color: $custom1;
   }
 }

@@ -1,12 +1,14 @@
+@import "colors.scss";
+
 .general-form-holder {
   padding-left: 30px;
-  border-left: 2px solid #333333;
+  border-left: 2px solid $custom2;
 }
 
 .submit-button {
   padding: 10px;
   color: white;
-  background-color: #333333;
+  background-color: $custom2;
   font-size: 16px;
   position: relative;
   border: none;
@@ -15,6 +17,6 @@
 
   &:hover {
     color: white !important;
-    background-color: #333333 !important;
+    background-color: $custom2 !important;
   }
 }

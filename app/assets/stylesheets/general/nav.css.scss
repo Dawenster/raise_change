@@ -1,10 +1,12 @@
+@import "colors.scss";
+
 .navbar {
   border-radius: 0px;
   margin-bottom: 0px;
 }
 
 .navbar-default {
-  background-color: #006633;
+  background-color: $custom1;
   border: none;
   z-index: 5;
 
@@ -25,7 +27,7 @@
         font-size: 18px;
 
         &:hover {
-          color: #ff9900;
+          color: $custom4;
         }
       }
     }
@@ -33,7 +35,7 @@
     .open {
       a, a:focus, a:hover {
         color: white !important;
-        background-color: #006633 !important;
+        background-color: $custom1 !important;
       }
 
       .dropdown-menu {
@@ -42,7 +44,7 @@
 
           a {
             text-transform: none;
-            color: #006633 !important;
+            color: $custom1 !important;
             background-color: white !important;
             font-family: 'Avenir' !important;
 
@@ -76,20 +78,20 @@
 // START: Mobile menu toggle
 
 .navbar-default .navbar-toggle {
-  border-color: #ff9900;
+  border-color: $custom4;
 }
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #ff9900;
+  background-color: $custom4;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #ff9900;
+  background-color: $custom4;
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-  background-color: #006633;
+  background-color: $custom1;
 }
 
 // END: Mobile menu toggle
@@ -116,5 +118,5 @@
 }
 
 .active-underline {
-  color: #ff9900 !important;
+  color: $custom4 !important;
 }

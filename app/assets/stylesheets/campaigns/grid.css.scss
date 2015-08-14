@@ -1,13 +1,15 @@
+@import "colors.scss";
+
 .campaign-main-grid {
   h4 {
     text-transform: uppercase;
     font-family: 'Qotho-Dark';
 
     a {
-      color: #333333;
+      color: $custom2;
 
       &:hover {
-        color: #006633;
+        color: $custom1;
         text-decoration: none;
       }
     }

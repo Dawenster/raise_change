@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 .banner-title {
   height: 200px;
   background-size: cover;
@@ -70,7 +72,7 @@
     }
 
     span.highlight {
-      color: #ff9900;
+      color: $custom5;
     }
   }
 }

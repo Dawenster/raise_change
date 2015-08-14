@@ -1,3 +1,5 @@
+@import "colors.scss";
+
 .follow-section-holder {
   .fa-question-circle {
     font-size: 16px;
@@ -24,16 +26,16 @@
 .follow-button {
   &:hover {
     color: white;
-    background-color: #006633;
+    background-color: $custom1;
   }
 
   &.campaign-page {
-    border: 1px solid #006633;
+    border: 1px solid $custom1;
   }
 }
 
 .unfollow-button {
-  background-color: #006633;
+  background-color: $custom1;
   width: 105px;
 
   &.hovering {

@@ -1,9 +1,11 @@
+@import "colors.scss";
+
 .devise-facebook-link {
   margin-bottom: 20px;
   position: relative;
 
   .facebook-icon-holder {
-    background-color: #333333;
+    background-color: $facebook;
     color: white;
     width: 40px;
     height: 40px;
@@ -17,14 +19,14 @@
 
   .facebook-link-holder {
     padding: 10px;
-    border: 1px solid #333333;
+    border: 1px solid $custom2;
     height: 40px;
 
     a {
-      color: #333333;
+      color: $custom2;
 
       &:hover {
-        color: #ff9900;
+        color: $custom4;
         text-decoration: none;
       }
     }
@@ -32,7 +34,7 @@
 }
 
 .or-create-account {
-  background-color: #333333;
+  background-color: $custom2;
   color: white;
   height: 40px;
   width: 206px;
