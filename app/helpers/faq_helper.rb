@@ -7,8 +7,11 @@ module FaqHelper
         :questions => [
           {
             :question => "What is Raise Change?",
+            # :answer_paragraphs => [
+            #   "Raise Change is a platform to raise micro donations for each hour someone volunteers. Volunteers start a cammpaign for their volunteer work and log their hours as they go. Friends, family and strangers can support their volunteer work by pledging to donate a set amount of dollars for every hour volunteered. All donations go to the charity the individual volunteered at or a related organization."
+            # ]
             :answer_paragraphs => [
-              "Raise Change is a platform to raise micro donations for each hour someone volunteers. Volunteers start a cammpaign for their volunteer work and log their hours as they go. Friends, family and strangers can support their volunteer work by pledging to donate a set amount of dollars for every hour volunteered. All donations go to the charity the individual volunteered at or a related organization."
+              "Raise Change is a platform to raise micro donations for each hour someone volunteers. Volunteers start a cammpaign for their volunteer work and log their hours as they go. Friends, family and strangers can support their volunteer work by pledging to donate a set amount of dollars for every hour volunteered. For now, the rate has been set to $0.25 per hour. All donations go to the charity the individual volunteered at or a related organization."
             ]
           },
           {
@@ -102,6 +105,12 @@ module FaqHelper
             :question => "Can I set the maximum donation amount?",
             :answer_paragraphs => [
               "Yes. During the donation process, you can set a maximum amount you are willing to donate per month. Once the volunteer reaches that amount, you will no longer be charged during that month. When you no longer want to pledge your support, simply cancel your pledge and you won't be charged from that point."
+            ]
+          },
+          {
+            :question => "Will I have an opportunity to donate more?",
+            :answer_paragraphs => [
+              "We like you already. Yes, before your card is charged, you will receive an email notification asking if you would like to top up your donation to an amount you specify."
             ]
           },
           {
