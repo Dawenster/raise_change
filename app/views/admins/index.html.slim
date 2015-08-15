@@ -23,9 +23,9 @@
             - org.journal_entries.order("created_at DESC").each do |entry|
               tr
                 td
-                  = entry.user.full_name
+                  = link_to entry.user.full_name, user_path(entry.user)
                 td
-                  = entry.campaign.title
+                  = link_to entry.campaign.title, campaign_path(entry.campaign)
                 td
                   = format_je_dates(entry.dates)
                 td
