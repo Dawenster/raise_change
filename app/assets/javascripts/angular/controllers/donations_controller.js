@@ -3,6 +3,15 @@ var app = angular.module('raisechange');
 app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, CreditCards) {
   $scope.hoursPerPeriod = $(".donations-controller").attr("data-campaign-estimated-hours")
 
+  // Begin fixed donation rate section
+  // =================================
+  $scope.donationAmount = 0.25
+  $scope.totalDonationPerPeriod = $scope.hoursPerPeriod * $scope.donationAmount
+  $scope.maxDonation = 5
+  $scope.minimumMaxAmount = 1
+  // ===============================
+  // End fixed donation rate section
+
   $scope.splitDate = function() {
     var dates = CreditCards.splitDate($scope.expiryDate)
     if (dates) {
@@ -11,34 +20,38 @@ app.controller('DonationCtrl', ['$scope', "CreditCards", function($scope, Credit
     }
   }
 
-  var slider = document.getElementById("amount-slider")
+  // Begin variable donation rate section
+  // ====================================
+  // var slider = document.getElementById("amount-slider")
 
-  noUiSlider.create(slider, {
-    start: [ 1 ],
-    connect: "lower",
-    range: {
-      'min': [ 0 ],
-      'max': [ 5 ]
-    }
-  });
+  // noUiSlider.create(slider, {
+  //   start: [ 1 ],
+  //   connect: "lower",
+  //   range: {
+  //     'min': [ 0 ],
+  //     'max': [ 5 ]
+  //   }
+  // });
 
-  slider.noUiSlider.on('update', function(values, handle) {
-    var amount = roundToIncrement(values[handle])
-    $scope.donationAmount = amount
-    $scope.totalDonationPerPeriod = roundToIncrement(amount * $scope.hoursPerPeriod)
-    // Max is defaulted to 10% above what the total estimated amount per period
-    $scope.maxDonation = parseInt(Math.round(parseFloat($scope.totalDonationPerPeriod) * 1.2))
-    $scope.minimumMaxAmount = Math.ceil($scope.totalDonationPerPeriod)
-    if(!$scope.$$phase) {
-      $scope.$apply()
-    }
-  });
+  // slider.noUiSlider.on('update', function(values, handle) {
+  //   var amount = roundToIncrement(values[handle])
+  //   $scope.donationAmount = amount
+  //   $scope.totalDonationPerPeriod = roundToIncrement(amount * $scope.hoursPerPeriod)
+  //   // Max is defaulted to 10% above what the total estimated amount per period
+  //   $scope.maxDonation = parseInt(Math.round(parseFloat($scope.totalDonationPerPeriod) * 1.2))
+  //   $scope.minimumMaxAmount = Math.ceil($scope.totalDonationPerPeriod)
+  //   if(!$scope.$$phase) {
+  //     $scope.$apply()
+  //   }
+  // });
 
-  slider.noUiSlider.on('change', function ( values, handle ) {
-    if ( values[handle] < 0.25 ) {
-      slider.noUiSlider.set(0.25);
-    }
-  });
+  // slider.noUiSlider.on('change', function ( values, handle ) {
+  //   if ( values[handle] < 0.25 ) {
+  //     slider.noUiSlider.set(0.25);
+  //   }
+  // });
+  // ==================================
+  // End variable donation rate section
 
   $scope.addHour = function() {
     $scope.maxDonation = parseInt($scope.maxDonation) + 1;

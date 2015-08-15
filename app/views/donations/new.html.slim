@@ -18,13 +18,30 @@
         .has-card-details data-has-card="#{@cards.any?}"
         .row
           .col-xs-12.col-sm-6
+            / Begin fixed donation rate section
+            / =================================
             label
-              | * Amount per hour: $
-              span.donation-amount-display
-                | {{donationAmount}}
+              | * Amount per hour:
               input.hidden name="donation[amount]" ng-model="donationAmount"
 
-            #amount-slider
+            .fixed-donation-rate-text
+              | ${{donationAmount}}
+            / ===============================
+            / End fixed donation rate section
+
+
+            / Begin variable donation rate section
+            / ====================================
+            / label
+              / | * Amount per hour: $
+              / span.donation-amount-display
+              /   | {{donationAmount}}
+              / input.hidden name="donation[amount]" ng-model="donationAmount"
+
+            / #amount-slider
+            / ==================================
+            / End variable donation rate section
+            
             .total-donation-display-holder
               = "Estimted total #{donation_period} donation: "
               div
